@@ -35,6 +35,30 @@ export function sendPrivateReply(commentId, text) {
   });
 }
 
+// Private Reply with a tappable button that opens `url` (Instagram button template).
+// `buttonTitle` is limited to 20 characters and `text` to 640 by Instagram.
+export function sendPrivateReplyButton(commentId, text, url, buttonTitle) {
+  if (config.dryRun) {
+    console.log(`[dry-run] DM with button for comment ${commentId}: ${text} [${buttonTitle} -> ${url}]`);
+    return Promise.resolve({ dryRun: true });
+  }
+  return graph('POST', `${account()}/messages`, {
+    body: {
+      recipient: { comment_id: commentId },
+      message: {
+        attachment: {
+          type: 'template',
+          payload: {
+            template_type: 'button',
+            text: text.slice(0, 640),
+            buttons: [{ type: 'web_url', url, title: buttonTitle.slice(0, 20) }],
+          },
+        },
+      },
+    },
+  });
+}
+
 export function replyToComment(commentId, text) {
   if (config.dryRun) {
     console.log(`[dry-run] public reply on comment ${commentId}: ${text}`);

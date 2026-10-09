@@ -19,7 +19,7 @@ const fill = (template, vars) =>
 
 /**
  * Handles one `comments` webhook change. Returns a short status string (useful for logs/tests).
- * deps: { reels, store, ig: { sendPrivateReply, replyToComment }, ownIds: Set<string>, oneDmPerUser?: boolean }
+ * deps: { reels, store, ig: { sendPrivateReply, sendPrivateReplyButton, replyToComment }, ownIds: Set<string>, oneDmPerUser?: boolean }
  */
 export async function handleComment(value, { reels, store, ig, ownIds, oneDmPerUser = false }) {
   const commentId = value?.id;
@@ -40,7 +40,20 @@ export async function handleComment(value, { reels, store, ig, ownIds, oneDmPerU
   const vars = { username, url: reel.url };
   const message = fill(reel.message || 'Here is the link: {url}', vars);
 
-  await ig.sendPrivateReply(commentId, message);
+  // Links in plain-text DMs often aren't tappable (e.g. in message requests), so by default
+  // the link is sent as a button. "buttonText": null in reels.json sends plain text instead.
+  const buttonText = reel.buttonText === undefined ? 'Shop now' : reel.buttonText;
+  if (buttonText) {
+    try {
+      await ig.sendPrivateReplyButton(commentId, message, reel.url, buttonText);
+    } catch (err) {
+      // Instagram allows one private reply per comment, so only fall back if the button was rejected.
+      console.error(`Button DM failed for comment ${commentId}, sending plain text instead: ${err.message}`);
+      await ig.sendPrivateReply(commentId, message);
+    }
+  } else {
+    await ig.sendPrivateReply(commentId, message);
+  }
   store.markHandled(commentId, userId, mediaId);
   console.log(`DM sent to @${username} for reel ${mediaId} -> ${reel.url}`);
 

@@ -45,6 +45,7 @@ It uses Instagram's official APIs: comment **webhooks**, plus **Private Replies*
    ```
    - `keyword` can be a string or a list (`["SHOE", "LINK"]`). Matching ignores case and only counts whole words, so `shoe pls` matches but `shoelace` doesn't.
    - `message` supports the `{username}` and `{url}` placeholders.
+   - `buttonText` (optional, max 20 characters, default `Shop now`) sends the link as a tappable button under the message. Set it to `null` to send a plain-text message instead; then put `{url}` in `message`. If Instagram rejects the button, the DM is sent as plain text with the same message.
    - `publicReply` is optional. Use `null` or leave it out for DM only.
    - The file is re-read on every comment, so edits take effect without a restart.
 5. **Run it and expose it:**
