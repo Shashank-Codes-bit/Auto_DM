@@ -1,0 +1,14 @@
+{
+  "REPLACE_WITH_REEL_MEDIA_ID_1": {
+    "keyword": "SHOE",
+    "url": "https://example.com/products/shoe",
+    "message": "Hey @{username}! Here's the link to the shoe from the reel: {url}",
+    "publicReply": "Sent you a DM 📩"
+  },
+  "REPLACE_WITH_REEL_MEDIA_ID_2": {
+    "keyword": "BAG",
+    "url": "https://example.com/products/bag",
+    "message": "Hi @{username}, here's the bag you asked about: {url}",
+    "publicReply": null
+  }
+}

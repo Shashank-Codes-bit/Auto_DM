@@ -1,0 +1,19 @@
+{
+  "name": "auto-dm",
+  "version": "0.1.0",
+  "private": true,
+  "description": "POC: DM a reel-specific product link to people who comment a keyword on your Instagram reels",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "list-reels": "node scripts/list-reels.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2"
+  }
+}
