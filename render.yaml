@@ -21,3 +21,5 @@ services:
         value: v23.0
       - key: DRY_RUN
         value: "1"
+      - key: ONE_DM_PER_USER
+        value: "0"

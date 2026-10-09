@@ -13,6 +13,7 @@ export const config = {
   port: Number(process.env.PORT) || 3000,
   graphVersion: process.env.GRAPH_VERSION || 'v23.0',
   dryRun: process.env.DRY_RUN === '1',
+  oneDmPerUser: process.env.ONE_DM_PER_USER === '1',
   reelsFile: process.env.REELS_FILE || path.join(rootDir, 'reels.json'),
   processedFile: process.env.PROCESSED_FILE || path.join(rootDir, 'data', 'processed.json'),
 };

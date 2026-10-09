@@ -19,9 +19,9 @@ const fill = (template, vars) =>
 
 /**
  * Handles one `comments` webhook change. Returns a short status string (useful for logs/tests).
- * deps: { reels, store, ig: { sendPrivateReply, replyToComment }, ownIds: Set<string> }
+ * deps: { reels, store, ig: { sendPrivateReply, replyToComment }, ownIds: Set<string>, oneDmPerUser?: boolean }
  */
-export async function handleComment(value, { reels, store, ig, ownIds }) {
+export async function handleComment(value, { reels, store, ig, ownIds, oneDmPerUser = false }) {
   const commentId = value?.id;
   const mediaId = value?.media?.id;
   const userId = value?.from?.id;
@@ -35,7 +35,7 @@ export async function handleComment(value, { reels, store, ig, ownIds }) {
   if (!reel) return 'skip:unmapped-reel';
   if (!matchesKeyword(text, reel.keyword)) return 'skip:no-keyword';
   if (store.hasComment(commentId)) return 'skip:duplicate-comment';
-  if (store.hasUserReel(userId, mediaId)) return 'skip:already-sent-to-user';
+  if (oneDmPerUser && store.hasUserReel(userId, mediaId)) return 'skip:already-sent-to-user';
 
   const vars = { username, url: reel.url };
   const message = fill(reel.message || 'Here is the link: {url}', vars);

@@ -60,7 +60,8 @@ It uses Instagram's official APIs: comment **webhooks**, plus **Private Replies*
 
 ## Behaviour
 
-- One DM per user per reel. Duplicate webhook deliveries and repeat comments are ignored. Handled comments are recorded in `data/processed.json`.
+- Every keyword comment gets a DM, including repeat comments from the same person. Set `ONE_DM_PER_USER=1` to send each person at most one DM per reel.
+- Duplicate webhook deliveries of the same comment are ignored. Handled comments are recorded in `data/processed.json`.
 - Comments from your own account are ignored, so the bot never answers its own public replies.
 - Comments on reels missing from `reels.json`, and comments without the keyword, are ignored.
 - Every webhook's `X-Hub-Signature-256` is checked against your app secret.

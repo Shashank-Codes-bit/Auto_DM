@@ -42,7 +42,7 @@ test('each reel DMs its own link', async () => {
   ]);
 });
 
-test('skips wrong keyword, unmapped reel, own comments and duplicates', async () => {
+test('skips wrong keyword, unmapped reel, own comments and duplicate deliveries; repeat comments get a DM', async () => {
   const ig = fakeIg();
   const deps = { reels, store: memoryStore(), ig, ownIds: new Set(['ME']) };
 
@@ -51,8 +51,17 @@ test('skips wrong keyword, unmapped reel, own comments and duplicates', async ()
   assert.equal(await handleComment(comment('c3', 'REEL_A', 'SHOE', 'ME'), deps), 'skip:own-comment');
   assert.equal(await handleComment(comment('c4', 'REEL_A', 'SHOE'), deps), 'sent');
   assert.equal(await handleComment(comment('c4', 'REEL_A', 'SHOE'), deps), 'skip:duplicate-comment');
-  assert.equal(await handleComment(comment('c5', 'REEL_A', 'SHOE again'), deps), 'skip:already-sent-to-user');
-  assert.equal(ig.calls.filter(([t]) => t === 'dm').length, 1);
+  assert.equal(await handleComment(comment('c5', 'REEL_A', 'SHOE again'), deps), 'sent');
+  assert.equal(ig.calls.filter(([t]) => t === 'dm').length, 2);
+});
+
+test('ONE_DM_PER_USER limits each person to one DM per reel', async () => {
+  const ig = fakeIg();
+  const deps = { reels, store: memoryStore(), ig, ownIds: new Set(['ME']), oneDmPerUser: true };
+
+  assert.equal(await handleComment(comment('c1', 'REEL_A', 'SHOE'), deps), 'sent');
+  assert.equal(await handleComment(comment('c2', 'REEL_A', 'SHOE again'), deps), 'skip:already-sent-to-user');
+  assert.equal(await handleComment(comment('c3', 'REEL_B', 'BAG'), deps), 'sent');
 });
 
 test('keyword matching is case-insensitive and whole-word', () => {

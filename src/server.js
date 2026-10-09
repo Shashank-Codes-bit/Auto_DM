@@ -88,7 +88,13 @@ export function createApp({ store = createStore(config.processedFile), ig = inst
       for (const change of entry.changes || []) {
         if (change.field !== 'comments') continue;
         try {
-          const result = await handleComment(change.value, { reels, store, ig, ownIds });
+          const result = await handleComment(change.value, {
+            reels,
+            store,
+            ig,
+            ownIds,
+            oneDmPerUser: config.oneDmPerUser,
+          });
           console.log(`comment ${change.value?.id} on ${change.value?.media?.id}: ${result}`);
         } catch (err) {
           console.error(`Failed to handle comment ${change.value?.id}: ${err.message}`);
