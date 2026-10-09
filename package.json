@@ -2,18 +2,21 @@
   "name": "auto-dm",
   "version": "0.1.0",
   "private": true,
-  "description": "POC: DM a reel-specific product link to people who comment a keyword on your Instagram reels",
+  "description": "Instagram reel comment-to-DM automation with a shoppable store per reel and an admin panel",
   "type": "module",
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "scripts": {
     "start": "node src/server.js",
-    "list-reels": "node scripts/list-reels.js",
-    "test": "node --test"
+    "test": "node --test test/*.test.js"
   },
   "dependencies": {
+    "@electric-sql/pglite": "^0.2.17",
     "dotenv": "^16.4.5",
-    "express": "^4.21.2"
+    "express": "^5.3.0",
+    "multer": "^2.4.0",
+    "pg": "^8.23.1",
+    "qrcode": "^1.5.4"
   }
 }

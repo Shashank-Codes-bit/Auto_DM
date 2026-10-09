@@ -1,0 +1,40 @@
+export const SETTING_DEFAULTS = {
+  store_name: 'Shopping For Her',
+  tagline: 'Everything from our reels, in one place.',
+  accent_color: '#B8336A',
+  logo_url: '',
+  instagram_handle: '',
+  shipping_fee_paise: '4900',
+  free_shipping_above_paise: '99900',
+  upi_id: 'demo@upi',
+  upi_payee: 'Shopping For Her',
+  support_whatsapp: '',
+  support_email: '',
+};
+
+export function settingsRepo(db) {
+  return {
+    async getAll() {
+      const rows = await db.query('SELECT key, value FROM settings');
+      const out = { ...SETTING_DEFAULTS };
+      for (const { key, value } of rows) if (key in out) out[key] = value;
+      return out;
+    },
+    async update(values) {
+      for (const [key, value] of Object.entries(values)) {
+        if (!(key in SETTING_DEFAULTS)) continue;
+        await db.query(
+          'INSERT INTO settings (key, value) VALUES ($1, $2) ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value',
+          [key, String(value ?? '')],
+        );
+      }
+    },
+  };
+}
+
+export const shippingFor = (subtotalPaise, settings) => {
+  const fee = Number(settings.shipping_fee_paise) || 0;
+  const freeAbove = Number(settings.free_shipping_above_paise) || 0;
+  if (subtotalPaise === 0) return 0;
+  return freeAbove > 0 && subtotalPaise >= freeAbove ? 0 : fee;
+};

@@ -1,0 +1,19 @@
+import { activityRepo } from './activity.js';
+import { mediaRepo } from './media.js';
+import { ordersRepo } from './orders.js';
+import { productsRepo } from './products.js';
+import { reelsRepo } from './reels.js';
+import { settingsRepo } from './settings.js';
+import { statsRepo } from './stats.js';
+
+export function createRepos(db) {
+  return {
+    activity: activityRepo(db),
+    media: mediaRepo(db),
+    orders: ordersRepo(db),
+    products: productsRepo(db),
+    reels: reelsRepo(db),
+    settings: settingsRepo(db),
+    stats: statsRepo(db),
+  };
+}

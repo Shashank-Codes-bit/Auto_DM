@@ -74,8 +74,14 @@ export function getAccount() {
 export function listMedia(limit = 25) {
   return graph('GET', `${account()}/media`, {
     query: {
-      fields: 'id,caption,media_type,media_product_type,permalink,timestamp',
+      fields: 'id,caption,media_type,media_product_type,permalink,timestamp,media_url,thumbnail_url',
       limit: String(limit),
     },
+  });
+}
+
+export function getMedia(id) {
+  return graph('GET', String(id), {
+    query: { fields: 'id,caption,media_type,media_product_type,permalink,timestamp,media_url,thumbnail_url' },
   });
 }

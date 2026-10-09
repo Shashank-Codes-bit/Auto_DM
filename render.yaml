@@ -5,7 +5,7 @@ services:
     plan: free
     buildCommand: npm install
     startCommand: npm start
-    healthCheckPath: /
+    healthCheckPath: /healthz
     envVars:
       - key: IG_ACCESS_TOKEN
         sync: false
@@ -15,11 +15,18 @@ services:
         sync: false
       - key: VERIFY_TOKEN
         sync: false
-      - key: ADMIN_KEY
+      - key: PUBLIC_BASE_URL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      # Use a free Neon/Supabase Postgres; Render's free disk is wiped on every deploy.
+      - key: DATABASE_URL
         sync: false
       - key: GRAPH_VERSION
         value: v23.0
       - key: DRY_RUN
-        value: "1"
+        value: "0"
       - key: ONE_DM_PER_USER
         value: "0"

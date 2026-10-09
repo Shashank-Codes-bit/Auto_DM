@@ -1,88 +1,64 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { handleComment, matchesKeyword } from '../src/handler.js';
+import { REEL_ID, fakeIg, seedReel, setup } from './helpers.js';
 
-const reels = {
-  REEL_A: { keyword: 'SHOE', url: 'https://shop.test/shoe', message: 'Hi @{username}: {url}', buttonText: null, publicReply: 'Check DMs' },
-  REEL_B: { keyword: ['BAG', 'LINK'], url: 'https://shop.test/bag', message: 'Bag: {url}', buttonText: null },
-  REEL_C: { keyword: 'HAT', url: 'https://shop.test/hat', message: 'Hat for @{username}' },
-};
+const comment = (id, text, user = 'u1', media = REEL_ID) => ({ id, text, media: { id: media }, from: { id: user, username: 'asha' } });
+const storeUrl = (slug) => `https://shop.test/r/${slug}?src=dm`;
 
-function memoryStore() {
-  const comments = new Set();
-  const pairs = new Set();
-  return {
-    hasComment: (c) => comments.has(c),
-    hasUserReel: (u, m) => pairs.has(`${u}:${m}`),
-    markHandled: (c, u, m) => (comments.add(c), pairs.add(`${u}:${m}`)),
-  };
+async function ctx(opts = {}) {
+  const { repos } = await setup();
+  await seedReel(repos, opts);
+  const ig = fakeIg(opts);
+  return { repos, ig, deps: { repos, ig, ownIds: new Set(['ME']), storeUrl, oneDmPerUser: opts.oneDmPerUser } };
 }
 
-function fakeIg() {
-  const calls = [];
-  return {
-    calls,
-    sendPrivateReply: async (id, text) => calls.push(['dm', id, text]),
-    sendPrivateReplyButton: async (id, text, url, title) => calls.push(['button', id, text, url, title]),
-    replyToComment: async (id, text) => calls.push(['reply', id, text]),
-  };
-}
-
-const comment = (id, media, text, user = 'u1') => ({ id, media: { id: media }, from: { id: user, username: 'alice' }, text });
-
-test('each reel DMs its own link', async () => {
-  const ig = fakeIg();
-  const deps = { reels, store: memoryStore(), ig, ownIds: new Set(['ME']) };
-
-  assert.equal(await handleComment(comment('c1', 'REEL_A', 'shoe please!'), deps), 'sent');
-  assert.equal(await handleComment(comment('c2', 'REEL_B', 'link?'), deps), 'sent');
-
-  assert.deepEqual(ig.calls, [
-    ['dm', 'c1', 'Hi @alice: https://shop.test/shoe'],
-    ['reply', 'c1', 'Check DMs'],
-    ['dm', 'c2', 'Bag: https://shop.test/bag'],
-  ]);
+test('a keyword comment gets a DM with a button to the reel store, and is logged', async () => {
+  const { repos, ig, deps } = await ctx();
+  assert.equal(await handleComment(comment('c1', 'LINK please'), deps), 'sent');
+  assert.deepEqual(ig.calls[0], ['button', 'c1', 'Hey @asha! Here’s everything from the reel 👇', 'https://shop.test/r/brunch-edit?src=dm', 'Shop now']);
+  const [row] = await repos.activity.list();
+  assert.equal(row.result, 'sent');
+  assert.equal(row.username, 'asha');
 });
 
-test('skips wrong keyword, unmapped reel, own comments and duplicate deliveries; repeat comments get a DM', async () => {
-  const ig = fakeIg();
-  const deps = { reels, store: memoryStore(), ig, ownIds: new Set(['ME']) };
+test('skips wrong keyword, unknown reel and own comments; repeat comments still get a DM', async () => {
+  const { ig, deps } = await ctx();
+  assert.equal(await handleComment(comment('c1', 'nice video'), deps), 'skip:no-keyword');
+  assert.equal(await handleComment(comment('c2', 'LINK', 'u1', '999'), deps), 'skip:unmapped-reel');
+  assert.equal(await handleComment(comment('c3', 'LINK', 'ME'), deps), 'skip:own-comment');
+  assert.equal(await handleComment(comment('c4', 'LINK'), deps), 'sent');
+  assert.equal(await handleComment(comment('c5', 'LINK again'), deps), 'sent');
+  assert.equal(ig.calls.filter((c) => c[0] === 'button').length, 2);
+});
 
-  assert.equal(await handleComment(comment('c1', 'REEL_A', 'nice video'), deps), 'skip:no-keyword');
-  assert.equal(await handleComment(comment('c2', 'REEL_X', 'SHOE'), deps), 'skip:unmapped-reel');
-  assert.equal(await handleComment(comment('c3', 'REEL_A', 'SHOE', 'ME'), deps), 'skip:own-comment');
-  assert.equal(await handleComment(comment('c4', 'REEL_A', 'SHOE'), deps), 'sent');
-  assert.equal(await handleComment(comment('c4', 'REEL_A', 'SHOE'), deps), 'skip:duplicate-comment');
-  assert.equal(await handleComment(comment('c5', 'REEL_A', 'SHOE again'), deps), 'sent');
-  assert.equal(ig.calls.filter(([t]) => t === 'dm').length, 2);
+test('a webhook delivered twice (even concurrently) sends only one DM', async () => {
+  const { ig, deps } = await ctx();
+  const results = await Promise.all([handleComment(comment('c1', 'LINK'), deps), handleComment(comment('c1', 'LINK'), deps)]);
+  assert.deepEqual(results.sort(), ['sent', 'skip:duplicate-comment']);
+  assert.equal(await handleComment(comment('c1', 'LINK'), deps), 'skip:duplicate-comment');
+  assert.equal(ig.calls.length, 1);
+});
+
+test('paused reels send nothing', async () => {
+  const { deps } = await ctx({ active: '' });
+  assert.equal(await handleComment(comment('c1', 'LINK'), deps), 'skip:unmapped-reel');
 });
 
 test('ONE_DM_PER_USER limits each person to one DM per reel', async () => {
-  const ig = fakeIg();
-  const deps = { reels, store: memoryStore(), ig, ownIds: new Set(['ME']), oneDmPerUser: true };
+  const { deps } = await ctx({ oneDmPerUser: true });
+  assert.equal(await handleComment(comment('c1', 'LINK'), deps), 'sent');
+  assert.equal(await handleComment(comment('c2', 'LINK'), deps), 'skip:already-sent-to-user');
+});
 
-  assert.equal(await handleComment(comment('c1', 'REEL_A', 'SHOE'), deps), 'sent');
-  assert.equal(await handleComment(comment('c2', 'REEL_A', 'SHOE again'), deps), 'skip:already-sent-to-user');
-  assert.equal(await handleComment(comment('c3', 'REEL_B', 'BAG'), deps), 'sent');
+test('falls back to plain text with the link when the button is rejected', async () => {
+  const { ig, deps } = await ctx({ failButton: true });
+  assert.equal(await handleComment(comment('c1', 'LINK'), deps), 'sent');
+  assert.deepEqual(ig.calls[0], ['text', 'c1', 'Hey @asha! Here’s everything from the reel 👇\nhttps://shop.test/r/brunch-edit?src=dm']);
 });
 
 test('keyword matching is case-insensitive and whole-word', () => {
-  assert.ok(matchesKeyword('Shoe 🙏', 'SHOE'));
-  assert.ok(matchesKeyword('send me the #shoe', 'SHOE'));
-  assert.ok(!matchesKeyword('shoelace', 'SHOE'));
-});
-
-test('sends the link as a button by default, falling back to plain text if rejected', async () => {
-  const ig = fakeIg();
-  const deps = { reels, store: memoryStore(), ig, ownIds: new Set(['ME']) };
-  assert.equal(await handleComment(comment('c1', 'REEL_C', 'HAT'), deps), 'sent');
-  assert.deepEqual(ig.calls, [['button', 'c1', 'Hat for @alice', 'https://shop.test/hat', 'Shop now']]);
-
-  const failing = fakeIg();
-  failing.sendPrivateReplyButton = async () => {
-    throw new Error('template not supported');
-  };
-  const deps2 = { reels, store: memoryStore(), ig: failing, ownIds: new Set(['ME']) };
-  assert.equal(await handleComment(comment('c2', 'REEL_C', 'HAT'), deps2), 'sent');
-  assert.deepEqual(failing.calls, [['dm', 'c2', 'Hat for @alice']]);
+  assert.ok(matchesKeyword('Link 🙏', ['LINK']));
+  assert.ok(matchesKeyword('send me the #link', ['LINK']));
+  assert.ok(!matchesKeyword('linkedin', ['LINK']));
 });

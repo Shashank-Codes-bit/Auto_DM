@@ -1,19 +1,28 @@
 import 'dotenv/config';
+import crypto from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 export const config = {
+  rootDir,
+  // Instagram / Meta
   accessToken: process.env.IG_ACCESS_TOKEN || '',
   igUserId: process.env.IG_USER_ID || '',
   appSecret: process.env.APP_SECRET || '',
   verifyToken: process.env.VERIFY_TOKEN || '',
-  adminKey: process.env.ADMIN_KEY || '',
-  port: Number(process.env.PORT) || 3000,
   graphVersion: process.env.GRAPH_VERSION || 'v23.0',
   dryRun: process.env.DRY_RUN === '1',
   oneDmPerUser: process.env.ONE_DM_PER_USER === '1',
-  reelsFile: process.env.REELS_FILE || path.join(rootDir, 'reels.json'),
-  processedFile: process.env.PROCESSED_FILE || path.join(rootDir, 'data', 'processed.json'),
+  // Web
+  port: Number(process.env.PORT) || 3000,
+  publicBaseUrl: (process.env.PUBLIC_BASE_URL || '').replace(/\/+$/, ''),
+  // Admin
+  adminPassword: process.env.ADMIN_PASSWORD || '',
+  // Without SESSION_SECRET, admin logins only last until the server restarts.
+  sessionSecret: process.env.SESSION_SECRET || crypto.randomBytes(32).toString('hex'),
+  // Database: Postgres connection string, or empty for the built-in database in data/pgdata
+  databaseUrl: process.env.DATABASE_URL || '',
+  dataDir: process.env.DATA_DIR || path.join(rootDir, 'data', 'pgdata'),
 };
