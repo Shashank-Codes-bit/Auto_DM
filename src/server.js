@@ -32,10 +32,11 @@ export function createApp({ store = createStore(config.processedFile), ig = inst
     try {
       const [me, { data = [] }] = await Promise.all([ig.getAccount(), ig.listMedia(50)]);
       let mapped = {};
+      let reelsError = '';
       try {
         mapped = loadReels(config.reelsFile);
-      } catch {
-        // missing or invalid reels.json: show everything as unmapped
+      } catch (err) {
+        reelsError = `reels.json could not be read: ${err.message}`;
       }
       // All posts are listed (not only reels): comments on any post can trigger a DM.
       const rows = data
@@ -52,6 +53,7 @@ export function createApp({ store = createStore(config.processedFile), ig = inst
         <title>Reels</title><style>body{font-family:system-ui;margin:16px}td,th{border-bottom:1px solid #ddd;padding:6px;text-align:left;vertical-align:top}table{border-collapse:collapse}</style>
         <h2>@${esc(me.username)} <small>IG_USER_ID: <code>${esc(me.user_id)}</code></small></h2>
         <p>Copy a post's ID into reels.json with its keyword and link.</p>
+        ${reelsError ? `<p style="color:#b00020"><b>${esc(reelsError)}</b></p>` : ''}
         <table><tr><th>ID</th><th>Type</th><th>Date</th><th>Link</th><th>Caption</th><th>Mapping</th></tr>${rows || '<tr><td colspan=6>No posts found on this account yet</td></tr>'}</table>`);
     } catch (err) {
       res.status(500).send(esc(err.message));
