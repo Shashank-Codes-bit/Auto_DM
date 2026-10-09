@@ -20,7 +20,8 @@ It uses Instagram's official APIs: comment **webhooks**, plus **Private Replies*
 
 1. **Create the Meta app.** Go to <https://developers.facebook.com/apps> → Create app → add the **Instagram** product → choose **API setup with Instagram login**.
    - Under "Generate access tokens", add your Instagram account and generate a token. Allow the `instagram_business_basic`, `instagram_business_manage_comments` and `instagram_business_manage_messages` permissions.
-   - Copy the **App secret** from App settings → Basic.
+   - Add your Instagram account as an **Instagram Tester** (App roles → Roles), then accept the invite on instagram.com → Settings → Apps and websites → Tester invites.
+   - Copy the **Instagram app secret** from the Business login settings on the same page. If the server logs `Rejected webhook with bad signature`, use the Meta app secret from App settings → Basic instead.
 2. **Configure:**
    ```bash
    npm install
