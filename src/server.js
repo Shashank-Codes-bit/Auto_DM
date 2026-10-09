@@ -16,11 +16,46 @@ export function verifySignature(rawBody, header, secret) {
   );
 }
 
+const esc = (v) =>
+  String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+
 export function createApp({ store = createStore(config.processedFile), ig = instagram } = {}) {
   const app = express();
   app.use(express.json({ verify: (req, _res, buf) => (req.rawBody = buf) }));
 
   app.get('/', (_req, res) => res.send('auto-dm is running'));
+
+  // Browser page listing your reels and their IDs, for filling in reels.json.
+  // Open /reels?key=<ADMIN_KEY>. Disabled when ADMIN_KEY is not set.
+  app.get('/reels', async (req, res) => {
+    if (!config.adminKey || req.query.key !== config.adminKey) return res.sendStatus(404);
+    try {
+      const [me, { data = [] }] = await Promise.all([ig.getAccount(), ig.listMedia(50)]);
+      let mapped = {};
+      try {
+        mapped = loadReels(config.reelsFile);
+      } catch {
+        // missing or invalid reels.json: show everything as unmapped
+      }
+      const rows = data
+        .filter((m) => m.media_product_type === 'REELS' || m.media_type === 'VIDEO')
+        .map((m) => {
+          const r = mapped[m.id];
+          return `<tr><td><code>${esc(m.id)}</code></td><td>${esc(m.timestamp?.slice(0, 10))}</td>
+            <td><a href="${esc(m.permalink)}" target="_blank">open</a></td>
+            <td>${esc((m.caption || '').slice(0, 80))}</td>
+            <td>${r ? `${esc([].concat(r.keyword).join(', '))} → ${esc(r.url)}` : '<i>not mapped</i>'}</td></tr>`;
+        })
+        .join('');
+      res.send(`<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+        <title>Reels</title><style>body{font-family:system-ui;margin:16px}td,th{border-bottom:1px solid #ddd;padding:6px;text-align:left;vertical-align:top}table{border-collapse:collapse}</style>
+        <h2>@${esc(me.username)} <small>IG_USER_ID: <code>${esc(me.user_id)}</code></small></h2>
+        <p>Copy a reel ID into reels.json with its keyword and link.</p>
+        <table><tr><th>Reel ID</th><th>Date</th><th>Link</th><th>Caption</th><th>Mapping</th></tr>${rows || '<tr><td colspan=5>No reels found</td></tr>'}</table>`);
+    } catch (err) {
+      res.status(500).send(esc(err.message));
+    }
+  });
 
   // Meta webhook verification handshake
   app.get('/webhook', (req, res) => {

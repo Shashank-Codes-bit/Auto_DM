@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: auto-dm
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: IG_ACCESS_TOKEN
+        sync: false
+      - key: IG_USER_ID
+        sync: false
+      - key: APP_SECRET
+        sync: false
+      - key: VERIFY_TOKEN
+        sync: false
+      - key: ADMIN_KEY
+        sync: false
+      - key: GRAPH_VERSION
+        value: v23.0
+      - key: DRY_RUN
+        value: "1"

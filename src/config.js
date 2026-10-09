@@ -9,6 +9,7 @@ export const config = {
   igUserId: process.env.IG_USER_ID || '',
   appSecret: process.env.APP_SECRET || '',
   verifyToken: process.env.VERIFY_TOKEN || '',
+  adminKey: process.env.ADMIN_KEY || '',
   port: Number(process.env.PORT) || 3000,
   graphVersion: process.env.GRAPH_VERSION || 'v23.0',
   dryRun: process.env.DRY_RUN === '1',
