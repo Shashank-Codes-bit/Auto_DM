@@ -1,6 +1,7 @@
 import { PRICE_BANDS, discountPercent, formatMoney } from '../util.js';
 import { ORDER_STATUSES } from '../repos/orders.js';
 import { SORTS } from '../repos/products.js';
+import { asset } from './assets.js';
 import { html, jsonScript, raw } from './html.js';
 
 const FONTS =
@@ -58,7 +59,7 @@ export function storeLayout({ settings, user, title, body, pageData = {}, nav = 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="${FONTS}">
-<link rel="stylesheet" href="/static/store.css">
+<link rel="stylesheet" href="${asset('store.css')}">
 </head>
 <body class="${[bodyClass, tabs ? '' : 'no-tabs'].filter(Boolean).join(' ')}">
 ${ICONS}
@@ -93,8 +94,8 @@ ${tabs ? html`<nav class="tabbar" aria-label="Store sections">
 </nav>` : ''}
 ${bagDrawer()}
 <script>window.STORE = ${jsonScript(data)};</script>
-<script src="/static/cart.js" defer></script>
-${bodyClass.includes('reels-body') ? html`<script src="/static/reels.js" defer></script>` : ''}
+<script src="${asset('cart.js')}" defer></script>
+${bodyClass.includes('reels-body') ? html`<script src="${asset('reels.js')}" defer></script>` : ''}
 </body>
 </html>`;
 }

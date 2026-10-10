@@ -2,6 +2,7 @@ import { discountPercent, formatMoney, paiseToInput } from '../util.js';
 import { ORDER_STATUSES } from '../repos/orders.js';
 import { MAX_REEL_PRODUCTS } from '../repos/reels.js';
 import { MAX_IMAGES } from '../repos/products.js';
+import { asset } from './assets.js';
 import { html, raw } from './html.js';
 
 const FONT_URL =
@@ -40,7 +41,7 @@ export function adminLayout({ title, active, body, csrf, flash, badges = {} }) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="${FONT_URL}">
-<link rel="stylesheet" href="/static/admin.css">
+<link rel="stylesheet" href="${asset('admin.css')}">
 </head>
 <body data-csrf="${csrf || ''}">
 <div class="shell">
@@ -60,7 +61,7 @@ export function adminLayout({ title, active, body, csrf, flash, badges = {} }) {
     ${body}
   </main>
 </div>
-<script src="/static/admin.js" defer></script>
+<script src="${asset('admin.js')}" defer></script>
 </body>
 </html>`;
 }
