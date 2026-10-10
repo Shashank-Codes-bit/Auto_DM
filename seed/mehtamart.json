@@ -21,25 +21,95 @@
  },
  "categories": [
   {
+   "name": "Trending Toys",
+   "slug": "trending-toys",
+   "image_url": "https://cdn.dotpe.in/longtail/item_collection/5656117/XUvOGdA1.webp",
+   "description": "Fun, safe toys kids keep coming back to.",
+   "position": 1
+  },
+  {
    "name": "Kitchen Creations",
    "slug": "kitchen-creations",
    "image_url": "https://cdn.dotpe.in/longtail/item_collection/5656117/Q5zUZRvx.webp",
    "description": "Smart tools that make cooking quicker and cleaner.",
-   "position": 1
+   "position": 2
+  },
+  {
+   "name": "Luxury Bathing Bliss",
+   "slug": "luxury-bathing-bliss",
+   "image_url": "https://cdn.dotpe.in/longtail/item_collection/5656117/L9ljRzZP.webp",
+   "description": "Bath accessories for a spa feel at home.",
+   "position": 3
+  },
+  {
+   "name": "Pamper & Polish",
+   "slug": "pamper-and-polish",
+   "image_url": "https://cdn.dotpe.in/longtail/item_collection/5656117/PqY1FByG.webp",
+   "description": "Beauty and grooming finds for everyday self-care.",
+   "position": 4
+  },
+  {
+   "name": "Relax & Revive",
+   "slug": "relax-and-revive",
+   "image_url": "https://cdn.dotpe.in/longtail/item_collection/5656117/8wFL1jKj.webp",
+   "description": "Massagers and comfort helpers to unwind.",
+   "position": 5
+  },
+  {
+   "name": "Home Essentials Collection",
+   "slug": "home-essentials-collection",
+   "image_url": "https://cdn.dotpe.in/longtail/item_collection/5656117/e20YJip8.webp",
+   "description": "Everyday useful things for every room.",
+   "position": 6
+  },
+  {
+   "name": "Baby Bibs Collection",
+   "slug": "baby-bibs-collection",
+   "image_url": "https://cdn.dotpe.in/longtail/item_collection/5656117/8vrosgvU.webp",
+   "description": "Soft, easy-clean bibs for little ones.",
+   "position": 7
   },
   {
    "name": "Fresh Start Cleaning",
    "slug": "fresh-start-cleaning",
    "image_url": "https://cdn.dotpe.in/longtail/item_collection/5656117/xHxrNogY.webp",
    "description": "Brushes, mops and helpers for a sparkling home.",
-   "position": 2
+   "position": 8
   },
   {
-   "name": "Trending Toys",
-   "slug": "trending-toys",
-   "image_url": "https://cdn.dotpe.in/longtail/item_collection/5656117/XUvOGdA1.webp",
-   "description": "Fun, safe toys kids keep coming back to.",
-   "position": 3
+   "name": "Travel Essentials",
+   "slug": "travel-essentials",
+   "image_url": "https://cdn.dotpe.in/longtail/item_collection/5656117/5Jqe5Dvf.webp",
+   "description": "Organisers and gear that make packing easy.",
+   "position": 9
+  },
+  {
+   "name": "Tech & Trend",
+   "slug": "tech-and-trend",
+   "image_url": "https://cdn.dotpe.in/longtail/item_collection/5656117/KAz0WRkK.webp",
+   "description": "Handy gadgets and accessories.",
+   "position": 10
+  },
+  {
+   "name": "Comfort & Care",
+   "slug": "comfort-and-care",
+   "image_url": "https://cdn.dotpe.in/longtail/item_collection/5656117/GLHI4lI3.webp",
+   "description": "Care and comfort products for the whole family.",
+   "position": 11
+  },
+  {
+   "name": "Perfect Presents",
+   "slug": "perfect-presents",
+   "image_url": "https://cdn.dotpe.in/longtail/item_collection/5656117/5EJOeevR.webp",
+   "description": "Thoughtful gifts for every occasion.",
+   "position": 12
+  },
+  {
+   "name": "Smart Space Savers",
+   "slug": "smart-space-savers",
+   "image_url": "https://cdn.dotpe.in/longtail/item_collection/5656117/eoZqpqrd.webp",
+   "description": "Racks, hooks and organisers that free up space.",
+   "position": 13
   }
  ],
  "products": [
@@ -214,7 +284,7 @@
    "categories": [
     "Kitchen Creations"
    ],
-   "featured": true
+   "featured": false
   },
   {
    "name": "6PCS Silicone Stretch Lids – Food Grade, BPA-Free, Flexible & Reusable Bowl Covers",
@@ -230,7 +300,7 @@
    "categories": [
     "Kitchen Creations"
    ],
-   "featured": true
+   "featured": false
   },
   {
    "name": "Mini Wire Brush Cleaning Tool Kit – Brass, Nylon & Stainless Steel Bristles for Multi-Purpose Cleaning",
@@ -260,7 +330,8 @@
     "https://cdn.dotpe.in/longtail/store-items/5656117/uZIwYNKq.jpeg"
    ],
    "categories": [
-    "Fresh Start Cleaning"
+    "Fresh Start Cleaning",
+    "Kitchen Creations"
    ],
    "featured": false
   },
@@ -275,7 +346,8 @@
     "https://cdn.dotpe.in/longtail/store-items/5656117/Tz0NWW0I.jpeg"
    ],
    "categories": [
-    "Fresh Start Cleaning"
+    "Fresh Start Cleaning",
+    "Home Essentials Collection"
    ],
    "featured": false
   },
@@ -290,7 +362,9 @@
     "https://cdn.dotpe.in/longtail/store-items/5656117/N2kHEEew.jpeg"
    ],
    "categories": [
-    "Fresh Start Cleaning"
+    "Fresh Start Cleaning",
+    "Kitchen Creations",
+    "Home Essentials Collection"
    ],
    "featured": false
   },
@@ -417,7 +491,8 @@
     "https://cdn.dotpe.in/longtail/store-items/5656117/9jmFszkw.webp"
    ],
    "categories": [
-    "Fresh Start Cleaning"
+    "Fresh Start Cleaning",
+    "Travel Essentials"
    ],
    "featured": false
   },
@@ -448,7 +523,7 @@
    "categories": [
     "Trending Toys"
    ],
-   "featured": true
+   "featured": false
   },
   {
    "name": "Super High Bouncing Balls – Moon & Space Balls for Kids and Adults, Fun Outdoor & Indoor Toy",
@@ -495,7 +570,7 @@
    "categories": [
     "Trending Toys"
    ],
-   "featured": true
+   "featured": false
   },
   {
    "name": "Uno Card Game – 112 Multicolor Cards for Kids 7+ & Adults, Family Fun Game",
@@ -525,7 +600,7 @@
    "categories": [
     "Trending Toys"
    ],
-   "featured": true
+   "featured": false
   },
   {
    "name": "Chair Tower Game – 36-Piece Stackable Blocks Set with 6 Colors for Kids & Family",
@@ -541,7 +616,7 @@
    "categories": [
     "Trending Toys"
    ],
-   "featured": true
+   "featured": false
   },
   {
    "name": "Kids Water Dispenser Toy – Cartoon Character Drinking Fountain Pump",
@@ -557,7 +632,7 @@
    "categories": [
     "Trending Toys"
    ],
-   "featured": true
+   "featured": false
   },
   {
    "name": "Small Magnetic Sketch Board for Kids – Portable Drawing & Writing Toy",
@@ -573,7 +648,7 @@
    "categories": [
     "Trending Toys"
    ],
-   "featured": true
+   "featured": false
   },
   {
    "name": "Air Dry Clay – Colorful Soft Modeling Clay for Kids, Creative Art & Craft Gift Set",
@@ -603,6 +678,2247 @@
    ],
    "categories": [
     "Trending Toys"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Window Track Cleaning Brush with Mini Dustpan Keyboard & Slot Gap Cleaning Tool",
+   "price": 90,
+   "mrp": 150,
+   "description": "Make cleaning tight spaces easier with the Window Track Cleaning Brush with Mini Dustpan | Keyboard & Slot Gap Cleaning Tool. This multipurpose sliding cleaning brush is specially designed to remove dust, dirt, and debris from narrow window tracks, grooves, and other hard-to-reach areas. The brush features strong and durable bristles that effectively clean stubborn dust particles from window frames, sliding door tracks, keyboards, and small corners. Its compact brush head allows precise cleaning in tight gaps where regular cleaning tools cannot reach.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/GgSD0fhd.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/YarbaBnl.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/T9FWBNVW.jpeg"
+   ],
+   "categories": [
+    "Home Essentials Collection"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Kids Toothbrush with Tongue Cleaner, Soft Bristle Toothbrush for Children",
+   "price": 99,
+   "mrp": 1200,
+   "description": "Make daily oral care fun and effective with the Pigeon Kids Toothbrush with Tongue Cleaner | Soft Bristle Children Toothbrush (3D Naughty Cat Design). Specially designed for children, this toothbrush features soft bristles that gently clean teeth and gums while helping maintain proper oral hygiene. The 3D Naughty Cat design and attractive multicolour handle make brushing enjoyable for kids, encouraging them to develop healthy brushing habits. The flexible neck handle provides better control and comfort, allowing children to brush their teeth easily and safely.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/mrCE9wlY.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/5aDHmX0s.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/DCCB5Gq7.jpeg"
+   ],
+   "categories": [
+    "Baby Bibs Collection"
+   ],
+   "featured": true
+  },
+  {
+   "name": "Long Handle Silicone Bottle Cleaning Brush,Water Bottle & Glass Cleaner Brush",
+   "price": 99,
+   "mrp": 299,
+   "description": "Keep hard-to-reach areas spotless with the Long Handle Silicone Bottle Cleaning Brush | Multipurpose Gap & Bottle Cleaner Tool. This versatile cleaning brush is designed to effectively remove dirt, grease, and dust from narrow spaces and deep containers, making everyday cleaning easier and more efficient. The ergonomic long handle design allows you to reach deep into water bottles, flasks, jars, and containers, ensuring thorough cleaning without difficulty. The durable bristles provide strong cleaning power, helping remove stubborn residue and stains.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/kjcPKE1d.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/vOz5liZD.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/isHj5IYT.webp"
+   ],
+   "categories": [
+    "Fresh Start Cleaning"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Large Stainless Steel Nail Cutter, Heavy Duty Nail Clipper for Men & Women",
+   "price": 99,
+   "mrp": 100,
+   "description": "Keep your nails neat and well-groomed with the Large Stainless Steel Nail Cutter | Heavy Duty Nail Clipper for Men & Women. Made from high-quality stainless steel, this durable nail cutter offers sharp and precise trimming for both fingernails and toenails. Designed for quick and easy nail cutting, the sharp blades ensure smooth and even trimming without cracking or splitting the nails. The ergonomic design provides a comfortable grip, allowing better control for safe and effective nail care at home.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/I7bFviFL.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/yvtg2uIP.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/98Bepd23.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/zCAmfxdQ.jpeg"
+   ],
+   "categories": [
+    "Pamper & Polish"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Women Reusable Face Razor Eyebrow & Facial Hair Removal Razor for Smooth Skin",
+   "price": 99,
+   "mrp": 150,
+   "description": "Achieve smooth and flawless skin effortlessly with the Women Reusable Face Razor | Eyebrow & Facial Hair Removal Razor for Smooth Skin. This multipurpose facial razor is specially designed to help women easily remove unwanted facial hair, shape eyebrows, and trim fine hair with precision and comfort. The sharp yet gentle blade allows for soft and painless hair removal, making it perfect for removing peach fuzz, eyebrow hair, and fine facial hair without irritation.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/PQCfeLN9.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/c5zw1A5n.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/9NZ2d0MY.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/51Thgtoh.webp"
+   ],
+   "categories": [
+    "Pamper & Polish"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Multipurpose Gap Cleaning Brush Set (2 Pcs) | Crevice & Corner Cleaning Brush for Kitchen & Bathroom",
+   "price": 99,
+   "mrp": 199,
+   "description": "Make your cleaning routine easier with the Multipurpose Gap Cleaning Brush Set (2 Pcs) | Crevice & Corner Cleaning Brush for Kitchen & Bathroom. Specially designed to reach narrow gaps, corners, and hard-to-clean areas, this brush set helps remove dirt, dust, and grime from places that regular cleaning tools cannot reach. The slim and durable bristles easily clean tile joints, window tracks, sink edges, kitchen corners, bathroom gaps, and other tight spaces, ensuring a thorough and effective cleaning experience.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/UoeAzp4N.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/T3A3TGR4.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/C4RCVNmO.webp"
+   ],
+   "categories": [
+    "Fresh Start Cleaning"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Mobile Gaming Finger Sleeves Thumb & Finger Sleeves for PUBG, BGMI & FPS Games",
+   "price": 80,
+   "mrp": 100,
+   "description": "Enhance your mobile gaming performance with the Mobile Gaming Finger Sleeves | Super Conductive Thumb & Finger Sleeves for PUBG, BGMI & FPS Games. These high-performance gaming finger sleeves are designed to provide smoother screen control, better sensitivity, and a more comfortable gaming experience. Made with high-quality spandex material, the sleeves offer excellent elasticity and fit comfortably on different finger sizes. The super conductive fabric ensures fast and accurate touch response, allowing precise movements while playing FPS and mobile games.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/08rjVKco.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/T02zSX97.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/Fo89sTFR.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/dKAjp3Ar.webp"
+   ],
+   "categories": [
+    "Tech & Trend"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Sugar Control Acupressure Clip for Diabetics, LI4 Acupressure Point Therapy Clip",
+   "price": 99,
+   "mrp": 700,
+   "description": "The Sugar Control Acupressure Clip is a compact and easy-to-use wellness tool designed to apply gentle pressure on the LI4 acupressure point located between the thumb and index finger. This traditional acupressure technique helps support relaxation, reduce stress, and provide natural relief from headaches and migraines without the use of medication. Made with a lightweight and portable design (only 6 grams), this acupressure clip can be easily carried in your pocket, bag, or purse.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/7WpJ2EZx.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/9bzbYgZZ.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/DA8PIjVw.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/yjGP6Coi.webp"
+   ],
+   "categories": [
+    "Pamper & Polish"
+   ],
+   "featured": true
+  },
+  {
+   "name": "Shinchan Sitting Smartphone Stand",
+   "price": 199,
+   "mrp": 900,
+   "description": "Bring a touch of playful charm to your workspace with this premium Shinchan collectible. Designed with a vibrant, glossy finish and meticulous attention to detail, this figure captures the iconic \"surprised\" expression of everyone’s favorite neighborhood troublemaker. Beyond being a high-quality display piece, this figure is functionally designed to serve as a smartphone stand, securely holding your device at a perfect viewing angle between Shinchan's outstretched legs.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/F46145ZA.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/GAV3ZYfx.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/XXCckaKq.webp"
+   ],
+   "categories": [
+    "Tech & Trend"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Portable Cups – Foldable & Travel-Friendly",
+   "price": 170,
+   "mrp": 600,
+   "description": "Space-Saving Design: These cups collapse into a small, flat disc, making them easy to tuck into pockets, handbags, school bags, or lunch boxes. Leak-Proof Lid: Each cup comes with a secure, colorful lid featuring a cute mushroom character to keep the rim clean and prevent spills when stored. Durable & Safe: Made from high-quality, food-grade BPA-free plastic that is lightweight yet sturdy enough for everyday use. Versatile Use: Ideal for school lunches, outdoor picnics, office commutes, travel, or even as a handy cup for medication or quick drinks.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/yFBtJ1Ec.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/tER56UUH.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/ZtHuPsr5.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/ERRNTklM.webp"
+   ],
+   "categories": [
+    "Travel Essentials"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Ironing Mat Piece Set, Heat-Resistant Iron Mat for Ironing Clothes, Iron Board Cover with Mesh Net,",
+   "price": 120,
+   "mrp": 300,
+   "description": "Heat-Resistant Protection: This ironing mat set provides a heat-resistant barrier between your iron and delicate fabrics; The mesh net design allows even heat distribution while protecting garments from direct iron contact Dual Size Versatility: Includes two practical sizes (35*50 cm and 40*60 cm) to accommodate different ironing needs; Suitable for various garments from daily wear to traditional delicate fabrics Surface Protection: Acts as both iron board cover and iron protector; Prevents potential scratches to your iron's base plate from metal accessories like zippers or buttons during the…",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/DWrMwCjT.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/uvxNPStq.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/2vi4QGnf.webp"
+   ],
+   "categories": [
+    "Home Essentials Collection"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Plastic Soap Holder for Bathroom - Self-Adhesive Wall-Mounted Soap Case",
+   "price": 170,
+   "mrp": 300,
+   "description": "✎[Product Size] :- Length-13.5cm, Width-8cm, Color-1.Sea Green 2.Fog Black ✎[Material] :- Made of Premium quality PP material, the shape is simple and generous, the lines are round and smooth, and the thick hollow strips are well drained ✎[Easy to use] :- NO TOOLS, NO DRILLING, Keep the wall to be pasted clean and dry, and tear off the protective film provided with the magic sticker ✎[Features] :- Parallel to the wall and press tightly to make it tight, the support column is aligned with the soap box and fastened, The soap box is aligned parallel to the groove and fixed and installed…",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/GCNAxBCh.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/5bgvpAXf.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/B6PmDiVf.webp"
+   ],
+   "categories": [
+    "Luxury Bathing Bliss"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Shoe Cleaning Wet Wipes | Shine & Dirt Removal Shoe Wipes for Formal Shoes, Boots & Sneakers | Pack of 64",
+   "price": 170,
+   "mrp": 700,
+   "description": "Keep Your Shoes Spotless Anywhere, Anytime! Step out in style with Shoe Cleaning Wet Wipes – your ultimate solution for shiny, dirt-free shoes in seconds! Perfect for formal shoes, boots, sneakers, and more, these wipes make shoe care effortless, whether at home, work, or on the go. Instant Shine & Dirt Removal: Removes dust, mud, and stains instantly, leaving shoes looking brand new. Safe & Gentle: Non-abrasive formula won’t damage leather, synthetic, or fabric shoes. Travel-Friendly Pack of 64: Convenient, portable wipes that fit perfectly in your bag or car.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/NJLNpf0o.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/TUva3GXD.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/8K3SBhHP.webp"
+   ],
+   "categories": [
+    "Travel Essentials"
+   ],
+   "featured": false
+  },
+  {
+   "name": "REACH HIGH,STAY GROUNDED-Double Sided Soft feather  cleaning duster",
+   "price": 170,
+   "mrp": 500,
+   "description": "Features: Easy to Use : Lightweight design allows effortless cleaning of hard-to-reach areas Versatile Cleaning : Suitable for cleaning ceiling fans, walls, high shelves, and more Extendable duster will allow you to reach up to when you include the height of an average person with outstretched arms USP: Both Sides Brush - The duster comes with a double sided brush design that cleans both the top and bottom of ceiling fan blades in one swipe, saving time and effort during your cleaning routine.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/7uDXyrgQ.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/961XFzXb.webp"
+   ],
+   "categories": [
+    "Home Essentials Collection"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Stainless Steel Drill Free Self-Adhesive Paper Roll Holder Tissue Paper Stand Towel Bar",
+   "price": 150,
+   "mrp": 900,
+   "description": "EASY TO INSTALL : Only stick to smooth hard surfaces, such as marble, tile, wood ,glass, metal. Not for painted wall or wall paper. Great easy-install solution for complicated wall surface, no damage to your wall, tile and cabinet. Make sure to clean and dry the wall surfaces before installation. SUPER STRONG SELF-ADHESIVE STICKER: Quick and easy mounting! Strong adhesiveness and waterproof. No drill needed, no damage to wall. Remove easily and no trace left behind. RUST PROOF: Constructed of Type stainless steel to protect against corrosion and rust. Durable and easy to clean.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/G7Vd0Psf.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/cI0cCbTk.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/ItFq4poU.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/4w2yoFij.webp"
+   ],
+   "categories": [
+    "Kitchen Creations"
+   ],
+   "featured": true
+  },
+  {
+   "name": "Instant Stain Removal Wet Wipes Safe And Practical Solution For All Fabrics Stain Remover Wet Wipes For Laundry 20 Pcs",
+   "price": 170,
+   "mrp": 900,
+   "description": "Description: Safe And Instant: These Stain Removal Wet Wipes are made from premium materials and can instantly remove stains from clothes Wide Range Of Uses: These Clothing Stain Removing Wipes are not only suitable for laundry, but also for removing stains from carpets, upholstery, and more Premium fabric material: Made from fabric materials, these Stain Remover Wet Wipes are gentle on fabrics yet effectively remove tough stains Compact And Portable: With their compact size, these Emergency Stain Remover Wipes can be easily carried in your bag or purse, making them convenient for on-the-go…",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/LcFiBRhl.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/9yzoipWc.webp"
+   ],
+   "categories": [
+    "Home Essentials Collection"
+   ],
+   "featured": false
+  },
+  {
+   "name": "100% Cotton Reusable Vegetable & Fruit Bag – Eco-Friendly Drawstring Produce Storage",
+   "price": 199,
+   "mrp": 600,
+   "description": "Upgrade your sustainable kitchen and grocery storage with the 100% Cotton Reusable Vegetable & Fruit Bags. Designed for eco-conscious households, these durable drawstring bags are perfect for storing vegetables, fruits, herbs, and other perishables, keeping your produce organized and fresh. The transparent cotton mesh design allows for quick identification of contents, eliminating the need to open each bag.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/K4onJeZo.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/YcCY3VrD.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/vp4p75tI.webp"
+   ],
+   "categories": [
+    "Kitchen Creations"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Self-Adhesive Mini Swivel Caster Wheels 4-Piece Set – Universal Rotating Wheels for Furniture & Storage Boxes",
+   "price": 150,
+   "mrp": 400,
+   "description": "Make moving and rearranging furniture effortless with the Self-Adhesive 4-Piece Mini Swivel Caster Wheels. Designed for convenience and versatility, these universal rotating wheels stick securely to surfaces without any tools, screws, or drilling, making installation quick and hassle-free. Perfect for small furniture, storage boxes, cabinets, or DIY projects, their compact size allows them to fit in tight spaces where larger casters won’t work. The adhesive backing ensures a strong hold while remaining floor-friendly, preventing scratches, marks, or damage as you move items around.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/IzYyNgxI.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/cI4UhLIw.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/vNJ4fLHF.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/0L2zkkfP.webp"
+   ],
+   "categories": [
+    "Home Essentials Collection"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Professional Gaming & Office Mouse Pad – Non-Slip Base for Laptop, PC & Desktop Computers",
+   "price": 130,
+   "mrp": 900,
+   "description": "Enhance your work and gaming experience with this Professional Mouse Pad for Laptop, PC, and Desktop Computers. Designed with a smooth and precise surface, it ensures accurate tracking and quick response with all types of mice, whether optical or laser. The non-slip rubber base keeps the mouse pad securely in place, preventing unwanted movement during intense gaming sessions or fast-paced office tasks. Its durable construction and sleek design make it ideal for professional setups, home offices, or gaming stations.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/Pf77NfdB.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/vZREhf9I.webp"
+   ],
+   "categories": [
+    "Tech & Trend"
+   ],
+   "featured": true
+  },
+  {
+   "name": "3D Cartoon Silicone Charger Case – Cute Protective Cover",
+   "price": 150,
+   "mrp": 600,
+   "description": "Protect your charging cables in style and fun with the 3D Cartoon Silicone Charger Case. Designed for Lightning cables and 20W USB-C adapters, this cute silicone cover safeguards your cable ends from bending, fraying, and damage, extending the life of your chargers. It is also compatible with some Android charging cables with smaller heads up to 0.32 inches in width. The 3D cartoon design adds a playful touch to your charging setup, making your cables instantly recognizable and more fun to use. Its flexible, soft silicone material ensures a snug fit while being durable and lightweight.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/tEsoJ2Q3.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/tbJIGgez.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/ZEP8zM4U.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/pkV4AK48.webp"
+   ],
+   "categories": [
+    "Smart Space Savers"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Durable Rubber Bands – 2-Pack Multi-Purpose Elastic Bands for Home, Office & School",
+   "price": 130,
+   "mrp": 300,
+   "description": "Keep your items organized and secure with this 2-Pack of Durable Rubber Bands, perfect for home, office, school, and everyday use. Made from high-quality elastic material, these rubber bands offer strong stretchability and long-lasting durability, making them ideal for bundling papers, holding objects together, or organizing small items. Whether you need to secure documents, tie stationery, or manage household items, these versatile rubber bands are a practical and reliable solution.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/r5PYIAdN.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/hOIQxqmC.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/60COfSkk.webp"
+   ],
+   "categories": [
+    "Baby Bibs Collection"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Solar-Powered Rotating Car Perfume – Long-Lasting French Organic Fragrance Air Freshener",
+   "price": 190,
+   "mrp": 847,
+   "description": "Enhance your driving experience with the Solar-Powered Rotating Car Perfume, a stylish and eco-friendly air freshener that keeps your car smelling fresh all day. Powered by solar energy, this perfume rotates continuously, evenly dispersing its long-lasting French organic fragrance throughout your vehicle without batteries or electricity. Designed for all car interiors, the sleek and compact perfume adds a touch of elegance while providing a refreshing and natural scent.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/ODAdYIHo.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/D67ejkOr.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/XZZZ5IQn.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/OMLjQFM3.webp"
+   ],
+   "categories": [
+    "Pamper & Polish",
+    "Tech & Trend"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Black Garbage Bags 19×21 Inch – Heavy-Duty Bin & Dustbin Bags, 120 Bags (Pack of 4)",
+   "price": 179,
+   "mrp": 300,
+   "description": "Black Garbage Bags – Heavy-Duty Bin & Dustbin Bags (Pack of 4, 120 Bags) 19×21 Inches Keep your home, office, or workplace clean and organized with these premium black garbage bags. Designed for durability and convenience, these dustbin bags are perfect for everyday waste disposal. Bulk Pack: 4 packs with a total of 120 bags, ensuring long-lasting supply for home, office, or commercial use. Heavy-Duty & Leak-Resistant: Made from strong, high-quality plastic, these bags prevent leaks, tears, and spills, keeping your space hygienic.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/vLoGwfb9.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/vqsF1b59.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/oniI69hk.webp"
+   ],
+   "categories": [
+    "Home Essentials Collection"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Body Loofah 2 PCS Combo – Soft Exfoliating Bath & Shower Sponge for Smooth Skin",
+   "price": 130,
+   "mrp": 180,
+   "description": "Upgrade your bath routine with this premium Body Loofah 2 PCS Combo, crafted for gentle yet effective exfoliation. Made from high-quality, skin-friendly material, these loofahs help remove dead skin cells, improve blood circulation, and leave your skin feeling soft, smooth, and refreshed. Perfect for Family Use: Soft and durable, suitable for adults and children. Easy to Use: Lightweight, comfortable grip, and ideal for daily showers or spa sessions at home. Made in India: High-quality craftsmanship ensures long-lasting performance.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/0nchBtvf.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/FJVV2TNc.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/IF2qrrvn.webp"
+   ],
+   "categories": [
+    "Luxury Bathing Bliss"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Double-Sided Silicone Back Scrubber – Deep Cleansing Bath Brush for Smooth & Healthy Skin",
+   "price": 129,
+   "mrp": 200,
+   "description": "Premium Double-Sided Silicone Body Scrubber – Exfoliating & Massaging Shower Brush with Comfort Grip Handle Transform your daily shower into a spa-like experience with this premium double-sided body scrubber. Designed with a soft bristle side for gentle exfoliation and a dots massage side to stimulate circulation, this brush effectively removes dead skin cells, dirt, and impurities, leaving your skin smooth, refreshed, and revitalized. Ergonomic Design: Approx. 60×11.5 cm with a comfortable grip handle, perfect for cleaning hard-to-reach areas like your back and shoulders.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/9Twh35TG.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/rMEk6wgv.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/woEFIVvB.jpeg"
+   ],
+   "categories": [
+    "Luxury Bathing Bliss"
+   ],
+   "featured": false
+  },
+  {
+   "name": "1 PCS Ivy Transparent Double-Sided Grip Tape – Water-Resistant Multipurpose Adhesive for Home & Office",
+   "price": 149,
+   "mrp": 299,
+   "description": "Upgrade your home and office organization with the Ivy Double-Sided Transparent Gel Tape – 1 PCS Water-Resistant Multipurpose Nano PU Adhesive. Made from high-quality, durable double-sided nano PU gel, this tape offers a strong, anti-slip hold while remaining transparent and mess-free. Perfect for mounting picture frames, wall stickers, hooks, phone holders, or carpet edges, it sticks firmly to smooth, clean, non-porous surfaces without leaving marks or residue. Key Features: Reusable & Washable: Easily removable, dust-washable, and infinitely reusable for long-term convenience.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/4roZvaom.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/B4qFJyWc.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/Hx6bRijC.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/D184GM7U.webp"
+   ],
+   "categories": [
+    "Home Essentials Collection"
+   ],
+   "featured": false
+  },
+  {
+   "name": "2 PCS Kitchen Cleaning Wiper Cloth Set – Durable & Absorbent Kitchen Towels for Home Use",
+   "price": 120,
+   "mrp": 170,
+   "description": "Keep your kitchen and home sparkling clean with this 2 PCS Premium Kitchen Cleaning Wiper Cloth Set. Made from high-quality, durable material, these wipers are designed for long-lasting use and superior performance. Perfect for wiping kitchen floors, glass surfaces, countertops, and more, they absorb spills efficiently while leaving surfaces streak-free. Lightweight, versatile, and easy to handle, these cleaning cloths make everyday kitchen cleaning faster, easier, and more effective. Ideal for home, restaurant, or any kitchen cleaning task.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/XRXUfBpV.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/MZbGr6Cc.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/R4iuWEzE.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/cCQVPwZk.jpeg"
+   ],
+   "categories": [
+    "Fresh Start Cleaning"
+   ],
+   "featured": false
+  },
+  {
+   "name": "bag Cover Waterproof Rain cover for Backpack Bags, Rainproof Dust proof Protecto",
+   "price": 139,
+   "mrp": 200,
+   "description": "Keep your backpack safe and dry with this Waterproof Bag Cover. Designed to protect your bags from rain, dust, and dirt, it’s perfect for travelers, students, office-goers, and outdoor enthusiasts. Made with high-quality, durable material, this rainproof cover ensures your belongings stay clean and protected in any weather. Lightweight, foldable, and easy to carry, it fits most backpacks and is ideal for commuting, hiking, cycling, or daily use.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/hbxxliij.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/oisCkc4Q.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/wX3uUorS.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/PybxbTkI.jpeg"
+   ],
+   "categories": [
+    "Home Essentials Collection",
+    "Travel Essentials"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Aloe Vera Cooling Eye Mask – 3 Pack Soothing & Relaxing Gel Eye Pads for Stress Relief & Puffy Eyes",
+   "price": 179,
+   "mrp": 975,
+   "description": "Relax and rejuvenate your eyes with this Aloe Vera Cool Gel Eye Mask (Pack of 3). Designed for ultimate comfort, it helps relieve stress, fatigue, and eye strain caused by long hours on computers, reading, watching TV, or late-night work. The cooling gel provides instant soothing relief, reducing puffiness, dark circles, and tired eyes. Enhanced with a polar-wisp magnet, this eye mask improves blood circulation for faster relaxation and recovery. Perfect for use during fever, after long travel, or simply for a refreshing break.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/CwYC4U52.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/KWpu2ol4.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/6mPVZzpA.jpeg"
+   ],
+   "categories": [
+    "Comfort & Care"
+   ],
+   "featured": false
+  },
+  {
+   "name": "4-in-1 Foot Pedicure Kit – Brush, Pumice Stone, Scrubber & File for Smooth and Soft Feet",
+   "price": 109,
+   "mrp": 150,
+   "description": "Achieve professional-level foot care at home or on the go with this 4-in-1 pedicure kit. Designed for exfoliating, cleaning, and softening feet, this all-in-one set effectively removes dead skin, corns, calluses, and rough patches caused by friction, pressure, or daily wear. Key Features: Dual-Sided Foot File & Pumice Stone – Smooths thickened skin, softens heels, and improves overall foot texture. Multi-Functional Pedicure Tools – Includes cleaning brush, pumice stone, emery file, and metal rasp for complete nail and foot care.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/2eJG4qT4.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/lCNt54qQ.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/ZpaUYmAU.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/O2VxjFpw.jpeg"
+   ],
+   "categories": [
+    "Pamper & Polish"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Multi-Functional Toothbrush Holder for Bathroom – Home & Outdoor Use",
+   "price": 99,
+   "mrp": 300,
+   "description": "Keep your bathroom organized and hygienic with this Premium Toothbrush & Toothpaste Holder. Designed for home and outdoor use, this space-saving accessory neatly stores your toothbrush and toothpaste in a single compact box. Its fresh color and elegant design add a touch of style to any bathroom or wash area. Crafted for ease of use, it helps maintain toothbrush hygiene, protecting it from dust and germs. The compact design ensures it does not occupy much space, making it ideal for small bathrooms, dorms, or travel.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/s5ANbxLD.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/3Ux0SReN.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/mKJtgrDl.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/jKn6dp1N.jpeg"
+   ],
+   "categories": [
+    "Home Essentials Collection",
+    "Travel Essentials"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Unisex Sports Arm Sleeve – UV Protection & Compression Sleeve for Running, Cycling, Gym & Outdoor Activities",
+   "price": 149,
+   "mrp": 150,
+   "description": "Protective Unisex Sports Arm Sleeve – UV Cut & Compression for Outdoor Activities Stay safe under the sun with these UPF 50+ unisex sports arm sleeves, designed to block over 98% of harmful UVA and UVB rays. Perfect for running, cycling, hiking, gym workouts, and other outdoor sports, these sleeves provide full-arm coverage while keeping you cool and comfortable. Key Features: UPF 50+ Sun Protection: Shields your arms from intense sunlight, reducing the risk of sunburn and UV-related skin damage.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/FUDULfxO.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/tKfBEcyA.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/abfXJmLL.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/Cka23xtX.jpeg"
+   ],
+   "categories": [
+    "Comfort & Care"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Big Size Mouse Glue Trap Pads Pack of 3 – Extra Strong Sticky Rat & Rodent Catcher Non-Toxic Pest Control for Home",
+   "price": 199,
+   "mrp": 200,
+   "description": "Keep your home and surroundings pest-free with these extra-strong mouse glue trap pads. Designed with powerful adhesive technology, these traps effectively catch rats, mice, cockroaches, lizards, and other crawling insects without the use of harmful chemicals, making them safe for use around children and pets. Key Features & Benefits: Strong Adhesive Glue Surface: High-quality sticky layer ensures effective trapping of mice, rats, and other pests instantly.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/CnEZGJbW.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/J9gTHykR.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/PUsorv2D.jpeg"
+   ],
+   "categories": [
+    "Home Essentials Collection"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Hot Water Bag for Pain Relief – Leakproof Reusable Rubber Bottle for Back, Neck, Joint & Muscle Heat Therapy",
+   "price": 149,
+   "mrp": 200,
+   "description": "Experience soothing warmth and instant comfort with this high-quality Hot Water Bag, specially designed for effective pain relief and relaxation. Made from durable rubber material, this reusable heat therapy bottle helps ease muscle stiffness, body aches, and menstrual cramps naturally. Key Features: Effective Pain Relief Therapy: Provides soothing heat to relieve back pain, neck pain, joint pain, muscle soreness, and menstrual cramps. A perfect natural solution for everyday discomfort.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/rdLdHorz.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/LkfpKuQm.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/3OQjSHBN.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/AAHbwjh6.jpeg"
+   ],
+   "categories": [
+    "Relax & Revive",
+    "Comfort & Care"
+   ],
+   "featured": false
+  },
+  {
+   "name": "12PCS Spiral Cable Protector for Charger – USB Data Cable Saver Anti-Break Sleeve for Mobile Charging Wires",
+   "price": 120,
+   "mrp": 300,
+   "description": "free. Key Features: Universal Compatibility: Suitable for all types of charging cables including smartphones, USB cables, laptops, earphones, mouse wires, and other electronic devices. Strong Cable Protection: Prevents cable breakage, fraying, bending, and wear at weak points, ensuring longer cable life. Flexible & Durable Silicone: Made from high-quality heat-resistant silicone that is soft, bendable, and long-lasting for everyday use. Easy to Install: Simply twist and wrap around your cable—no tools required.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/qY9tHtaO.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/qC5RShhr.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/04aQKxQe.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/E2WGv2pv.webp"
+   ],
+   "categories": [
+    "Tech & Trend"
+   ],
+   "featured": false
+  },
+  {
+   "name": "9-in-1 Multi-Functional Face Mask for Men & Women – Breathable Neck Gaiter, Bandana for Bike Riding, Cycling & Sports",
+   "price": 169,
+   "mrp": 500,
+   "description": "Upgrade your everyday outdoor protection with this premium 9-in-1 unisex cotton face mask. Made from a high-quality blend of 95% cotton and 5% spandex, this multifunctional bandana offers superior comfort, breathability, and flexibility compared to ordinary polyester masks. Perfect for all seasons, it keeps you protected from dust, wind, sun, and cold weather while adding a stylish touch to your look. Key Features: ✔ Premium Cotton Fabric: Crafted with 95% cotton, this mask is soft, skin-friendly, and ideal for sensitive skin.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/4c7nE2dH.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/OwFGEBlI.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/dYVe8sk1.jpeg"
+   ],
+   "categories": [
+    "Comfort & Care"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Silicone Gel Heel Pad Socks – Moisturizing Heel Protectors for Cracked Heels & Pain Relief (1 Pair)",
+   "price": 129,
+   "mrp": 349,
+   "description": "Experience ultimate comfort and effective heel care with these orthopedic silicone gel heel pad socks. Designed to protect, heal, and moisturize, these heel protectors provide excellent cushioning and relief from daily foot stress. Perfect for people suffering from cracked heels, dry skin, or heel pain, these soft gel socks help restore smooth, healthy skin while ensuring maximum comfort. Key Features: Orthopedic Heel Protection: Specially designed to reduce pressure on the heel bone, preventing cracks, blisters, corns, and dry skin while promoting natural healing.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/AeoMouGc.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/4c8mfP82.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/Jfcp0Ktw.jpeg"
+   ],
+   "categories": [
+    "Comfort & Care"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Anti-Vibration Pads for Washing Machine – Shock Absorbing Noise Reduction Feet (Set of 4)",
+   "price": 129,
+   "mrp": 200,
+   "description": "Anti-Vibration Pads for Washing Machine – Shock Absorbing, Noise Reduction & Anti-Slip Support (Set of 4) Reduce noise, prevent movement, and protect your floors with these heavy-duty anti-vibration pads. Designed for washing machines and other household appliances, these pads absorb shocks, minimize vibration, and improve stability. With a dual-layer design of durable PP and anti-slip rubber, they ensure your appliances stay firmly in place while operating smoothly and quietly.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/5vR1d6sF.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/HcZ5J9sK.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/Idf2JjJO.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/73Y3F9MR.jpeg"
+   ],
+   "categories": [
+    "Home Essentials Collection"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Silicone Body Scrubber – Soft Exfoliating Bath Brush for Deep Cleansing & Skin Care",
+   "price": 140,
+   "mrp": 299,
+   "description": "Silicone Body Scrubber – Double-Sided Exfoliating Bath Brush with Back Strap for Deep Cleansing & Massage Upgrade your bathing routine with this premium silicone body scrubber, designed for deep cleansing, gentle exfoliation, and full-body massage. Made from food-grade, BPA-free silicone, this bath brush is safe, durable, and hygienic—perfect for daily use. Its double-sided design and long strap make it easy to clean hard-to-reach areas like your back while promoting smooth, healthy skin.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/cdQDfsSt.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/P7q2EIR6.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/lfJ6NZtr.webp"
+   ],
+   "categories": [
+    "Luxury Bathing Bliss"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Silicone Deep Cleaning Brush – Soft & Flexible Tool for Crevice Dirt and Hard-to-Reach Areas",
+   "price": 149,
+   "mrp": 499,
+   "description": "Keep your bathroom sparkling clean and germ-free with this premium silicone toilet brush set. Designed with high-quality ABS and silicone bristles, it features an anti-adhesive coating to prevent dirt buildup and maintain a hygienic cleaning experience. The flexible silicone head reaches all corners of your toilet, ensuring deep cleaning without scratching surfaces. Complete with a durable holder and convenient wall sticker, this toilet brush set combines efficiency, durability, and space-saving design for modern bathrooms.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/PoIqSiTS.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/hNw4lFef.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/veYpgoZX.jpeg"
+   ],
+   "categories": [
+    "Fresh Start Cleaning"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Waterproof EVA Shower Cap – Reusable Elastic Bathing Hair Cover for Men & Women",
+   "price": 120,
+   "mrp": 150,
+   "description": "Waterproof EVA Shower Cap – Reusable Elastic Hair Cover for Home, Spa & Salon Use Keep your hair perfectly dry and protected with this high-quality waterproof EVA shower cap. Designed for both adults and children, it’s perfect for baths, spa treatments, beauty parlors, and salon sessions. Made from durable, reusable material, this elastic shower cap ensures a snug fit while being gentle on your hair. Key Features & Benefits: Premium Quality Material: Made from durable, waterproof EVA plastic that keeps hair dry and protected.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/EPsMHeom.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/M0eYIGfx.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/pTXlTCFQ.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/4BIdyuLY.jpeg"
+   ],
+   "categories": [
+    "Luxury Bathing Bliss"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Washing Machine Filter Bag – Lint & Dust Collector for Front & Top Load Washers",
+   "price": 120,
+   "mrp": 350,
+   "description": "Keep your laundry cleaner and protect your washing machine with this Washing Machine Filter Bag. Designed with a beautiful flower mesh filter net, it easily floats on water and collects excess lint, hair, and debris during washing. The filter bag can also hold washing powder or laundry soap, releasing it slowly for efficient cleaning while preventing residue buildup. Durable and easy to use, this multifunctional filter is a must-have laundry accessory.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/hjWMZQpc.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/8FPXK8XP.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/43TLAehH.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/11acOEeJ.webp"
+   ],
+   "categories": [
+    "Home Essentials Collection"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Toilet Cleaning Brush – Golf & Hockey Style Bathroom Scrubber for Easy Cleaning",
+   "price": 130,
+   "mrp": 150,
+   "description": "Keep your bathroom spotless with this Golf & Hockey Style Toilet Cleaning Brush, designed for deep cleaning, durability, and convenience. Its unique design and high-quality bristles make it easy to reach every corner, groove, and under-rim area of your toilet while protecting surfaces from scratches. With a non-slip handle and self-adhesive hook, this brush is perfect for hassle-free storage and daily cleaning. Key Features & Benefits: 360° Dead-End Cleaning: Golf club-shaped brush head reaches deep into corners, pipes, and grooves for a thorough clean, even under the rim.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/fk9hXAN6.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/wrdXLHvT.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/MQwm653l.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/T5CozAzo.jpeg"
+   ],
+   "categories": [
+    "Fresh Start Cleaning"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Type-C OTG Cable Adapter – USB-C  Connector, Compatible with All USB-C Devices",
+   "price": 120,
+   "mrp": 200,
+   "description": "Type-C OTG Cable Adapter – USB-C Connector for Smartphones, Tablets & Laptops Easily connect your USB-A devices to your USB-C smartphones or tablets with this Type-C OTG Cable Adapter. Whether it’s a flash drive, keyboard, mouse, or game controller, this adapter lets you expand your device’s connectivity effortlessly. Built for durability, speed, and universal compatibility, it’s the perfect accessory for modern mobile devices.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/ErmuGP6r.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/2j2jaf4T.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/jvVhmsnN.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/dSMktaz9.jpeg"
+   ],
+   "categories": [
+    "Tech & Trend"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Baby Smiley Knee Pads – Soft, Protective Crawling Pads for Infants (1 Pair)",
+   "price": 119,
+   "mrp": 300,
+   "description": "Baby Smiley Knee Pads – Soft Crawling & Walking Protection for Infants (1 Pair) Help your baby explore safely with Baby Smiley Knee Pads, designed to protect delicate knees and elbows while crawling, learning to walk, or playing indoors and outdoors. Soft, cushioned, and easy to wear, these pads prevent scrapes, bruises, and injuries on hard surfaces like tiles, hardwood, laminate flooring, or carpets. Key Features & Benefits: Ultimate Protection: Cushions your baby’s knees and elbows to prevent contusions, scrapes, and bruises while crawling or walking.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/LdJWYf97.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/SVit4cXS.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/CAWBwyuC.jpeg"
+   ],
+   "categories": [
+    "Baby Bibs Collection"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Multicolored Hot Water Bag Pad – Pain Relief, Muscle & Body Warmer Cushion",
+   "price": 190,
+   "mrp": 450,
+   "description": "Electric Hot Water Bag Pad – Multicolored Pain Relief & Muscle Relaxation Cushion Relieve muscle fatigue and improve blood circulation with this electric hot water bag pad, designed for safe, convenient, and effective heat therapy. Soft, ergonomic, and portable, it’s perfect for home, office, or travel use, providing soothing warmth wherever you need it. Key Features & Benefits: Effective Pain Relief: Helps eliminate muscle fatigue, relax stiff muscles, and improve blood circulation.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/NmaiJhX9.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/rZ2wYGbu.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/87NZ9X1I.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/lw08PwW3.jpeg"
+   ],
+   "categories": [
+    "Comfort & Care"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Men’s Loafer Socks – No-Show, Breathable, Comfortable Cotton Footwear Socks",
+   "price": 179,
+   "mrp": 299,
+   "description": "Men’s Loafer Socks – No-Show, Breathable, Soft Cotton Socks for All-Day Comfort Step into comfort and style with these premium men’s loafer socks, designed for a perfect fit, breathable wear, and all-day freshness. Made with a blend of cotton, spandex, and elastic, these socks are soft, durable, and ideal for everyday use. Key Features & Benefits: No-Show Design: Perfect for loafers, sneakers, or casual shoes; stays hidden while providing comfort. Soft Fabric Finish: Smooth, gentle on the skin, and designed to keep feet cozy.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/UkTvzXb8.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/lxoEuweC.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/j77Jst6t.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/2sLbnUmA.jpeg"
+   ],
+   "categories": [
+    "Comfort & Care"
+   ],
+   "featured": false
+  },
+  {
+   "name": "12-Piece Stainless Steel Cloth Drying Clips – Durable Silver Laundry Pegs for Clothesline & Home Use",
+   "price": 129,
+   "mrp": 180,
+   "description": "12-Piece Stainless Steel Cloth Drying Clips – Durable Laundry Pegs for Clothesline & Home Use Keep your laundry organized and secure with this pack of 12 high-quality stainless steel cloth drying clips. Designed for durability and versatility, these silver laundry pegs are perfect for hanging all types of clothing, from innerwear and kids’ clothes to small and medium garments. Key Features: Pack of 12 Durable Clips: Comes with 12 sturdy stainless steel clips to handle all your laundry needs efficiently.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/iQvtxYVK.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/Q4y5riSk.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/uaQyuVUo.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/tskkAw8i.jpeg"
+   ],
+   "categories": [
+    "Home Essentials Collection"
+   ],
+   "featured": false
+  },
+  {
+   "name": "3-in-1 Dry Fruit Cutter & Slicer – Multipurpose Kitchen Tool Gadget, Colorful Mix",
+   "price": 120,
+   "mrp": 599,
+   "description": "3-in-1 Dry Fruit Cutter & Slicer – Multipurpose Kitchen Gadget for Dry Fruits, Chocolate & Butter Upgrade your kitchen experience with the 3-in-1 Dry Fruit Cutter & Slicer, a compact, stylish, and multifunctional tool designed to make cutting and slicing effortless. Perfect for dry fruits, chocolate, butter, and more, this all-in-one kitchen gadget saves time, space, and effort while adding convenience to your cooking.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/gSLPRat7.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/4IZ3MDB3.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/XDl1cAYw.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/ZFA3jEci.jpeg"
+   ],
+   "categories": [
+    "Kitchen Creations"
+   ],
+   "featured": false
+  },
+  {
+   "name": "7-Day Medicine Organizer Pillbox – 4-Layer Weekly Pill Storage Box with Reminder for Vitamins & Tablets",
+   "price": 149,
+   "mrp": 199,
+   "description": "7-Day / Monthly Pill Organizer – 4-Layer Medicine Storage Box with Reminder for Vitamins & Tablets Keep your medications and supplements organized and never miss a dose with this 7-Day Medicine Organizer. Designed for convenience, travel, and safety, this 4-layer pillbox with reminder is perfect for daily, weekly, or monthly use, ensuring your pills, vitamins, or supplements are always within reach. Key Features: Organize Your Pills for the Entire Week or Month: The large 4-layer design allows you to separate pills by day and week, saving time and avoiding confusion.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/ooXYexvm.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/jgxv94mN.webp"
+   ],
+   "categories": [
+    "Home Essentials Collection"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Small Mouse Pad with Non-Slip Glue Base – 2 PCS Combo for Smooth, Precise & Comfortable Mouse Control",
+   "price": 129,
+   "mrp": 200,
+   "description": "Super Strong Non-Toxic Mouse & Rat Glue Pad – 2 PCS Combo for Effective Rodent Control Keep your home or workplace rodent-free with these high-strength, odorless glue pads, designed for easy, safe, and effective rodent trapping. Perfect for kitchens, cabinets, under refrigerators, and other high-traffic areas for mice and rats. Key Features: Super Strong Adhesive: Each glue pad features high-tack, non-slip glue that ensures rodents get trapped immediately, maximizing effectiveness.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/QNequU6s.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/3dhrnuDk.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/5LqkqfVi.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/x0wMLJfR.jpeg"
+   ],
+   "categories": [
+    "Home Essentials Collection"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Elbow Support Guard – Adjustable Elbow Cap for Pain Relief, Sports & Injury Protection (15–17 cm)",
+   "price": 139,
+   "mrp": 300,
+   "description": "Elbow Support Guard – Adjustable Elbow Cap for Pain Relief, Sports & Injury Protection (15–17 cm) Experience comfortable, flexible support with this premium elbow support guard, designed to relieve pressure, reduce discomfort, and protect your elbow during daily activities or sports. Made with skin-friendly, hypoallergenic materials, it ensures both safety and comfort for long-term wear. Key Features: Targeted Support & Pressure Relief: Provides gentle compression to the elbow joint, reducing strain and relieving pain while allowing free movement.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/nZaApZDj.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/ogp9ECdg.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/jMzwTqXT.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/KeiUIPHq.jpeg"
+   ],
+   "categories": [
+    "Comfort & Care"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Flashlight Ear Pick – LED Earwax Removal Tool for Safe, Precise & Easy Cleaning",
+   "price": 129,
+   "mrp": 200,
+   "description": "LED Flashlight Ear Pick – Safe & Precise Earwax Removal Tool with Multiple Tips Clean your ears safely and effectively with this LED Flashlight Ear Pick, designed for adults and kids. Equipped with a built-in LED light, it provides clear visibility for precise earwax removal, making ear care easy, safe, and convenient. Key Features: LED Light for Clear Vision: Built-in flashlight ensures better visibility, helping you remove earwax safely and accurately. Durable & Flexible Design: Plastic ear-pick heads are strong yet flexible, reducing the risk of injury while remaining long-lasting.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/z9MF3jBa.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/ecP0rpua.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/Cg5Gc2NT.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/bSGYco2Z.jpeg"
+   ],
+   "categories": [
+    "Comfort & Care"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Multiuse Digital Finger Counter – Portable Hand Counting Machine for Sports, Prayer, Inventory & Classroom",
+   "price": 120,
+   "mrp": 135,
+   "description": "Multiuse Digital 5-Digit Finger Ring Tally Counter – Portable Hand Counting Machine with Storage Box (2-Pack) Keep track of counts accurately and efficiently with this digital 5-digit finger tally counter. Designed for portability, durability, and precision, this compact hand counter is perfect for a wide range of applications, from prayers and meditation to sports, inventory, and attendance tracking. Key Features: High Accuracy & 5-Digit Counting: Counts up to 99,999 with complete precision, ensuring no missed tallies.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/ORPvsfOH.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/qz554Ou9.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/rIHdFaPK.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/irKtBsyb.jpeg"
+   ],
+   "categories": [
+    "Tech & Trend"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Baby Teether with Carry Case – Soft, Safe & BPA-Free Teething Toy for Infants & Toddlers",
+   "price": 170,
+   "mrp": 200,
+   "description": "Soothe your baby’s tender gums with this premium Baby Teether with Carry Case, designed for safety, comfort, and easy handling. Made from non-toxic, BPA-free materials, this teether meets international safety and hygiene standards, ensuring your little one can chew safely while relieving discomfort during teething. Key Features: Safe & Non-Toxic: Made with premium BPA-free materials, safe for infants and toddlers. Cooling Relief: Can be refrigerated to provide a soothing, cooling effect on tender gums. Soft & Gentle: Smooth, rounded edges protect baby’s teeth and gums while chewing.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/N4QxafGj.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/zvEVaOY0.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/VSUlMKFO.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/xR5Eq3YB.jpeg"
+   ],
+   "categories": [
+    "Baby Bibs Collection"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Lofa Soft Extra Soft Bath Sponge 3-Piece Combo – Gentle & Luxurious Body Cleansing Sponges",
+   "price": 169,
+   "mrp": 200,
+   "description": "Lofa Soft Extra Soft Bath Sponges 3-Piece Combo – Gentle Exfoliating Loofahs for Glowing Skin Elevate your daily bathing routine with the Lofa Soft Extra Soft Bath Sponge 3-Piece Combo, designed to provide gentle cleansing, exfoliation, and a refreshing shower experience. Perfect for all skin types, these soft loofahs help remove dead skin cells while stimulating blood circulation for a healthy, glowing complexion. Key Features: Gentle Exfoliation: Soft mesh texture gently scrubs your skin, promoting blood circulation and leaving your skin smooth and revitalized.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/qRfvxV0g.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/VIHnUn0i.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/TEptrNYZ.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/ECLl6T9m.jpeg"
+   ],
+   "categories": [
+    "Luxury Bathing Bliss"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Dust & Sun Protection Mask with Free Full Arm Sleeves – UV Shield Face & Hand Cover for Men & Women",
+   "price": 179,
+   "mrp": 499,
+   "description": "Dust & Sun Protection Face Mask with Full Arm Sleeves – Unisex UV & Cold Weather Protection Stay protected in all conditions with this multi-functional face mask and arm sleeve set, designed for dust, sun, and cold weather protection. Perfect for men and women, this set combines comfort, style, and versatility to keep you safe and cozy outdoors. Key Features: Full Coverage Protection: Covers face, neck, and arms for complete sun and dust protection. Ideal for outdoor activities, cycling, running, hiking, and daily wear.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/IToscVGt.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/JcUmMdnA.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/NS8zE55m.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/GVq2wTTH.webp"
+   ],
+   "categories": [
+    "Comfort & Care"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Mimo Hand Massager – Electric Hand Pain Relief & Stress Relaxation Device",
+   "price": 170,
+   "mrp": 1200,
+   "description": "Mimo Hand Massager – Electric Hand Pain Relief & Stress Relaxation Device Experience soothing relief and relaxation with the Mimo Hand Massager, designed to relieve hand fatigue, muscle aches, and stress. Perfect for daily use at home or in the office, this hand massager provides safe, reliable, and effective therapy to improve blood circulation and promote overall hand wellness. Key Features: Effective Hand Massage: Uses gentle pressure and massage techniques to target hand muscles, relieving soreness, stiffness, and tension.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/v2rs3xsU.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/xZLoLLew.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/dY6FGwKb.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/9rPU11vm.webp"
+   ],
+   "categories": [
+    "Relax & Revive",
+    "Comfort & Care"
+   ],
+   "featured": true
+  },
+  {
+   "name": "Heavy-Duty Mobile Stand – Sturdy Adjustable Phone Holder for Desk & Table",
+   "price": 149,
+   "mrp": 299,
+   "description": "Heavy-Duty Desktop Mobile Stand – Adjustable Phone & Microphone Holder for Recording & Live Streaming Upgrade your recording and streaming setup with this heavy-duty desktop mobile stand, designed for stability, versatility, and convenience. Perfect for smartphones, video recording, live streaming, and online meetings, this stand keeps your hands free while ensuring precise positioning. Key Features: Adjustable Height: Easily raise or lower the stand from 10.6″ to 13.8″, allowing the perfect angle for recording or streaming.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/ZbPt9P6n.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/vv1srbDU.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/A8ZhGgob.jpeg"
+   ],
+   "categories": [
+    "Tech & Trend"
+   ],
+   "featured": false
+  },
+  {
+   "name": "3D Manual Roller Massager – 360° Rotating Face & Body Massager for Relaxation and Muscle Relief",
+   "price": 170,
+   "mrp": 699,
+   "description": "3D Manual Roller Massager – 360° Rotating Face & Body Massage Tool Revitalize your body and skin with the 3D Manual Roller Massager, a professional-quality tool designed for face lifting, body shaping, and full-body relaxation. Its innovative 360° rotating beads and ergonomic design help stimulate blood circulation, tighten skin, and relieve muscle tension. Key Features: 360° Rotating Massage: Advanced kneading technology allows smooth rotation for an effective massage on face, neck, arms, legs, and other body parts.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/dktUg3nq.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/waWJZl0M.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/jA2CTmqg.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/3zCRvEpz.jpeg"
+   ],
+   "categories": [
+    "Pamper & Polish",
+    "Relax & Revive"
+   ],
+   "featured": false
+  },
+  {
+   "name": "LED Light-Up Glass Mug – Birthday Gift Cup, Novelty Illuminated Drinkware, 1 Piece",
+   "price": 169,
+   "mrp": 599,
+   "description": "LED Light-Up Glass Mug – Birthday Gift Cup, Novelty Illuminated Drinkware Make every sip fun and memorable with this LED light-up glass mug, perfect for birthdays, parties, or special celebrations. The mug’s LED lights automatically illuminate when filled with your favorite beverage, adding a colorful glow and creating a festive atmosphere. Key Features: Fun & Interactive: Ideal for drinking games, contests, or simply enjoying a glowing beverage. Automatic LED Activation: Lights turn on when the cup is filled with liquid, making every drink exciting.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/WOtmQOFE.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/p1oLAOI3.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/rsFh2FoS.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/3XbU89bq.jpeg"
+   ],
+   "categories": [
+    "Perfect Presents"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Metal Phone Holder – Adjustable Mobile Stand for Desk, Car & All Smartphones",
+   "price": 139,
+   "mrp": 399,
+   "description": "Aluminum Metal Phone Holder – Sleek & Sturdy Adjustable Mobile Stand Upgrade your workspace or bedside setup with this premium aluminum mobile phone holder, designed for durability, elegance, and convenience. Crafted from high-quality aluminum, this stand is sleek, smooth, and scratch-free, providing a safe resting place for your smartphone. Key Features: Premium Aluminum Construction: Smooth, sturdy, and scratch-resistant, keeping your phone secure while adding a touch of elegance.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/SjXvkIqE.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/KgHQ9NoU.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/EaT2oRqk.jpeg"
+   ],
+   "categories": [
+    "Tech & Trend"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Ice Face Roller Massager – Cooling Ice Cube Roller for Face, Eyes & Neck",
+   "price": 129,
+   "mrp": 699,
+   "description": "Tecme Ice Face Roller Massager – Cooling Ice Cube Roller for Face, Eyes & Neck Revitalize your skin with the Tecme Ice Face Roller Massager, a multi-functional skincare tool designed for glowing, refreshed skin. Perfect for facial, eye, and neck care, this roller helps reduce puffiness, dark circles, fine lines, and wrinkles while tightening pores for a youthful appearance. Key Features: Multi-Purpose Skincare Tool: Relieves puffiness, dark circles, acne, muscle pain, and even toothaches. Ideal for daily skincare routines and soothing massages.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/Uq7Jp49p.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/2FC1E7Oj.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/uQpPTv7c.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/a1PG4j8y.jpeg"
+   ],
+   "categories": [
+    "Comfort & Care"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Rechargeable Mini Keychain Flashlight – 4 Modes Portable Pocket LED Light for Camping, Hiking & Everyday Use",
+   "price": 169,
+   "mrp": 999,
+   "description": "Rechargeable Keychain Mini Flashlight – 3/4/COB Light Modes Portable Pocket LED Torch Stay prepared for any situation with this high-brightness, USB-rechargeable keychain flashlight, perfect for everyday carry, camping, hiking, emergency use, or outdoor adventures. Compact yet powerful, it combines portability, durability, and multifunctionality in a sleek design. Key Features: Ultra-Bright COB LED: Emits up to 500 lumens for a wide, flood-beam illumination. Perfect as a small work light, emergency light, or general-purpose torch.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/F69v11Ac.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/p1nWDeK0.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/wsreLYzT.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/BF2sSy9H.jpeg"
+   ],
+   "categories": [
+    "Home Essentials Collection",
+    "Travel Essentials"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Painless Crystal Hair Eraser – Nano Crystal Hair Remover for Women & Men, Gentle & Effective",
+   "price": 169,
+   "mrp": 500,
+   "description": "Painless Crystal Hair Eraser – Nano Technology Hair Remover for Women & Men Experience effortless, painless hair removal with the Crystal Hair Eraser, a safe and effective alternative to razors, waxing, or expensive laser treatments. Designed for all skin types, this innovative nano crystal tool exfoliates dead skin, improves skin tone, and leaves your body smooth, soft, and hair-free. Key Features: Premium Quality Materials: Made from high-quality glass and ABS, with a smooth surface that is safe, durable, and reliable for regular use.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/qZ5u33E4.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/FMWNayFZ.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/wBd8MqU9.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/EDIO0J0h.jpeg"
+   ],
+   "categories": [
+    "Pamper & Polish",
+    "Comfort & Care"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Adjustable Rearview Mirror Mobile Phone Holder – Car Navigation Mount & Universal Phone Stand",
+   "price": 259,
+   "mrp": 380,
+   "description": "Adjustable Rearview Mirror Mobile Phone Holder – Universal Car Phone Mount for Navigation & Hands-Free Use Enhance your driving experience with this premium adjustable rearview mirror mobile phone holder, designed for hands-free navigation and safe driving. Made from high-quality durable materials, this car mount securely holds all mobile phones up to 6.5 inches while keeping them stable, accessible, and vibration-free. Perfect for GPS, calls, or music control while on the road.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/uEoCOIyY.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/hYOLTebI.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/RyPhNiCf.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/SXor9UJO.jpeg"
+   ],
+   "categories": [
+    "Tech & Trend"
+   ],
+   "featured": false
+  },
+  {
+   "name": "UV Protection Swimming Goggles with Ear Plugs – Anti-Fog Swim Gear for Adults & Kids",
+   "price": 170,
+   "mrp": 300,
+   "description": "UV Protection Swimming Goggles with Ear Plugs – Anti-Fog, Wide Vision Swim Gear for Kids & Adults Enjoy clear, comfortable, and safe swimming with this premium swimming goggles kit designed for both adults and kids. Each pair features advanced anti-fog and UV protection, ensuring your eyes stay protected while offering long-distance underwater clarity. The set includes ergonomic ear plugs and a protective case, making it a complete solution for indoor and outdoor swimming.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/ohBg8907.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/LkXfX0EM.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/1Gy6gsUw.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/WMKHzSSG.jpeg"
+   ],
+   "categories": [
+    "Luxury Bathing Bliss"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Fashion Skin Tape for Women – Strong Adhesive Body & Clothing Tape for Dresses, Tops & Wardrobe Fixes",
+   "price": 80,
+   "mrp": 150,
+   "description": "ashion Skin Tape for Women – Strong Adhesive Bra & Clothing Tape for Dresses, Tops, and Wardrobe Fixes (36 Count) Keep your outfits perfectly in place with this transparent double-sided fashion tape, specially designed for women. Gentle on skin yet strong enough to hold clothing securely, it is ideal for deep plunge dresses, open-sided tops, wrap-style blouses, tube tops, and halters. Enjoy discreet, skin-friendly support that enhances confidence and ensures your wardrobe stays flawless all day. Key Features: Strong Adhesive: Holds clothing firmly in place without slipping or bunching.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/TPAwCvLw.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/ASagcejR.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/OFwCqqQ6.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/JHrMGA8m.jpeg"
+   ],
+   "categories": [
+    "Comfort & Care"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Set of 4 Mini Buddha Monk Statues – Decorative Figurines for Wall, Shelf & Table Display",
+   "price": 169,
+   "mrp": 300,
+   "description": "Set of 4 Mini Buddha Monk Statues – Decorative Resin Figurines for Home, Car & Shelf Display Add a touch of peace, spirituality, and charm to your home, office, or car with this set of 4 miniature Buddha monk statues. Crafted from high-grade, lightweight resin, each figurine features a cute bobblehead spring design, making them a playful yet meaningful décor item. Perfect for shelves, tables, or dashboards, these monks inspire mindfulness and positivity in daily life. Key Features: High-Quality Resin Material: Lightweight, durable, and finely crafted for lasting beauty.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/soUSnWH7.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/1QTVR7lq.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/kieY2YQ6.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/MPdJvQaT.jpeg"
+   ],
+   "categories": [
+    "Home Essentials Collection",
+    "Perfect Presents"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Mini Refillable Perfume Atomizer – 5ml Travel Spray Bottle for Fragrance On-the-Go",
+   "price": 169,
+   "mrp": 300,
+   "description": "Take your favorite scents anywhere with this mini refillable perfume atomizer, designed for travel, work, or daily use. Compact, lightweight, and leak-proof, this 5ml spray bottle allows you to carry perfume or liquid skincare products without the bulk of full-sized bottles. Perfect for men and women, it ensures convenience and style wherever you go. Key Features: Easy to Refill: No funnel required – simply refill from your original perfume bottle from the bottom. Travel-Friendly & Leakproof: Compact size fits in bags or purses; side window lets you see remaining liquid.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/7t8NQ6Ah.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/bWgNaZRV.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/94Vt9kbZ.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/N3E9MgKZ.jpeg"
+   ],
+   "categories": [
+    "Home Essentials Collection",
+    "Perfect Presents"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Ear & Nose Hair Trimmer for Men – Pain-Free Eyebrow, Facial & Body Hair Clipper",
+   "price": 149,
+   "mrp": 300,
+   "description": "Ear & Nose Hair Trimmer for Men – Pain-Free, Dual-Edge Blades, Cordless & Portable Facial Grooming Tool Achieve a clean, polished look effortlessly with this cordless ear and nose hair trimmer, designed for men and women. Made from high-quality stainless steel with dual-edge spinning blades, it provides precise, painless trimming for nose hair, ear hair, eyebrows, beard, and other facial hair. Compact, quiet, and portable, this trimmer is perfect for home use or travel, giving you confidence wherever you go.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/QnKRP9k7.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/ZwkQJ8QR.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/vQ4rZGwZ.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/0gFMJHVI.jpeg"
+   ],
+   "categories": [
+    "Comfort & Care"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Car Rear-View Mirror Anti-Fog Waterproof Protective Film – Rainproof Anti-Water Sticker",
+   "price": 150,
+   "mrp": 299,
+   "description": "Car Rear-View Mirror Anti-Fog Waterproof Protective Film – Rainproof & Dustproof Sticker Ensure safer driving in all weather conditions with this Car Rear-View Mirror Protective Film Sticker, designed to keep your mirrors clear, fog-free, and water-resistant. Perfect for rainy, foggy, or dusty conditions, this universal-size film can be easily trimmed to fit any exterior mirror, providing enhanced visibility and driving safety. Key Features: Improved Driving Safety – Protects your rear-view mirrors from rain, fog, and dust, giving you a clearer vision for safer travel.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/4zvgUKnw.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/19T16yVv.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/N9xHzgNW.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/NSnSsRE6.jpeg"
+   ],
+   "categories": [
+    "Tech & Trend"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Butterfly Massager Machine – Rechargeable Electric Pain Relief & Muscle Relaxation Device",
+   "price": 170,
+   "mrp": 799,
+   "description": "Butterfly EMS Foot & Leg Massager Machine – Rechargeable Pain Relief & Circulation Booster Experience ultimate foot and leg relaxation with the Butterfly EMS Foot Massager, designed to stimulate muscles, relieve pain, reduce fatigue, and improve blood circulation. Perfect for home use, this rechargeable massager combines EMS (Electrical Muscle Stimulation), EPS, and heat conduction technology to provide a spa-like experience for your feet and calves.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/qUvrNLLu.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/Li9QVeSF.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/NGfpqiMA.webp"
+   ],
+   "categories": [
+    "Relax & Revive",
+    "Tech & Trend"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Travel Toiletry Bottles – Refillable Mini Containers Set for Shampoo, Cosmetics & Toiletries",
+   "price": 170,
+   "mrp": 299,
+   "description": "Travel Bottles for Toiletries – Refillable Mini Containers Set for Shampoo, Cosmetics & Liquids Stay organized and travel hassle-free with this multi-purpose travel toiletry bottle set. Perfect for airline-approved carry-on use, this portable kit keeps all your shampoos, creams, lotions, essential oils, and cosmetics neat, safe, and ready to go. Key Features: Airline-Friendly & Travel Approved – Compact and compliant with most airline carry-on regulations, ideal for domestic and international travel.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/gQUx3E4e.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/ME4ZtLAR.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/68GtUxGc.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/KHhm93Gp.jpeg"
+   ],
+   "categories": [
+    "Travel Essentials",
+    "Comfort & Care"
+   ],
+   "featured": false
+  },
+  {
+   "name": "2-in-1 Blackhead Remover & Face Mask Tube – Deep Cleansing Skincare for Clear & Smooth Skin",
+   "price": 139,
+   "mrp": 150,
+   "description": "2-in-1 Blackhead Remover & Face Mask Tube – Deep Cleansing Skincare for Clear & Smooth Skin Say goodbye to blackheads, clogged pores, and impurities with this 2-in-1 Blackhead Remover & Face Mask Tube. Formulated with active charcoal and natural fruit extracts, it provides a deep cleansing action that leaves your skin fresh, smooth, and revitalized. Key Features: Deep Cleansing Formula – Combines active charcoal and fruit extracts to effectively draw out dirt, oil, and blackheads from pores.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/hhUQ2WOv.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/qEMbetfC.jpeg"
+   ],
+   "categories": [
+    "Pamper & Polish",
+    "Comfort & Care"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Ultimate Spiral Cable Protector – 1.5M Durable Wire & Cord Safety Sleeve for Home & Office",
+   "price": 99,
+   "mrp": 200,
+   "description": "Protect your cables and wires from damage, tangling, and wear with this ultimate spiral cable protector. Perfect for home, office, gaming setups, or entertainment systems, it keeps your cords organized, safe, and tangle-free. Key Features: Durable Spiral Design – Made from high-quality, flexible material, this spiral sleeve wraps around cables for long-lasting protection against bending, twisting, and fraying. 1.5 Meter Length – Provides ample coverage for multiple cords, making it suitable for home, office, computer, TV, or gaming setups.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/LXSGf75q.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/zErZgU2q.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/NeLAUS3h.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/VDNYS0PS.jpeg"
+   ],
+   "categories": [
+    "Tech & Trend"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Durable Zipped Packing Bag – Travel Storage & Organizer Pouch for Clothes, Accessories & Essentials",
+   "price": 149,
+   "mrp": 300,
+   "description": "Durable Zipped Packing Bag – Travel Storage & Organizer Pouch for Clothes, Accessories & Essentials Keep your belongings organized and secure with this high-quality zipped packing bag, perfect for travel, home storage, or daily use. Designed for durability and convenience, it helps you maximize space while keeping your items tidy. Key Features: Spacious & Practical – Large capacity to store clothes, accessories, shoes, cosmetics, or travel essentials, making packing and organizing effortless.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/2QJ7ZZ8r.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/32fDLt49.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/zXAc8SIB.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/if4GlHCu.jpeg"
+   ],
+   "categories": [
+    "Home Essentials Collection",
+    "Travel Essentials"
+   ],
+   "featured": false
+  },
+  {
+   "name": "UV Protection Arm Sleeves for Men & Women – Sun Guard Hand Sleeves with Thumb for Boys & Girls",
+   "price": 100,
+   "mrp": 300,
+   "description": "UV Protection Arm Sleeves for Men & Women – Sun Guard Hand Sleeves with Thumb for Boys & Girls Stay protected and comfortable during every outdoor activity with these premium UV protection arm sleeves. Designed for men, women, boys, and girls, these versatile hand sleeves provide sun protection, support, and style for sports, biking, or daily outdoor use. Key Features: Ultimate Arm Support – Offers comprehensive support for arms during sports, weightlifting, cycling, or other physical activities. Helps reduce risk of strains, sprains, and injuries while aiding faster muscle recovery.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/Vx8iW7hg.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/XyQx61UQ.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/89wyMhKV.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/u33rTtbV.jpeg"
+   ],
+   "categories": [
+    "Travel Essentials"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Trendy Mobile Bag for Girls – Stylish Crossbody & Sling Bag for Smartphones & Essentials",
+   "price": 170,
+   "mrp": 500,
+   "description": "Trendy Mobile Bag for Girls – Stylish Crossbody & Sling Bag for Smartphones & Essentials Carry your smartphone and essentials in style with this trendy mobile bag for girls, designed for convenience, fashion, and everyday use. Perfect for school, college, outings, or casual events, this bag combines practicality with a youthful, chic design. Key Features: Compact & Stylish Design – Sleek and trendy bag, perfect for girls who want to stay fashionable while carrying their mobile and essentials.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/uhuLffqw.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/ODGe2ZT6.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/MJGUIOpA.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/En9EBND3.jpeg"
+   ],
+   "categories": [
+    "Perfect Presents"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Leather Protective Case for AirPods 3 – Shockproof Cover, Durable & Compatible AirPods 3 Case",
+   "price": 199,
+   "mrp": 500,
+   "description": "Leather Protective Case for AirPods 3 – Shockproof Cover, Durable & Compatible AirPods 3 Case Keep your AirPods 3 safe, stylish, and scratch-free with this premium leather protective case. Designed for durability and daily protection, this case ensures your AirPods remain in pristine condition while adding a touch of elegance. Key Features: Premium Leather Material – Made from high-quality leather for a soft-touch, stylish, and durable finish. Full Protection – Protects your AirPods 3 from scratches, bumps, and everyday wear & tear.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/E9Lbgx1w.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/ujSmoXnr.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/wrQfTDo1.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/gDAdqaN1.jpeg"
+   ],
+   "categories": [
+    "Tech & Trend"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Portable Leather Jewelry Box – Travel Organizer for Necklace, Earrings, Rings & Bracelets Storage Case",
+   "price": 170,
+   "mrp": 600,
+   "description": "Portable Leather Jewelry Box – Travel Organizer for Necklace, Earrings, Rings & Bracelets Keep your precious accessories safe, organized, and tangle-free with this compact leather jewelry travel organizer, designed for everyday use and on-the-go convenience. Its smart layout and premium build make it the perfect storage solution for all your favorite jewelry pieces. Key Features: Multifunctional Storage Design – Features 3 necklace hooks to prevent tangling, a ring roll for rings & earrings, and an elastic pocket to protect delicate items.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/lgYfDDWY.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/OLR9cn0q.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/VjmZuqcF.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/1fEydNQV.jpeg"
+   ],
+   "categories": [
+    "Smart Space Savers"
+   ],
+   "featured": false
+  },
+  {
+   "name": "3-Piece Loofah Body Scrubber Set – Exfoliating Bath Sponge & Shower Scrub for Deep Skin Cleansing",
+   "price": 170,
+   "mrp": 300,
+   "description": "3-Piece Loofah Body Scrubber Set – Exfoliating Bath Sponge & Shower Scrub for Deep Cleansing Upgrade your bathing routine with this 3-piece loofah body scrubber set, designed to provide deep cleansing, gentle exfoliation, and a refreshing shower experience. Perfect for everyday use, these loofahs help keep your skin soft, smooth, and healthy. Key Features: Deep Exfoliation & Cleansing – Effectively removes dirt, oil, and dead skin cells, leaving your skin clean and refreshed. Soft & Skin-Friendly Material – Gentle on all skin types while providing a soothing scrubbing and massaging effect.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/vLnNl3oj.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/RyWg56p3.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/cvLB8emF.jpeg"
+   ],
+   "categories": [
+    "Luxury Bathing Bliss"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Exfoliating Shower Loofah Sponge – Soft Bath Scrubber & Body Massager for Deep Dirt Removal (Random Color)",
+   "price": 130,
+   "mrp": 200,
+   "description": "Exfoliating Shower Loofah Sponge – Soft Bath Scrubber & Body Massager for Deep Cleaning Upgrade your daily bath routine with this soft exfoliating shower loofah sponge, designed to gently cleanse, massage, and refresh your skin. Its advanced mesh and spiral technology create a rich, foamy lather that deeply cleans pores and removes dirt, oil, and impurities. Key Features: 360° Deep Cleansing & Massage – The fluffy mesh design provides full-body exfoliation while gently massaging your skin for a relaxing shower experience.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/47NM4ZYz.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/YmyTKaBH.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/ENZD0YiB.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/YGAkQTNw.jpeg"
+   ],
+   "categories": [
+    "Luxury Bathing Bliss"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Upgraded Zipper Pulls – 10-Pack Premium Replacement Zipper Pulls for Bags, Jackets & Luggage",
+   "price": 200,
+   "mrp": 450,
+   "description": "20-Pack Zipper Pulls with Lobster Clasp – Durable Replacement for Bags, Backpacks & Luggage Upgrade your accessories with this premium 20-pack zipper pull set, perfect for replacing broken, worn, or missing zipper pulls on handbags, backpacks, suitcases, jackets, and more. Designed for strength, durability, and ease of use, these zipper pulls are a must-have for home and travel. Key Features: Lobster-Style Clasp Design – Snap-on mechanism allows for quick and tool-free installation. Easily attach or remove without effort.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/KgEql7wx.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/9pQlHOSP.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/G8I5cr4e.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/3kby80R8.webp"
+   ],
+   "categories": [
+    "Pamper & Polish"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Soft Silicone Face Scrubber – Facial Cleansing Brush for Blackheads, Acne & Pore Care",
+   "price": 130,
+   "mrp": 230,
+   "description": "Upgrade your skincare routine with this soft silicone face scrubber, designed to deeply cleanse, exfoliate, and massage your skin. Perfect for removing makeup residue, unclogging pores, reducing spots, and clearing blackheads, it helps you achieve healthy, glowing skin effortlessly. This 2-in-1 pad features soft fine bristles for exfoliation and thicker touch points for gentle facial massage, promoting blood circulation and revitalizing your skin. Key Features: Deep Facial Cleansing: Effectively removes makeup, dirt, and excess oil for cleaner, healthier skin.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/DiuIYowM.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/hTlGvjSX.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/EtGwVNGr.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/BoHvwOQt.webp"
+   ],
+   "categories": [
+    "Pamper & Polish"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Neev Electric Kapoor Dani – Automatic Electrical Incense & Aroma Burner for Home",
+   "price": 199,
+   "mrp": 400,
+   "description": "Enhance your home with soothing fragrances using the Neev Electric Kapoor Dani, a multifunctional electrical incense and aroma burner. Perfect for burning camphor, dhoop, essential oils, or bakhoor, this burner creates a calming ambiance while being energy-efficient. Designed with an auto on-off function and a separate manual heater button, it saves electricity and ensures precise control of heat. Elegant and functional, it’s a safe and smoke-minimizing alternative to traditional charcoal burners. Multi-Purpose Use: Ideal for camphor, dhoop, bakhoor, and essential oil burning.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/8FY5V9tf.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/jjQWy5lw.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/G9wXPtgA.webp"
+   ],
+   "categories": [
+    "Relax & Revive",
+    "Home Essentials Collection"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Digital Projector Watch for Kids – 24 Fun Images, Rubber Strap, Ideal Diwali Gift",
+   "price": 190,
+   "mrp": 300,
+   "description": "Digital 24-Image Projector Watch for Kids – Spider-Man Edition with Rubber Strap Delight your little ones with the Spider-Man 24-Image Projector Watch, a fun and interactive accessory designed for kids aged 3 and above. This digital projector watch features an inbuilt automatic projector that displays 24 vibrant images of Spider-Man, bringing excitement to every playtime and learning moment. Perfect as a Diwali gift, birthday present, or holiday surprise, this watch combines fun, creativity, and practicality.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/4dK3xKAL.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/HPaavRG2.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/jJvs1yrE.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/wfUnzkkG.webp"
+   ],
+   "categories": [
+    "Tech & Trend"
+   ],
+   "featured": false
+  },
+  {
+   "name": "4-in-1 Foot Pedicure Set – Brush, Pumice Stone, Scrubber & File for Soft Smooth Feet",
+   "price": 99,
+   "mrp": 200,
+   "description": "Pamper your feet at home with the 4-in-1 Foot Pedicure Set, designed to provide a complete foot care solution. This all-in-one tool combines a brush, pumice stone, scrubber, and file, making it easy to remove dead skin, calluses, and rough patches, leaving your feet soft, smooth, and refreshed. Perfect for daily foot care or professional pedicures. Complete Foot Care: Combines brush, pumice stone, scrubber, and file to tackle all foot care needs in one tool. Soft & Smooth Feet: Effectively removes rough skin, calluses, and hard patches for soft, healthy-looking feet.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/GVVcQWLj.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/Cq6R7qxo.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/WMZ9vvQe.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/cDrFe6rg.webp"
+   ],
+   "categories": [
+    "Pamper & Polish"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Silicone Facial Cleansing Brush Set, Makeup Remover Brush, Deep Cleansing Skin Cleaning Brush, Nose Cleaning Brush set",
+   "price": 130,
+   "mrp": 200,
+   "description": "Silicone Facial Cleansing Brush Set – Deep Cleansing Makeup & Nose Cleaning Brushes for All Skin Types Achieve smooth, radiant, and healthy-looking skin with this Silicone Facial Cleansing Brush Set, designed for all skin types. This versatile kit includes essential brushes for makeup removal, deep pore cleansing, and targeted nose blackhead cleaning, providing a complete skincare solution at home. Comprehensive Deep Cleansing: Removes dirt, oil, makeup, and impurities from pores gently yet effectively.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/u08qTpnT.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/hbOxWKXy.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/SW9oHUls.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/ummeM6eB.webp"
+   ],
+   "categories": [
+    "Pamper & Polish"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Bag Cover Waterproof Rain cover for Backpack Bags, Rainproof Dust proof Protector Elastic Adjustable",
+   "price": 170,
+   "mrp": 300,
+   "description": "Protect your backpack in all weather conditions with the Waterproof Bag Cover Rain Protector – the ultimate solution to keep your belongings safe, dry, and dust-free. Designed for durability and convenience, this cover shields your bag from rain, dirt, and moisture during travel, biking, hiking, or daily commuting. Made from high-quality waterproof material, it provides full coverage and long-lasting protection. The elastic adjustable design ensures a snug fit on different bag sizes, preventing slipping even in heavy rain or windy conditions.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/5cXv1seh.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/o7rJlELL.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/t0vinOGk.webp"
+   ],
+   "categories": [
+    "Travel Essentials"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Hair Remover Wax Strips – Full Body Non-Woven Disposable Wax for Women & Men",
+   "price": 110,
+   "mrp": 300,
+   "description": "Achieve smooth, hair-free skin with these Full Body Hair Remover Wax Strips, designed for effective and convenient waxing at home or on the go. Made from high-quality non-woven material, these disposable strips are gentle on the skin while providing professional-level results for both women and men. Full Body Use: Ideal for face, underarms, upper lips, legs, and all other body areas. Non-Woven & Disposable: Durable yet gentle strips for easy application and clean removal without mess. Convenient & Hygienic: Single-use design ensures a hygienic and quick waxing experience.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/KMqUA3Mo.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/0NJtWUKt.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/mKf85zth.webp"
+   ],
+   "categories": [
+    "Pamper & Polish"
+   ],
+   "featured": false
+  },
+  {
+   "name": "3D Cartoon Printed Lunch Bag – Cute Bento Handheld Bag for Kids & Toddlers",
+   "price": 150,
+   "mrp": 500,
+   "description": "3D Cartoon Printed Lunch Bag – Insulated Bento Bag for Kids & Adults Keep your meals fresh, safe, and easy to carry with this 3D Cartoon Printed Lunch Bag, designed for school, work, or outdoor adventures. Made with high-quality, eco-friendly polyester fabric and insulating aluminum foil, this lunch bag ensures your food stays fresh for hours while being non-toxic and safe. Its cute 3D cartoon design adds fun and style for kids, students, or anyone who wants a playful yet practical lunch solution.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/QV9kHXJc.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/RpJqI9lm.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/GgTJNiWy.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/G0h4K7no.webp"
+   ],
+   "categories": [
+    "Home Essentials Collection",
+    "Travel Essentials"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Waterproof Backpack Rain Cover – Dustproof & Rainproof Protective Bag Cover for All Bags",
+   "price": 130,
+   "mrp": 200,
+   "description": "Keep your backpack safe and dry in any weather with this high-quality Waterproof Backpack Rain Cover. Designed for all types of backpacks, it protects your belongings from heavy rain, dust, and scratches, making it a must-have accessory for travel, school, work, and outdoor adventures. Reliable Waterproof Protection The PU-coated surface ensures your backpack stays completely dry even in downpours. Made from durable, wear-resistant polyester, this rain cover is lightweight, scratch-resistant, and long-lasting, providing maximum protection without adding bulk.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/KjTJvwLB.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/pG1nmWH2.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/Ce5qi8Wj.webp"
+   ],
+   "categories": [
+    "Travel Essentials"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Multipurpose Transparent Jewelry Organizer Box – Storage for Rings, Earrings & Accessories",
+   "price": 179,
+   "mrp": 400,
+   "description": "Keep your small items organized and easily accessible with this Multipurpose Transparent Storage Organizer Box. Designed for home, office, and DIY use, it is perfect for storing medicine pills, jewelry, pins, screws, stationery, and craft accessories. The clear plastic construction lets you see all contents at a glance, while the removable dividers allow customizable grid sizes to suit your needs. Key Features: 36 Grid Compartments: Divided sections make it easy to organize and access items.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/q4okWHWX.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/tzzFcoaK.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/3Pau4XH5.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/PMHUTgsM.webp"
+   ],
+   "categories": [
+    "Smart Space Savers"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Baby Feeder Rattle – Safe Teething & Feeding Toy for Infants and Toddlers",
+   "price": 179,
+   "mrp": 300,
+   "description": "Make mealtime and playtime safer and more fun with the Baby Feeder Rattle. Designed for infants and toddlers, this interactive teething and feeding toy helps soothe sore gums while encouraging fine motor skills and hand-eye coordination. Made from non-toxic, baby-safe materials, it ensures your little one can chew, grasp, and explore without worry. Lightweight and easy to hold, it’s perfect for home, travel, or daycare use. Key Features: Safe & Non-Toxic: Made from BPA-free, food-grade materials suitable for babies.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/qjtVJP0R.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/LEunEqlw.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/FF8hC2SO.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/p922CS3r.webp"
+   ],
+   "categories": [
+    "Baby Bibs Collection"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Premium Silicone Swimming Cap for Men & Women – Waterproof Anti-Slip Stretchable Swim Cap for Pool Use",
+   "price": 120,
+   "mrp": 200,
+   "description": "Upgrade your swimming experience with the Cockatoo Premium Silicone Swimming Cap, designed for comfort, durability, and performance. Made from high-quality flexible rubber material, this swim cap provides a secure and comfortable fit while protecting your hair from chlorine and pool water. Ideal for professional swimmers, beginners, and fitness enthusiasts, this cap helps reduce drag in the water and improves hydrodynamics for smoother swimming.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/epFo88b2.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/shW5aAS7.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/BJEuyL8V.webp"
+   ],
+   "categories": [
+    "Luxury Bathing Bliss"
+   ],
+   "featured": false
+  },
+  {
+   "name": "5-Piece Portable Travel Spray Bottles – Mini Liquid Containers for Skincare & Makeup",
+   "price": 150,
+   "mrp": 900,
+   "description": "Take your favorite liquids on the go with this 5-piece portable travel spray bottle set, perfect for skincare, makeup, perfumes, and home fragrances. Lightweight, compact, and multipurpose, these bottles are designed for convenience, safety, and durability – making them an essential travel companion for anyone who wants to carry liquids without spills or messes. Key Features & Benefits: Leak-Proof Design: Each bottle comes with a secure cap that prevents the spray pump from dispensing liquids accidentally, keeping your bag and luggage clean.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/coVILz8X.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/qdODbuSl.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/DnE1s5nv.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/WgaLEZiE.webp"
+   ],
+   "categories": [
+    "Pamper & Polish",
+    "Comfort & Care"
+   ],
+   "featured": true
+  },
+  {
+   "name": "Silicone Bath Brush with 2 Free Ringing Balls – Soft Body Scrubber & Exfoliating Shower Brush",
+   "price": 170,
+   "mrp": 3000,
+   "description": "Transform your shower routine with the Silicone Bath Brush, designed for gentle yet effective cleansing and exfoliation. This high-quality bath brush comes with 2 free ringing balls, making it a perfect addition to your skincare and spa routine. Ideal for all skin types, it leaves your skin soft, smooth, and refreshed. Key Features & Benefits: Gentle & Effective Cleansing: Soft silicone bristles remove dirt, oil, and dead skin cells while promoting blood circulation for healthier, glowing skin.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/9CkGzs9F.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/0XF2PBSu.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/zwID7KLm.webp"
+   ],
+   "categories": [
+    "Trending Toys",
+    "Perfect Presents"
+   ],
+   "featured": true
+  },
+  {
+   "name": "Shoe Cleaning Wipes & Liquid Shoe Brush – Complete Footwear Care Kit",
+   "price": 170,
+   "mrp": 300,
+   "description": "Keep your shoes, clothes, and household surfaces spotless with the Shoe Cleaning Wipes & Liquid Shoe Brush Combo. Designed for convenience, efficiency, and durability, this all-in-one cleaning kit makes maintaining footwear, kitchens, bathrooms, and other areas effortless. Key Features & Benefits: Premium Soft Bristle Brush: Equipped with ultra-tough fibers and thick bristles, this brush generates rich foam to easily remove stubborn dirt and stains from shoes, floors, and kitchen surfaces.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/u2s8YeM1.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/1iC6I3cs.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/Zx2ULtyG.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/feO4VRPa.webp"
+   ],
+   "categories": [
+    "Pamper & Polish",
+    "Travel Essentials"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Deer Horn Kids Water Bottle – 500ml Cute Animal-Shaped Drink Bottle",
+   "price": 150,
+   "mrp": 380,
+   "description": "Keep your little ones hydrated in style with the Deer Horn Shape Water Bottle for Kids, specially designed for toddlers and preschoolers. Combining fun design, safety, and convenience, this 500ml bottle is perfect for school, travel, or home use. Key Features & Benefits: Perfect for Kids Aged 6 Months to 3 Years: Ergonomically designed to suit small hands, making it easy for toddlers to hold and drink independently. Spill-Proof Design: Leak-proof construction prevents messy spills, keeping bags, tables, and play areas clean.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/0oVgyChN.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/qybt9thO.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/6QXUrFbp.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/qYcMZMZw.webp"
+   ],
+   "categories": [
+    "Trending Toys"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Portable Soap Dispenser – Travel & Home Use Stylish Liquid Soap Box",
+   "price": 140,
+   "mrp": 300,
+   "description": "Keep your soap clean, dry, and stylishly organized with this portable soap dispenser and soap box, perfect for travel, home, and bathroom use. Designed for convenience and functionality, this compact soap holder ensures your soap stays secure and mess-free wherever you go. Key Features & Benefits: Stylish & Practical Design: Sleek capsule-shaped soap box in modern white, adding a touch of elegance to your bathroom or travel kit while keeping soap bars secure.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/1L9m7WOZ.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/SkcEs0C7.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/Js11iHC1.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/7dGDIBe6.webp"
+   ],
+   "categories": [
+    "Travel Essentials"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Handheld Hand Massager – Stress Relief & Blood Circulation Tool for Home & Office",
+   "price": 120,
+   "mrp": 300,
+   "description": "Relieve tension, improve circulation, and rejuvenate your hands with the H56 Finger Massage Stick from Alag Enterprises. This compact, handheld acupressure tool stimulates the body’s natural energy points, helping to alleviate finger stiffness, joint pain, and muscle tension while promoting overall hand health. Perfect for home, office, or travel, this lightweight massager ensures stress-free fingers and palms anytime, anywhere. Key Features: Acupressure Therapy Benefits: Stimulates nerves, increases blood flow, relieves aches and tension, and promotes relaxation.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/l0gW0w4k.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/38CaezJz.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/U2itFzJG.webp"
+   ],
+   "categories": [
+    "Relax & Revive"
+   ],
+   "featured": false
+  },
+  {
+   "name": "4-in-1 Pen Set with Box – Ballpoint, Gel, Roller & Fountain Pen Combo",
+   "price": 170,
+   "mrp": 900,
+   "description": "Upgrade your writing experience with the 4-in-1 Pen Set with Box – Ballpoint, Gel, Roller & Fountain Pen Combo, a versatile and stylish solution for all your writing needs. Perfect for students, professionals, and pen enthusiasts, this elegant set combines four essential pen types in one convenient gift box, making it an ideal office accessory, school stationery, or gift item.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/RBjSvEa4.webp"
+   ],
+   "categories": [
+    "Smart Space Savers"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Multicolor Facial Roller Kit – Smooth Stone Massager for Face, Eyes, Nose & Arms",
+   "price": 170,
+   "mrp": 600,
+   "description": "Revitalize your skin with the Multicolor Facial Roller & Massager Kit – Smooth Stone Massager for Face, Eyes, Nose & Arms. Designed for all skin types, this facial roller kit combines advanced vibration technology and smooth massage stones to help reduce fine lines, wrinkles, and under-eye puffiness while promoting a youthful, radiant complexion. Featuring two massage modes, the roller glides effortlessly on the skin to stimulate circulation, promote collagen production, and rejuvenate tired, dull skin.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/10IOnJe6.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/1eHVK8Yo.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/WMCUSnkw.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/SAu7PsVn.webp"
+   ],
+   "categories": [
+    "Pamper & Polish",
+    "Relax & Revive"
+   ],
+   "featured": false
+  },
+  {
+   "name": "12 Pcs Ball Pen Set – Smooth Writing Ballpoint Pens for Students & Office",
+   "price": 150,
+   "mrp": 600,
+   "description": "Enhance your writing experience with this 12 Pcs Ball Pen Set – Smooth Writing Ballpoint Pens for Students & Office. Designed for everyday use, these ballpoint pens offer smooth and consistent ink flow, making them perfect for school, office, home, or professional use. This pack of 12 pens is ideal for students, professionals, and anyone who values reliable writing tools. Each pen provides comfortable grip and effortless writing, reducing hand fatigue during long writing sessions.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/wNHrp9y7.webp"
+   ],
+   "categories": [
+    "Perfect Presents"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Universal Silicone Suitcase Wheel Cover – Anti-Slip Luggage Wheel Protector for Travel Bags",
+   "price": 150,
+   "mrp": 600,
+   "description": "Protect your luggage and travel in style with this Silicone Luggage Wheel Protection Cover, designed to safeguard your suitcase wheels from scratches, scuffs, and everyday wear. This durable suitcase wheel protector cover acts like a protective shield for your luggage wheels, preventing damage caused by rough surfaces, sharp objects, and frequent travel. Made from high-quality flexible silicone, these luggage wheel covers feature a unique anti-slip wave pattern design that provides a secure fit while allowing smooth movement.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/kWnEaCvD.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/YhTweo7L.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/AnzBhaSc.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/kYEkK5LB.webp"
+   ],
+   "categories": [
+    "Travel Essentials"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Golden Non-Woven Saree Cover with Zipper – Transparent Single Saree Storage Organizer for Wardrobe",
+   "price": 170,
+   "mrp": 600,
+   "description": "Keep your sarees safe, organized, and dust-free with this Golden Non-Woven Saree Cover with Zipper, designed for convenient and stylish wardrobe storage. This transparent single saree storage organizer is made from durable non-woven fabric and features a clear front panel, allowing you to easily identify your saree without opening the cover. It is an ideal solution for protecting your valuable sarees from dust, moisture, and wrinkles while keeping your wardrobe neat and organized. The premium zipper closure ensures secure storage and easy access to your saree whenever you need it.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/Q5EBFfcx.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/dCTkVwDb.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/PYkP6Nrs.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/XyV1klJJ.webp"
+   ],
+   "categories": [
+    "Travel Essentials",
+    "Perfect Presents"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Portable 360° Rotating Gyro Bowl by Garth – Toddler Feeding Dish for Babies, No-Spill Plate",
+   "price": 169,
+   "mrp": 600,
+   "description": "Make mealtime fun, clean, and stress-free with the Garth 360° Rotating Gyro Bowl, designed to help toddlers eat independently while keeping your home mess-free. Perfect for babies and toddlers, this portable feeding dish combines safety, convenience, and innovative design. Key Features: 360° Gyro Anti-Spill Design: The inner bowl rotates with gyroscopic motion to keep food inside, preventing spills even if your toddler twists, tilts, or bumps the bowl. Promotes Independent Eating: Helps toddlers develop self-feeding skills without constant supervision.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/NWo6AalE.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/0mKZQEL5.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/EyBG54lz.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/2fxGonfB.webp"
+   ],
+   "categories": [
+    "Baby Bibs Collection"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Hot & Cold Therapy Bag – Hot Water & Ice Bag for Pain Relief and Muscle Soothing",
+   "price": 200,
+   "mrp": 550,
+   "description": "Relieve pain quickly with the Hot & Cold Therapy Bag – Hot Water & Ice Bag for Pain Relief. Designed for fast, effective cold therapy, this bag helps reduce bruises, muscle aches, sprains, strains, swelling, and minor injuries while promoting faster recovery. Made from durable, waterproof rubberized fabric with a secure screw cap, this ice and hot water bag is refillable, reusable, and long-lasting. Its soft, flexible design conforms to any body part, providing comfortable coverage for joints, muscles, stomach, or sinus areas.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/42jspYfp.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/xlj7UvFo.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/G1afOC1p.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/YswYQp9F.webp"
+   ],
+   "categories": [
+    "Relax & Revive"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Felt Tote Bag, 30x20x10 cm, Cartoon Design Shopping Basket Organizer for Beach Travel Toys",
+   "price": 300,
+   "mrp": 900,
+   "description": "Step out in style with this adorable Kawaii Plush Pom-Pom Handbag! Designed felt material, playful pom-poms, and a cute 3D cartoon figure, this bag blends fashion with fun. It’s spacious enough to hold all your daily essentials — from makeup and accessories to your water bottle and mini gadgets. Perfect for school, casual outings, or as a gift for someone who loves all things cute and trendy!",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/qflOs341.webp"
+   ],
+   "categories": [
+    "Trending Toys"
+   ],
+   "featured": false
+  },
+  {
+   "name": "UnV EMS Foot Massager – Pain Relief, Circulation Boost & Relaxation Therapy Device",
+   "price": 210,
+   "mrp": 900,
+   "description": "Experience ultimate foot relaxation and pain relief with the UnV EMS Foot Massager, designed to soothe tired feet, improve blood circulation, and relieve discomfort from long hours of standing or walking. Using advanced EMS (Electrical Muscle Stimulation) technology, this device stimulates muscles, reduces tension, and promotes overall foot wellness. Pain Relief & Muscle Relaxation: Effectively eases foot pain, plantar fasciitis discomfort, soreness, and fatigue. Improves Blood Circulation: EMS pulses help stimulate blood flow, supporting faster recovery and healthier feet.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/ARJghlIm.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/cQY5Y2ar.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/92fqtx7n.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/gMycnmjC.webp"
+   ],
+   "categories": [
+    "Relax & Revive"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Water Bed Baby Kids Water Play Mat Toys Inflatable Tummy Time Leak-Proof Water Play",
+   "price": 190,
+   "mrp": 800,
+   "description": "Inflatable Baby Water Play Mat – Leak-Proof Tummy Time Sensory Water Toy for Kids Keep your little ones cool, engaged, and entertained this summer with our premium inflatable baby water play mat. Designed for tummy time, sensory play, and safe water fun, this mat combines durability, safety, and portability for endless hours of play. Key Features: Safe & Non-Toxic: Made from BPA-free, eco-friendly PVC to ensure your child’s safety. Thick, durable material withstands pressure and prevents leaks, giving parents peace of mind.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/zeRPmQ1m.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/6mTfusBN.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/nuypzqwA.jpeg"
+   ],
+   "categories": [
+    "Baby Bibs Collection"
+   ],
+   "featured": false
+  },
+  {
+   "name": "16-Color Changing Rose Crystal Diamond Table Lamp – LED Decorative Night Light for Bedroom & Living Room",
+   "price": 270,
+   "mrp": 1499,
+   "description": "16-Color Changing Rose Crystal Diamond Table Lamp – LED Romantic Decorative Night Light Elevate the ambiance of your home with this modern rose crystal table lamp, featuring a luxurious diamond-inspired design and 16-color RGB LED lighting. Crafted from high-quality thick acrylic, its 3D rose crystal shape adds elegance and charm to any space. Perfect for bedrooms, living rooms, dining tables, or as a romantic gift, this lamp combines style, functionality, and versatility.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/AvdlYMX2.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/24q9O7aN.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/jWaawPHs.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/9vTFU3Md.jpeg"
+   ],
+   "categories": [
+    "Home Essentials Collection",
+    "Perfect Presents"
+   ],
+   "featured": false
+  },
+  {
+   "name": "12-Inch LCD Writing Tablet for Kids – Big Screen Drawing & Writing Slate Pad",
+   "price": 220,
+   "mrp": 799,
+   "description": "12-Inch LCD Writing Tablet for Kids – Big Screen Drawing & Writing Slate Encourage creativity, learning, and organization with this 12-inch LCD Writing Tablet for Kids. Perfect for writing, drawing, making lists, reminders, and even playing games like tic-tac-toe, this eco-friendly and reusable writing pad is ideal for home, school, office, or travel. Key Features: Multi-Purpose Use: Ideal for writing, drawing, note-taking, memos, reminders, and simple games. Easy Erase Function: Clear the screen instantly with the press of a button, making it ready for reuse again and again.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/LcRDrRbz.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/Na8n7beV.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/6JQNYEaZ.jpeg",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/NiyRWuuA.jpeg"
+   ],
+   "categories": [
+    "Trending Toys"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Crystal Ball LED Light – Color-Changing Decorative Magic Sphere for Home, Parties & Events",
+   "price": 229,
+   "mrp": 1000,
+   "description": "Light up your celebrations with the Multicolor Golden Jumbo LED Disco Bulb, a high-performance rotating party light designed to create a vibrant, fun, and festive atmosphere. Perfect for home parties, Diwali celebrations, clubs, pubs, dance floors, and birthday events, this disco bulb turns any space into a dazzling light show. Key Features: Multicolor LED Projection: Emits red, blue, and green lights that rotate and change automatically, producing strobe and disco effects for an immersive party experience.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/71hz6nBe.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/DiqJkd30.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/pVCuNL0M.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/X0t9qaSw.webp"
+   ],
+   "categories": [
+    "Home Essentials Collection",
+    "Perfect Presents"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Holi Magic Bunch Water Balloon Kit – 60-Second Fast-Fill & Tie Balloons for Festival Fun",
+   "price": 150,
+   "mrp": 450,
+   "description": "Make your Holi celebrations, birthday parties, or outdoor fun more exciting with the Holi Magic Bunch Water Balloon Kit. This innovative kit allows you to fill and tie multiple water balloons in just 60 seconds, saving time and effort while maximizing fun. Quick & Easy Water Balloons No more tedious filling and tying! With the magic bunch design, you can fill dozens of balloons simultaneously, making it perfect for kids, friends, and family gatherings.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/T0tVeHRG.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/qKICpm0f.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/vIYedWMg.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/2ADxTsVW.webp"
+   ],
+   "categories": [
+    "Perfect Presents"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Neck & Shoulder Massage Tool – Manual Cervical Massager with Dual-Point Roller for Pain Relief",
+   "price": 190,
+   "mrp": 900,
+   "description": "Experience the ultimate neck and shoulder relaxation with the Upgraded Roller Ball Manual Neck Massager, designed to provide a customizable, deep tissue massage anytime, anywhere. Equipped with 6 rotating silicone massage balls, this massager adjusts 360° to your preferred angle, delivering precise pressure and relief to sore, stiff muscles. Deep Tissue & Targeted Muscle Relief The dual-purpose design allows you to squeeze, knead, and press your neck, shoulders, back, and legs, helping to release tension, reduce fatigue, and improve blood circulation.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/q5a6Q5CV.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/dPIlvXz1.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/s3gxNEr5.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/v6MBNmfs.webp"
+   ],
+   "categories": [
+    "Relax & Revive",
+    "Comfort & Care"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Foldable 3-Layer Egg Tray – 24-Grid Flip-Type Egg Storage Box for Fridge Organization",
+   "price": 220,
+   "mrp": 900,
+   "description": "Keep your eggs fresh, organized, and easily accessible with this foldable 3-layer egg tray, designed to hold up to 24 eggs. Its innovative flip-type design allows you to access each layer effortlessly, making egg storage convenient and efficient. Rotary & Space-Saving Design Featuring a rotary layer system, this egg tray lets you reach eggs easily without rearranging your fridge contents. The stackable and compact design maximizes space in your refrigerator, countertop, or cabinet, helping you maintain a tidy kitchen.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/vtFjBT16.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/lQKCM8KP.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/PfxI4PuQ.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/QSuDkfC4.webp"
+   ],
+   "categories": [
+    "Kitchen Creations",
+    "Smart Space Savers"
+   ],
+   "featured": false
+  },
+  {
+   "name": "CD Drawing Pen Case – Kids Writing Tablet with Eye Protection, Lock Function & One-Key Erase",
+   "price": 150,
+   "mrp": 500,
+   "description": "Unleash your creativity with this compact 21.5cm x 11.5cm LCD writing tablet, perfect for doodling, sketching, note-taking, and drawing anytime, anywhere. Lightweight and portable, it’s ideal for kids, students, artists, and professionals on the go. Eco-Friendly & Sustainable Say goodbye to wasted paper! This energy-efficient LCD tablet helps reduce paper consumption, making it an eco-friendly solution for everyday writing and drawing.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/dbZNVP4v.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/pCfzCW2Q.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/u6LWVONP.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/GVbBsMEZ.webp"
+   ],
+   "categories": [
+    "Trending Toys"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Cute Keychain for Keys & Bags – Stylish Bag Charm Accessory for Kids & Adults",
+   "price": 150,
+   "mrp": 300,
+   "description": "Keep your keys organized in style with this 3-Pcs Cute Keychain Combo, perfect for keys, bags, or as a trendy accessory. Designed for both functionality and fashion, these keychains make it easy to keep your essentials together while adding a touch of personality to your belongings. Ideal as a gift or for personal use, this set combines practicality with style. Key Features: Organize Your Keys: Keeps keys secure and easy to find, preventing loss. Novelty & Fun Designs: Features unique themes, animals, symbols, or cute characters for a personalized touch.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/YrVA5H2K.webp"
+   ],
+   "categories": [
+    "Perfect Presents"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Travel Makeup Bag 16” – Large Capacity Cosmetic Vanity Box with Adjustable Dividers for Easy Organization",
+   "price": 450,
+   "mrp": 1700,
+   "description": "Keep all your beauty essentials organized on the go with the Travel Makeup Bag 16” – Large Capacity Cosmetic Vanity Box. Designed for makeup enthusiasts and professionals, this spacious bag features adjustable dividers to neatly store cosmetics, brushes, skincare products, and accessories. Its durable construction and sturdy handle make it perfect for travel, daily use, or professional makeup kits. The sleek design combines functionality and style, ensuring your makeup stays protected and easily accessible.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/qPDGQJN5.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/IEmf7ydN.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/nTtEXAFE.webp"
+   ],
+   "categories": [
+    "Smart Space Savers"
+   ],
+   "featured": false
+  },
+  {
+   "name": "3-Piece Airtight Food Storage Container Set – Kitchen Storage Boxes for Dry & Wet Ingredients",
+   "price": 599,
+   "mrp": 900,
+   "description": "3-Piece Airtight Food Storage Container Set – Kitchen Storage Boxes for Dry & Wet Ingredients Keep your kitchen organized and your food fresh with this 3-piece airtight food storage container set. Designed for both dry and wet ingredients, these containers are perfect for storing cereals, grains, pulses, snacks, spices, sauces, and more. Made from high-quality, durable material, they ensure long-lasting use while preventing leaks and spills. Key Features: Airtight & Leakproof: Maintains freshness and prevents moisture or odor from affecting your food.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/YWjPEmXM.webp"
+   ],
+   "categories": [
+    "Smart Space Savers"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Wooden Vase Aroma Diffuser & Cool Mist Humidifier – Large Wooden Pot for Home, Office & Relaxation",
+   "price": 270,
+   "mrp": 600,
+   "description": "Wooden Aroma Diffuser & Cool Mist Humidifier – Large Wooden Pot for Home & Office Transform your space into a relaxing and refreshing environment with this wooden vase aroma diffuser and cool mist humidifier. Perfect for home, office, yoga studios, or meditation spaces, it combines functionality with elegant design. Elegant Wooden Design – Crafted as a stylish vase pot, this diffuser doubles as a decorative piece, blending seamlessly with any home or office interior.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/e9RGEaGb.webp"
+   ],
+   "categories": [
+    "Relax & Revive",
+    "Home Essentials Collection",
+    "Tech & Trend"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Vacuum Storage Bag – Space-Saving, Reusable, Air-Tight Compression Bag for Clothes & Bedding",
+   "price": 390,
+   "mrp": 1000,
+   "description": "Vacuum Storage Bag – Space-Saving, Reusable, Air-Tight Compression Organizer Maximize your storage space and keep your clothes, bedding, and seasonal items neatly organized with this high-quality vacuum storage bag. Perfect for home, travel, or dorm rooms, it provides an easy and efficient way to declutter and protect your belongings. Space-Saving Compression – Reduce bulky clothes, blankets, pillows, and quilts by up to 75% with its airtight design, making more room in your closets, drawers, or luggage. Reusable & Durable – Made with premium, heavy-duty materials to withstand repeated use.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/HFPoxV02.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/EbKCoTGU.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/MBYBshiM.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/utsgaiJO.webp"
+   ],
+   "categories": [
+    "Home Essentials Collection",
+    "Travel Essentials",
+    "Smart Space Savers"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Fridge & Freezer Storage Boxes – Kitchen Food Storage Containers for Organization & Freshness",
+   "price": 340,
+   "mrp": 900,
+   "description": "Fridge & Freezer Storage Boxes – Kitchen Food Storage Containers for Organization & Freshness Keep your refrigerator neat, organized, and your food fresh with these high-quality fridge storage boxes. Designed for durability and convenience, these containers are perfect for storing fruits, vegetables, leftovers, and other kitchen essentials. Ideal for home kitchens, offices, and even restaurants, they help maximize fridge space and make food storage hassle-free. Key Features: High-Quality Material: Made from durable, BPA-free plastic for long-lasting use.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/rLacipCm.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/tyUy8vck.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/PrBwydLT.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/PWgB5hTy.webp"
+   ],
+   "categories": [
+    "Kitchen Creations",
+    "Smart Space Savers"
+   ],
+   "featured": false
+  },
+  {
+   "name": "3-Layer Jewellery Organizer Box with 18 Grids – Transparent Plastic Storage Case for Rings, Earrings & Accessories",
+   "price": 350,
+   "mrp": 500,
+   "description": "3-Layer Jewellery Organizer Box with 18 Grids – Transparent Multipurpose Storage Case for Accessories & Essentials Keep your essentials neatly organized with this 3-Layer Jewellery Organizer Box, designed with 18 grid compartments for efficient storage and easy access. Made from high-quality transparent plastic, this organizer allows you to quickly locate your items while keeping them safe and clutter-free. Key Features: 3-Layer Detachable Design: Convenient multi-layer structure helps you organize and classify small items like jewellery, cosmetics, and accessories.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/Ah6C2iK8.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/LuwHlkAn.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/qWvZw6Xk.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/FZjfgCAN.webp"
+   ],
+   "categories": [
+    "Smart Space Savers"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Clipboard File Cover Folder – Paper Pad Organizer with Clip for Office & School",
+   "price": 320,
+   "mrp": 600,
+   "description": "Stay organized and professional with this Clipboard File Cover Folder with Paper Pad Organizer, designed for office, school, and professional use. Featuring a handy storage compartment with clasp, it can securely hold up to 70 A4 sheets, documents, and stationery, making it an ideal companion for students, teachers, office-goers, and inspectors. Crafted from high-quality polypropylene, this clipboard is durable, sturdy, and lightweight, protecting your papers from creases and damage while remaining portable and travel-friendly.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/z12LFtC6.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/yVPc5kut.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/VfeGAR1E.webp"
+   ],
+   "categories": [
+    "Smart Space Savers"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Transparent Foldable Shoe Bag – Dustproof Shoe Organizer, Storage Box & Shoe Cover for Travel & Home",
+   "price": 499,
+   "mrp": 900,
+   "description": "Keep your shoes and belongings organized with our Transparent Foldable Shoe Bag – Dustproof Shoe Organizer & Storage Box. Made with high-quality PVC and a sturdy steel frame, this shoe storage box is durable, foldable, and space-saving, perfect for every home. The transparent cover allows you to easily see and access your shoes without opening the box. Its extra-large capacity and double-handle design make storing and retrieving shoes effortless. The two-way zipper ensures secure closure while keeping your shoes dust-free and protected.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/XeUDDqjd.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/DvLbwCnz.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/K8RWH2sV.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/N1DiBsTy.webp"
+   ],
+   "categories": [
+    "Home Essentials Collection",
+    "Smart Space Savers"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Premium Transparent Glass Set – 6pcs Stylish Juice, Water & Whisky Glasses",
+   "price": 449,
+   "mrp": 2000,
+   "description": "Premium Transparent Glass Set – 6pcs Stylish Juice, Water & Whisky Glasses Elevate your drinking experience with this Premium Transparent Glass Set, crafted for style, durability, and versatility. Made from high-quality, non-toxic clear glass, these glasses are perfect for serving juice, water, cocktails, wine, whisky, and more. Ideal for everyday use, special occasions, or professional settings like restaurants and bars, they combine elegance with practicality.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/oIrCJJ1l.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/fJCTdj68.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/kJcyySO5.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/5ClcljE8.webp"
+   ],
+   "categories": [
+    "Kitchen Creations",
+    "Home Essentials Collection",
+    "Perfect Presents"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Wooden Piggy Bank – Money Saving Box Gullak for Kids & Adults (Without Marker)",
+   "price": 250,
+   "mrp": 1000,
+   "description": "Wooden Piggy Bank – Money Saving Box Gullak with Savings Tracker Encourage smart saving habits with this Wooden Piggy Bank, a beautifully crafted money saving box (gullak) designed for both kids and adults. Featuring a detailed savings tracker, it helps you monitor progress toward your financial goals, making it easier and more motivating to save regularly. Key Features: Savings Tracker: Detailed chart to track progress toward a goal of ₹1,00,000 with small, consistent deposits.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/AQwzm4YL.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/4X58aej5.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/CC12V0aD.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/39yHOgea.webp"
+   ],
+   "categories": [
+    "Perfect Presents"
+   ],
+   "featured": false
+  },
+  {
+   "name": "3-in-1 Facial Massager for Face & Neck – Anti-Wrinkle Skin Tightening for Women",
+   "price": 400,
+   "mrp": 958,
+   "description": "3-in-1 Facial Massager for Face & Neck – Anti-Wrinkle, Skin Tightening & Eye Care Device Elevate your skincare routine with the 3-in-1 Facial Massager, specially designed for the face, neck, and eyes. This advanced anti-aging device combines three functions in one, helping to reduce fine lines, wrinkles, and sagging, while promoting blood circulation, lymphatic drainage, and skin rejuvenation. Key Features: 3-in-1 Anti-Aging Device: Provides comprehensive care for the face, neck, and eye area, tightening and lifting skin contours.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/qtLMhEL1.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/CWzGADcT.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/bI1wh8p9.webp"
+   ],
+   "categories": [
+    "Pamper & Polish",
+    "Relax & Revive"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Back Support Cushion – Ultimate Solution for Back Pain Relief & Posture Support",
+   "price": 199,
+   "mrp": 3000,
+   "description": "Back Support Cushion – Ultimate Solution for Back Pain Relief & Posture Support Say goodbye to back discomfort and improve your posture with the Back Support Cushion, designed for all-day comfort and ergonomic support. Perfect for office chairs, car seats, or home use, this cushion helps relieve lower back pain, reduce fatigue, and support proper spinal alignment. Key Features: Ergonomic Design: Supports the natural curve of your spine to reduce back strain. Pain Relief: Helps alleviate chronic back pain, sciatica, and discomfort from long sitting hours.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/edUErYcq.webp"
+   ],
+   "categories": [
+    "Comfort & Care",
+    "Perfect Presents"
+   ],
+   "featured": true
+  },
+  {
+   "name": "Spacamaxx Storage Bag – Portable Space-Saving Organizer for Clothes & Bedding",
+   "price": 420,
+   "mrp": 600,
+   "description": "Keep your home neat, organized, and clutter-free with the Spacamaxx Storage Bag, the perfect space-saving solution for clothes, bedding, blankets, quilts, and other essentials. Designed for durability and portability, this storage bag makes it easy to store, carry, and protect your items all year round. Made from high-quality, wear-resistant materials, the bag is lightweight yet strong, keeping your belongings safe from dust, moisture, and dirt.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/VRpFvxkh.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/CsOhtdXo.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/Pol89usH.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/oBgfXNur.webp"
+   ],
+   "categories": [
+    "Home Essentials Collection",
+    "Smart Space Savers"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Cool Cup 550ml Water Bottle with Wheel – Portable Travel & Sports Drink Bottle",
+   "price": 400,
+   "mrp": 1000,
+   "description": "Cool Cup 550ml Water Bottle with Wheel – Portable Travel & Sports Drink Bottle Stay hydrated on the go with the Cool Cup 550ml Water Bottle with Wheel, designed for travel, sports, and everyday use. Its innovative wheel design allows easy portability, making it perfect for children, students, gym-goers, and travelers. Made from high-quality, durable materials, this bottle is lightweight, leak-proof, and ideal for both hot and cold beverages. Key Features: Innovative Wheel Design: Roll your bottle easily for effortless portability.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/YoRPOxuj.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/EuVBUe5i.webp"
+   ],
+   "categories": [
+    "Baby Bibs Collection"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Panda Silicone Night Light Lamp – Soft Touch LED Lamp for Kids Bedroom & Nursery",
+   "price": 330,
+   "mrp": 1000,
+   "description": "Panda Silicone Night Light Lamp – Soft Touch LED Lamp for Kids Bedroom & Nursery Create a cozy and comforting atmosphere with the Panda Silicone Night Light Lamp, designed to bring warmth and safety to your child’s bedroom or nursery. Made from soft, food-grade silicone, this night lamp is gentle to touch, lightweight, and safe for kids of all ages. Its soft LED glow provides soothing illumination, perfect for bedtime, reading, or nighttime comfort. Key Features: Adorable Panda Design: Cute and playful shape adds charm to kids’ bedrooms or nurseries.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/fqNiNmG4.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/7wdBMoP0.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/dlfqY54S.webp"
+   ],
+   "categories": [
+    "Perfect Presents"
+   ],
+   "featured": false
+  },
+  {
+   "name": "5D Shiatsu Neck & Back Shoulder Massager – Deep Tissue Kneading Roller Massager for Pain Relief",
+   "price": 1050,
+   "mrp": 2000,
+   "description": "Enjoy a relaxing and therapeutic massage at home with the 5D Shiatsu Neck & Back Shoulder Massager – Deep Tissue Kneading Roller Massager with Heat for Pain Relief. Designed with advanced massage technology, this massager simulates the feeling of a real human hand to deliver deep and effective muscle relaxation for your neck, shoulders, and upper back. Featuring innovative 3D kneading massage technology, the device includes 6 powerful massage heads that mimic professional massage techniques such as pressing, kneading, patting, and rolling.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/UbuEfag5.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/ldZNW20S.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/wkQ2tvd4.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/5PO39ILF.webp"
+   ],
+   "categories": [
+    "Relax & Revive",
+    "Tech & Trend"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Deep Tissue Massage Gun with 6 Speed Levels – Portable Muscle Massager for Pain Relief & Fitness Recovery",
+   "price": 550,
+   "mrp": 1000,
+   "description": "Relieve muscle tension and improve recovery with the Deep Tissue Massage Gun with 6 Speed Levels – Portable Muscle Massager for Pain Relief & Fitness Recovery. Designed for athletes, fitness enthusiasts, and everyday users, this powerful massage gun helps reduce muscle soreness, improve blood circulation, and promote faster recovery after workouts or long working hours. Equipped with advanced percussion massage technology, this device delivers deep and targeted muscle therapy to help relax tight muscles and relieve body pain.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/AYppvPff.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/zpIK0FEk.webp"
+   ],
+   "categories": [
+    "Pamper & Polish",
+    "Relax & Revive",
+    "Comfort & Care"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Wardrobe Storage Bag Organizer Pack of 2 – Foldable Cloth Storage Boxes with Metal Frame for Clothes & Blankets",
+   "price": 779,
+   "mrp": 1100,
+   "description": "Keep your home neat and organized with this Wardrobe Storage Bag Organizer (Pack of 2), designed to store clothes, blankets, bedding, and seasonal garments safely. Made from premium quality Oxford fabric, these storage bags are strong, durable, and ideal for long-term use in wardrobes, cupboards, or under-bed storage. The moisture-proof laminated inner layer protects your clothes from dust, moisture, and moths, ensuring that your garments remain clean, fresh, and well protected.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/fCrptEmn.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/TE3TsOde.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/Li6QyOne.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/oNNvjv3r.webp"
+   ],
+   "categories": [
+    "Smart Space Savers"
+   ],
+   "featured": false
+  },
+  {
+   "name": "6-Speed Rechargeable Facial Massage Gun – Cordless Handheld Face & Muscle Massager for Skin Care & Pain Relief",
+   "price": 700,
+   "mrp": 2000,
+   "description": "Experience professional-level relaxation at home with the 6-Speed Rechargeable Facial Massage Gun, a powerful yet compact device designed to help relieve muscle tension, improve blood circulation, and promote skin relaxation. This cordless handheld massager uses gentle percussion technology to target facial muscles and small muscle groups, helping reduce fatigue and enhance overall comfort.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/0MLYlZxk.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/ovMlLTUw.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/iOiR6fdB.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/KOLrCKKj.webp"
+   ],
+   "categories": [
+    "Relax & Revive"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Foldable Storage Cubes Organizer Pack of 2 – Fabric Storage Baskets with Handles for Closet, Clothes, Toys & Shelves",
+   "price": 579,
+   "mrp": 900,
+   "description": "Keep your home neat and organized with the Foldable Storage Cubes Organizer with Handles (Pack of 2), a practical and stylish solution for everyday storage needs. Designed to maximize space and reduce clutter, these storage baskets are perfect for organizing clothes, toys, books, towels, accessories, and household items in closets, shelves, wardrobes, or living spaces. Made from high-quality durable fabric, these storage cubes provide long-lasting performance while maintaining a lightweight and portable design.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/KIkt3tkS.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/U6XnukPT.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/w9JKbzY9.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/Snmfo3JS.webp"
+   ],
+   "categories": [
+    "Home Essentials Collection",
+    "Smart Space Savers"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Baby U Brush – Soft Silicone Toothbrush for Infants & Toddlers 0-3 Years, BPA-Free, Gentle Gum Care & Teething Aid",
+   "price": 110,
+   "mrp": 280,
+   "description": "Make brushing fun, safe, and effective with the Divayanshi Baby U Brush 360° Silicone Toothbrush, specially designed for kids aged 2–6 years. This innovative baby toothbrush combines gentle cleaning, playful design, and advanced safety features to help build lifelong oral hygiene habits from an early age. 360° Whole Mouth Cleaning The unique 360° soft bristle head ensures complete oral cleaning from every angle without the need for complicated wrist movements. It reaches all areas of the mouth, making brushing easier and more effective for young children.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/dp9FVdwZ.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/v38IT0qj.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/26VZ4NWa.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/fjQu53i0.webp"
+   ],
+   "categories": [
+    "Baby Bibs Collection"
+   ],
+   "featured": false
+  },
+  {
+   "name": "Microfiber Baby Bath Towel – Super Absorbent, Ultra Soft & Fade-Resistant (Zig-Zag Design)",
+   "price": 200,
+   "mrp": 699,
+   "description": "Microfiber Bath Towel – Super Absorbent, Soft, Lightweight & Anti-Odour (44” x 19”) Experience the perfect blend of absorbency, softness, and convenience with this premium microfiber bath towel. Designed to quickly and effectively dry your body and hair, it offers higher absorbency than traditional cotton towels, making your bath and shower routine faster and more comfortable. Key Features: Super Absorbent: Quickly dries your body and hair thanks to high-absorbency microfiber, outperforming regular cotton towels. Perfect for babies, kids, or adults.",
+   "images": [
+    "https://cdn.dotpe.in/longtail/store-items/5656117/UlpHp9nU.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/pB6f55vL.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/XbsOkllm.webp",
+    "https://cdn.dotpe.in/longtail/store-items/5656117/yguzHSkB.webp"
+   ],
+   "categories": [
+    "Baby Bibs Collection"
    ],
    "featured": false
   }
