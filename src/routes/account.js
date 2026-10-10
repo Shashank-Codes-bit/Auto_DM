@@ -1,10 +1,12 @@
 import express from 'express';
 import { safeNext } from '../auth.js';
-import { ValidationError } from '../util.js';
+import { ValidationError, normalizePhone } from '../util.js';
 import { accountPage, loginPage, signupPage } from '../views/store.js';
 
 /** Login, signup and "My account" for everyone. The owner uses the same login and lands in /admin. */
-export function accountRoutes({ repos, auth }) {
+export function accountRoutes({ repos, auth, config }) {
+  // The .env owner's password comes from ADMIN_PASSWORD and is reset on every start.
+  const isEnvOwner = (user) => user.role === 'admin' && Boolean(config?.adminPhone) && user.phone === normalizePhone(config.adminPhone);
   const r = express.Router();
   const page = (res, view, status = 200) => res.status(status).type('html').send(String(view));
   const home = (user) => (user.role === 'admin' ? '/admin' : '/account');
@@ -76,6 +78,7 @@ export function accountRoutes({ repos, auth }) {
     page(res, accountPage({
       settings: await repos.settings.getAll(),
       user: req.user,
+      isEnvOwner: isEnvOwner(req.user),
       csrf: req.csrf,
       orders: await repos.orders.listForUser(req.user.id),
       flash: req.query.saved ? 'Your password was updated.' : '',
@@ -86,11 +89,11 @@ export function accountRoutes({ repos, auth }) {
     const renderError = async (message) => {
       const settings = await repos.settings.getAll();
       const orders = await repos.orders.listForUser(req.user.id);
-      const view = String(accountPage({ settings, user: req.user, csrf: req.csrf, orders }));
+      const view = String(accountPage({ settings, user: req.user, isEnvOwner: isEnvOwner(req.user), csrf: req.csrf, orders }));
       // Show the problem above the password form without a separate page.
       page(res, view.replace('<h2>Change password</h2>', `<h2>Change password</h2><p class="form-error" role="alert">${message}</p>`), 400);
     };
-    if (req.user.role === 'admin') return renderError('The owner password is set in .env (ADMIN_PASSWORD).');
+    if (isEnvOwner(req.user)) return renderError('The owner password is set in .env (ADMIN_PASSWORD).');
     if (auth.tooManyAttempts(req)) return renderError('Too many tries. Wait 15 minutes and try again.');
     if (!(await repos.users.verify(req.user.phone, req.body.current))) {
       auth.recordFailure(req);

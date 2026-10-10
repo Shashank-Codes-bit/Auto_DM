@@ -65,6 +65,15 @@ export function usersRepo(db) {
       validatePassword(password);
       await db.query('UPDATE users SET password_hash = $2 WHERE id = $1', [Number(id), await hashPassword(password)]);
     },
+    /** Only the server command (scripts/role.js) and ensureOwner change roles; signup always makes customers. */
+    async setRole(id, role) {
+      if (!['admin', 'customer'].includes(role)) throw new ValidationError('Role must be admin or customer');
+      await db.query('UPDATE users SET role = $2 WHERE id = $1', [Number(id), role]);
+      return this.get(id);
+    },
+    async listAdmins() {
+      return db.query(`SELECT ${PUBLIC} FROM users WHERE role = 'admin' ORDER BY created_at`);
+    },
     async saveAddress(id, address) {
       await db.query('UPDATE users SET address = $2 WHERE id = $1', [Number(id), JSON.stringify(address)]);
     },

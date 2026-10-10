@@ -424,8 +424,7 @@ export function checkoutPage({ settings, user, csrf = '' }) {
   <h1>Checkout</h1>
   <div class="checkout-grid">
     <form class="form" data-checkout data-csrf="${csrf}" novalidate>
-      ${user ? html`<p class="signed-in">Ordering as <strong>${user.name}</strong> (${user.phone}). Your details are filled in from your last order.</p>`
-        : html`<p class="signed-in">Have an account? <a class="link" href="/login?next=/checkout">Log in</a> for faster checkout.</p>`}
+      <p class="signed-in">Ordering as <strong>${user.name}</strong> (${user.phone}).${user.address ? ' Your details are filled in from your last order.' : ''}</p>
       <h2>Delivery details</h2>
       <label>Full name<input name="name" autocomplete="name" required maxlength="80" value="${v('name', user?.name || '')}"></label>
       <label>Mobile number<input name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" required placeholder="10-digit number" value="${v('phone', user?.phone || '')}"></label>
@@ -436,10 +435,6 @@ export function checkoutPage({ settings, user, csrf = '' }) {
         <label>City<input name="city" autocomplete="address-level2" required value="${v('city')}"></label>
         <label>State<input name="state" autocomplete="address-level1" required value="${v('state')}"></label>
       </div>
-      ${user ? '' : html`<div class="create-acct">
-        <label><span>Create a password <span class="opt">(optional)</span></span><input name="password" type="password" autocomplete="new-password" minlength="6" placeholder="At least 6 characters"></label>
-        <p class="fine">Add a password to save your details and track your orders from your account.</p>
-      </div>`}
       <p class="form-error" data-form-error role="alert" hidden></p>
       <button type="submit" class="btn btn-gold btn-wide btn-lg" data-place-order>Place order</button>
       <p class="fine" style="text-align:center">You'll pay on the next screen with any UPI app.</p>
@@ -496,6 +491,7 @@ export function loginPage({ settings, error = '', next = '/', phone = '' }) {
   const body = html`
 <section class="auth">
   <h1>Log in</h1>
+  ${next === '/checkout' ? html`<p class="muted" style="margin:-6px 0 0">Log in or create an account to place your order. Your bag is saved.</p>` : ''}
   <form class="form" method="post" action="/login">
     <input type="hidden" name="next" value="${next}">
     <label>Mobile number<input name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" required value="${phone}" placeholder="10-digit number"></label>
@@ -513,7 +509,7 @@ export function signupPage({ settings, error = '', next = '/', values = {} }) {
   const body = html`
 <section class="auth">
   <h1>Create your account</h1>
-  <p class="muted" style="margin:-6px 0 0">Track your orders and check out faster next time.</p>
+  <p class="muted" style="margin:-6px 0 0">${next === '/checkout' ? 'One quick step before you place your order. Your bag is saved.' : 'Track your orders and check out faster next time.'}</p>
   <form class="form" method="post" action="/signup">
     <input type="hidden" name="next" value="${next}">
     <label>Your name<input name="name" autocomplete="name" required maxlength="80" value="${values.name || ''}"></label>
@@ -527,7 +523,7 @@ export function signupPage({ settings, error = '', next = '/', values = {} }) {
   return storeLayout({ settings, user: null, title: 'Create account', body, nav: 'account' });
 }
 
-export function accountPage({ settings, user, csrf, orders, flash = '' }) {
+export function accountPage({ settings, user, isEnvOwner = false, csrf, orders, flash = '' }) {
   const a = user.address;
   const body = html`
 <section class="account">
@@ -536,7 +532,7 @@ export function accountPage({ settings, user, csrf, orders, flash = '' }) {
     <form method="post" action="/logout"><input type="hidden" name="_csrf" value="${csrf}"><button class="btn btn-line" type="submit">Log out</button></form>
   </div>
   ${flash ? html`<p class="form-ok" role="status">${flash}</p>` : ''}
-  ${user.role === 'admin' ? html`<div class="panel"><h2>You're the store owner</h2><p style="margin:0">Manage products, reels and orders in the admin panel.</p><a class="btn btn-gold" href="/admin">Open admin</a></div>` : ''}
+  ${user.role === 'admin' ? html`<div class="panel"><h2>You're a store admin</h2><p style="margin:0">Manage products, reels and orders in the admin panel.</p><a class="btn btn-gold" href="/admin">Open admin</a></div>` : ''}
   <div class="panel">
     <h2>Your orders</h2>
     ${orders.length ? orders.map((o) => html`<a class="order-row" href="/order/${o.public_token}">
@@ -549,7 +545,7 @@ export function accountPage({ settings, user, csrf, orders, flash = '' }) {
     ${a ? html`<p class="addr">${a.name}<br>${a.address}<br>${a.city}, ${a.state} ${a.pincode}<br>${a.phone}</p><p class="fine">This is filled in at checkout. It updates every time you order.</p>`
       : html`<p class="muted" style="margin:0">Your address is saved when you place your first order.</p>`}
   </div>
-  ${user.role === 'admin' ? html`<div class="panel"><h2>Your password</h2><p class="muted" style="margin:0">As the owner, your password is ADMIN_PASSWORD in the server's .env file. Change it there and restart the app.</p></div>` : html`<div class="panel">
+  ${isEnvOwner ? html`<div class="panel"><h2>Your password</h2><p class="muted" style="margin:0">As the owner, your password is ADMIN_PASSWORD in the server's .env file. Change it there and restart the app.</p></div>` : html`<div class="panel">
     <h2>Change password</h2>
     <form class="form" method="post" action="/account/password">
       <input type="hidden" name="_csrf" value="${csrf}">

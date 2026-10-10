@@ -251,13 +251,14 @@
           headers: { 'Content-Type': 'application/json', 'x-csrf-token': form.dataset.csrf || '' },
           body: JSON.stringify({
             items: bag.items.map((i) => ({ productId: i.productId, option: i.option, qty: i.qty })),
-            customer: Object.fromEntries([...new FormData(form)].filter(([k]) => k !== 'password')),
-            password: form.elements.password?.value || '',
+            customer: Object.fromEntries(new FormData(form)),
             reelSlug: bag.reelSlug,
             source: bag.source,
           }),
         });
         const data = await res.json().catch(() => ({}));
+        // Logged out in another tab: log in again; the bag stays in this browser.
+        if (res.status === 401) return void (location.href = '/login?next=/checkout');
         if (!res.ok) throw new Error(data.error || 'Couldn’t place the order. Check your details and try again.');
         bag = { items: [], reelSlug: '', source: '' };
         save(bag);

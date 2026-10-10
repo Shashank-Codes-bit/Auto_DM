@@ -10,6 +10,7 @@
   "scripts": {
     "start": "node src/server.js",
     "seed": "node scripts/seed.js",
+    "role": "node scripts/role.js",
     "test": "node --test test/*.test.js"
   },
   "dependencies": {

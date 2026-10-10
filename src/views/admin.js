@@ -643,7 +643,7 @@ ${customers.length ? html`
 <div class="table-wrap"><table>
   <thead><tr><th>Customer</th><th>Mobile</th><th class="num">Orders</th><th class="num">Spent</th><th>Joined</th><th></th></tr></thead>
   <tbody>${customers.map((u) => html`<tr>
-    <td>${u.name}${u.role === 'admin' ? html` <span class="chip chip-new">Owner</span>` : ''}${u.email ? html`<small>${u.email}</small>` : ''}</td>
+    <td>${u.name}${u.role === 'admin' ? html` <span class="chip chip-new">Admin</span>` : ''}${u.email ? html`<small>${u.email}</small>` : ''}</td>
     <td><a href="https://wa.me/91${u.phone}">${u.phone}</a></td>
     <td class="num">${u.order_count ? html`<a href="/admin/orders?search=${u.phone}">${u.order_count}</a>` : 0}</td>
     <td class="num">${formatMoney(Number(u.spent))}</td>

@@ -62,9 +62,11 @@ test('shopper flow: store page, place order, pay page with QR', async () => {
     assert.equal(store.status, 200);
     assert.match(await store.text(), /Product 1/);
 
+    await app.repos.users.create({ name: 'Asha K', phone: '9876543210', password: 'secret1' });
+    const { cookie, csrf } = await login(app.base, { phone: '9876543210', password: 'secret1', csrfPage: '/checkout' });
     const res = await fetch(`${app.base}/api/orders`, {
       method: 'POST',
-      headers: { 'content-type': 'application/json' },
+      headers: { 'content-type': 'application/json', cookie, 'x-csrf-token': csrf },
       body: JSON.stringify({
         items: [{ productId: products[0].id, qty: 1 }],
         customer: { name: 'Asha K', phone: '9876543210', address: '12 MG Road', city: 'Pune', state: 'MH', pincode: '411001' },
@@ -78,10 +80,10 @@ test('shopper flow: store page, place order, pay page with QR', async () => {
     assert.match(pay, /<svg/);
     assert.match(pay, /₹149/); // ₹100 + ₹49 delivery
 
-    await fetch(`${app.base}/order/${token}/paid`, { method: 'POST', redirect: 'manual' });
+    await fetch(`${app.base}/order/${token}/paid`, { method: 'POST', headers: { cookie }, body: new URLSearchParams({ _csrf: csrf }), redirect: 'manual' });
     assert.equal((await app.repos.orders.getByToken(token)).status, 'payment_submitted');
 
-    const bad = await fetch(`${app.base}/api/orders`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ items: [] }) });
+    const bad = await fetch(`${app.base}/api/orders`, { method: 'POST', headers: { 'content-type': 'application/json', cookie, 'x-csrf-token': csrf }, body: JSON.stringify({ items: [] }) });
     assert.equal(bad.status, 400);
     assert.match((await bad.json()).error, /bag is empty/);
   } finally {

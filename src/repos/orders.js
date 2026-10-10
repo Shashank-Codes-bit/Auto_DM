@@ -115,9 +115,6 @@ export function ordersRepo(db) {
       const [o] = await db.query('SELECT * FROM orders WHERE id = $1', [Number(id) || 0]);
       return withItems(o);
     },
-    async attachUser(orderId, userId) {
-      await db.query('UPDATE orders SET user_id = $2 WHERE id = $1', [Number(orderId), Number(userId)]);
-    },
     async listForUser(userId) {
       const orders = await db.query('SELECT * FROM orders WHERE user_id = $1 ORDER BY created_at DESC LIMIT 100', [Number(userId)]);
       for (const o of orders) await withItems(o);

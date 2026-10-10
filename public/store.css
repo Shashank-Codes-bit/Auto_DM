@@ -59,7 +59,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 16px calc(var(--tabbar) + 3
   .desk-nav { display: flex; gap: 22px; font-weight: 600; font-size: 15px; margin-right: 18px; }
   .desk-nav a { text-decoration: none; padding: 6px 0; border-bottom: 2px solid transparent; }
   .desk-nav a[aria-current='page'] { border-color: var(--gold); }
-  .desk-search { display: flex; align-items: center; gap: 8px; width: 300px; height: 42px; padding: 0 14px; border-radius: 999px; background: var(--mist); margin-right: 8px; }
+  .desk-search { display: flex; align-items: center; gap: 8px; width: 300px; height: 42px; padding: 0 14px; border-radius: 999px; background: var(--mist); margin-left: auto; margin-right: 8px; }
   .desk-search input { border: 0; background: none; outline: none; width: 100%; }
   .desk-search svg { width: 18px; height: 18px; color: var(--ink-2); flex: none; }
   .brand { margin-right: 26px; }

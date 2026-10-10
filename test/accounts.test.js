@@ -64,38 +64,61 @@ test('login forms from another site are refused', async () => {
   }
 });
 
-test('guest checkout can create an account; logged-in orders show on My account with a saved address', async () => {
+test('checkout needs a login; orders show on My account and the address is saved', async () => {
   const app = await startApp();
   try {
     const { products } = await seedReel(app.repos, { n: 1 });
     const order = (headers, body) =>
       fetch(`${app.base}/api/orders`, { method: 'POST', headers: { 'content-type': 'application/json', ...headers }, body: JSON.stringify(body) });
+    const body = { items: [{ productId: products[0].id, qty: 2 }], customer };
 
-    const guest = await order({}, { items: [{ productId: products[0].id, qty: 1 }], customer, password: 'secret1' });
-    assert.equal(guest.status, 201);
-    assert.equal((await guest.json()).account, true);
-    const cookie = guest.headers.get('set-cookie').split(';')[0];
+    // Guests can browse but not order.
+    assert.equal((await fetch(`${app.base}/r/brunch-edit`)).status, 200);
+    const page = await fetch(`${app.base}/checkout`, { redirect: 'manual' });
+    assert.equal(page.status, 302);
+    assert.equal(page.headers.get('location'), '/login?next=%2Fcheckout');
+    const guest = await order({}, body);
+    assert.equal(guest.status, 401);
+    assert.match((await guest.json()).error, /log in/);
+    assert.match(await (await fetch(`${app.base}/login?next=/checkout`)).text(), /create an account to place your order/);
+
+    await app.repos.users.create({ name: 'Asha K', phone: customer.phone, password: 'secret1' });
+    const { cookie, csrf } = await login(app.base, { phone: customer.phone, password: 'secret1', csrfPage: '/checkout' });
+    assert.ok(csrf);
+    assert.equal((await order({ cookie }, body)).status, 403); // the CSRF token is required
+    assert.equal((await order({ cookie, 'x-csrf-token': csrf }, body)).status, 201);
 
     const user = await app.repos.users.findByPhone(customer.phone);
     assert.equal(user.address.pincode, '411001');
-
-    const page = await (await fetch(`${app.base}/checkout`, { headers: { cookie } })).text();
-    assert.match(page, /Ordering as/);
-    assert.match(page, /value="411001"/);
-    const csrf = /data-csrf="([^"]+)"/.exec(page)[1];
-
-    // Logged in: the CSRF token is required.
-    const body = { items: [{ productId: products[0].id, qty: 2 }], customer };
-    assert.equal((await order({ cookie }, body)).status, 403);
-    assert.equal((await order({ cookie, 'x-csrf-token': csrf }, body)).status, 201);
-
+    assert.match(await (await fetch(`${app.base}/checkout`, { headers: { cookie } })).text(), /value="411001"/);
     const account = await (await fetch(`${app.base}/account`, { headers: { cookie } })).text();
-    assert.equal((account.match(/class="order-row"/g) || []).length, 2);
+    assert.equal((account.match(/class="order-row"/g) || []).length, 1);
+  } finally {
+    app.close();
+  }
+});
 
-    // A second guest with the same number must log in instead.
-    const taken = await order({}, { ...body, password: 'another1' });
-    assert.equal(taken.status, 400);
-    assert.match((await taken.json()).error, /already has an account/);
+test('admin rights come only from the role command; signups are customers', async () => {
+  const { changeRole } = await import('../scripts/role.js');
+  const app = await startApp();
+  try {
+    // A signup form can't ask for admin.
+    const signup = await fetch(`${app.base}/signup`, { method: 'POST', body: form({ name: 'Meera', phone: '9988776655', password: 'secret1', role: 'admin' }), redirect: 'manual' });
+    const cookie = signup.headers.get('set-cookie').split(';')[0];
+    assert.equal((await app.repos.users.findByPhone('9988776655')).role, 'customer');
+    assert.equal((await fetch(`${app.base}/admin`, { headers: { cookie }, redirect: 'manual' })).headers.get('location'), '/account');
+
+    assert.match(await changeRole(app.repos, { phone: '9988776655', role: 'admin', ownerPhone: OWNER.phone }), /is now an admin/);
+    assert.equal((await fetch(`${app.base}/admin`, { headers: { cookie }, redirect: 'manual' })).status, 200);
+    // Admins other than the .env owner manage their own password.
+    assert.match(await (await fetch(`${app.base}/account`, { headers: { cookie } })).text(), /Change password/);
+
+    assert.match(await changeRole(app.repos, { phone: '9988776655', role: 'customer', ownerPhone: OWNER.phone }), /is now a customer/);
+    assert.equal((await fetch(`${app.base}/admin`, { headers: { cookie }, redirect: 'manual' })).headers.get('location'), '/account');
+
+    await assert.rejects(changeRole(app.repos, { phone: OWNER.phone, role: 'customer', ownerPhone: OWNER.phone }), /ADMIN_PHONE/);
+    await assert.rejects(changeRole(app.repos, { phone: '9000011111', role: 'admin' }), /sign up on the website first/);
+    await assert.rejects(changeRole(app.repos, { phone: '9988776655', role: 'boss' }), /admin" or "customer/);
   } finally {
     app.close();
   }

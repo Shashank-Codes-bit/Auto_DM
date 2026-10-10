@@ -29,7 +29,7 @@ function mediaRefresher({ repos, ig }) {
   };
 }
 
-export function storeRoutes({ repos, ig }) {
+export function storeRoutes({ repos, ig, auth }) {
   const refreshMedia = mediaRefresher({ repos, ig });
   const r = express.Router();
   const page = (res, view, status = 200) => res.status(status).type('html').send(String(view));
@@ -108,7 +108,8 @@ export function storeRoutes({ repos, ig }) {
 
   r.get('/about', async (req, res) => page(res, aboutPage({ settings: await repos.settings.getAll(), user: req.user })));
 
-  r.get('/checkout', async (req, res) => {
+  // Browsing is open to everyone; placing an order needs an account.
+  r.get('/checkout', auth.requireUser, async (req, res) => {
     res.set('Cache-Control', 'no-store');
     page(res, checkoutPage({ settings: await repos.settings.getAll(), user: req.user, csrf: req.csrf }));
   });
@@ -144,7 +145,7 @@ export function storeRoutes({ repos, ig }) {
   return r;
 }
 
-export function apiRoutes({ repos, auth }) {
+export function apiRoutes({ repos }) {
   const r = express.Router();
   const hits = new Map();
 
@@ -174,38 +175,20 @@ export function apiRoutes({ repos, auth }) {
 
   r.post('/orders', limit, async (req, res, next) => {
     try {
-      const { items, customer, reelSlug, source, password } = req.body || {};
+      if (!req.user) return res.status(401).json({ error: 'Please log in to place your order.', login: '/login?next=/checkout' });
+      const { items, customer, reelSlug, source } = req.body || {};
       const settings = await repos.settings.getAll();
       const reel = reelSlug ? await repos.reels.getStore(reelSlug) : null;
-      let user = req.user;
-      // Guest checkout can create an account on the way. Check this first so a bad password doesn't leave a stray order.
-      if (!user && password) {
-        if (await repos.users.findByPhone(customer?.phone)) {
-          throw new ValidationError('This mobile number already has an account. Log in to order with it, or leave the password empty.');
-        }
-        if (String(password).length < 6) throw new ValidationError('Use a password of at least 6 characters, or leave it empty');
-      }
       const order = await repos.orders.create(
-        { items, customer, reelId: reel?.ig_media_id ?? null, source: source || '', userId: user?.id ?? null },
+        { items, customer, reelId: reel?.ig_media_id ?? null, source: source || '', userId: req.user.id },
         settings,
       );
-      const address = {
+      // Filled in at the shopper's next checkout.
+      await repos.users.saveAddress(req.user.id, {
         name: order.customer_name, phone: order.phone, email: order.email, address: order.address,
         city: order.city, state: order.state, pincode: order.pincode,
-      };
-      if (!user && password) {
-        try {
-          user = await repos.users.create({ name: order.customer_name, phone: order.phone, email: order.email, password });
-          await repos.orders.attachUser(order.id, user.id);
-          auth.login(req, res, user);
-        } catch (err) {
-          // The order is placed either way; the account is a bonus.
-          if (!(err instanceof ValidationError)) throw err;
-          user = null;
-        }
-      }
-      if (user) await repos.users.saveAddress(user.id, address);
-      res.status(201).json({ token: order.public_token, orderNumber: order.order_number, account: Boolean(user) });
+      });
+      res.status(201).json({ token: order.public_token, orderNumber: order.order_number });
     } catch (err) {
       if (err instanceof ValidationError) return res.status(400).json({ error: err.message });
       next(err);

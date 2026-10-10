@@ -27,15 +27,37 @@ One website for shoppers and the store owner. What you see depends on who's logg
 | Product | `/p/<slug>` | Photo gallery, price with MRP and % off, description, "You may also like", sticky Add to bag |
 | Reels | `/reels` | Full-screen reels that snap one by one like Instagram. The one on screen plays muted (tap for sound), more load as you scroll, and Shop now opens that reel's store |
 | Reel store | `/r/<slug>` | Where the DM button lands: only that reel's 1–20 products, in the order they appear |
-| Checkout and payment | `/checkout`, `/order/<token>` | Address form (filled in for logged-in shoppers), then a "Pay with UPI app" button, a UPI QR and order progress |
+| Checkout and payment | `/checkout`, `/order/<token>` | Needs a login. Address form (filled in from the last order), then a "Pay with UPI app" button, a UPI QR and order progress |
 | Accounts | `/login`, `/signup`, `/account` | Phone + password. My account shows orders, the saved address and a password change |
 | Admin panel | `/admin` | Owner only: Dashboard, Orders, Products, Categories, Reels, Customers, DM activity, Settings |
 | Webhook | `/webhook` | Receives Instagram comments and sends the DM |
 
 **Who sees what:**
-- **Shoppers** can buy as guests, or create an account (at signup or with an optional password at checkout) to track orders and check out faster.
-- **The owner** logs in on the same `/login` page with `ADMIN_PHONE` and `ADMIN_PASSWORD` from `.env`. While logged in, a slim owner bar appears on every store page with an "Edit this page" link, and Edit buttons appear on products, categories and reels.
-- Shoppers who try to open `/admin` are sent to their account page.
+- **Everyone** can browse the store, the reels and the reel stores the DM links open, without logging in.
+- **Shoppers** need an account to place an order. Tapping Checkout as a guest opens the login page (with "Create an account"), then goes straight back to checkout with the bag kept.
+- **Every new signup is a customer.** Nothing on the website can give admin rights.
+- **The owner** logs in on the same `/login` page with `ADMIN_PHONE` and `ADMIN_PASSWORD` from `.env`, and is made admin on every start.
+- **More admins** are added on the server with the role command (below). They sign up on the website first and keep their own password.
+- **Admins** get a slim owner bar on every store page with an "Edit this page" link, and Edit buttons on products, categories and reels. Customers who try to open `/admin` are sent to their account page.
+
+### Giving someone admin rights
+
+Run this on the server. It works on accounts that already signed up:
+
+```bash
+npm run role -- list                  # who is an admin
+npm run role -- 9876543210 admin      # make them an admin
+npm run role -- 9876543210 customer   # back to a normal shopper
+```
+
+With the built-in database, only one process can open it at a time, so stop the app for a moment. On the Oracle VM:
+
+```bash
+cd ~/mehtamart/deploy
+docker compose stop web && docker compose run --rm web npm run role -- 9876543210 admin && docker compose start web
+```
+
+The `ADMIN_PHONE` owner can't be turned into a customer; change `.env` instead.
 
 Admin panel sections:
 - **Dashboard:** a setup checklist that ticks itself off (connect Instagram, store details, products, first reel store, first comment, first order). Then DMs sent, store visits, orders and revenue, per-reel numbers, and orders waiting for you.

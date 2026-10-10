@@ -72,10 +72,10 @@ export function createApp({ db, ig = instagram, config = defaultConfig }) {
   app.use('/media', mediaRoutes({ repos }));
   // Everything below knows who is logged in, and logged-in POSTs need the session's CSRF token.
   app.use(auth.load, auth.checkCsrf);
-  app.use('/', accountRoutes({ repos, auth }));
+  app.use('/', accountRoutes({ repos, auth, config }));
   app.use('/admin', adminRoutes({ db, repos, ig, auth, config }));
-  app.use('/api', apiRoutes({ repos, auth }));
-  app.use('/', storeRoutes({ repos, ig }));
+  app.use('/api', apiRoutes({ repos }));
+  app.use('/', storeRoutes({ repos, ig, auth }));
 
   app.use((err, req, res, _next) => {
     console.error(`${req.method} ${req.originalUrl} failed:`, err);

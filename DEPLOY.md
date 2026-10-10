@@ -53,6 +53,17 @@ sudo bash ~/Service-Call-Bot/infra/oracle-vm/add-site.sh mehtamart proxy 8100
 3. **Demo data:** Admin → Settings → **Load demo data**. This fills the categories and products and sets up your 3 newest reels.
 4. **Test:** comment `LINK` on a reel from your tester account. The DM's button should open the new address.
 
+## Giving someone admin rights
+
+Everyone who signs up on the website is a customer. To make someone an admin, they sign up first, then you run this on the VM. It stops the store for a few seconds, because only one process can open the database:
+
+```bash
+cd ~/mehtamart/deploy
+docker compose stop web && docker compose run --rm web npm run role -- 9876543210 admin && docker compose start web
+```
+
+Use `customer` instead of `admin` to take the rights away, and `npm run role -- list` (same wrapper) to see who is an admin. They log in on `/login` with their own password.
+
 ## Updating, logs, rollback
 
 ```bash
