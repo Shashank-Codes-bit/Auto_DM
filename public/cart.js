@@ -102,26 +102,20 @@
       el.hidden = n === 0;
     });
 
-    const bar = $('[data-bag-bar]');
-    if (bar) {
-      bar.hidden = n === 0 || S.page === 'checkout';
-      bar.innerHTML = `<span>Bag (${n})</span><span>${money(subtotal())}</span><span class="bar-cta">Checkout</span>`;
-    }
-
     const items = $('[data-bag-items]');
     const foot = $('[data-bag-foot]');
     if (items) {
       items.innerHTML = bag.items.length
         ? `<ul class="lines">${bag.items.map((i, idx) => lineHtml(i, idx, true)).join('')}</ul>`
-        : `<div class="bag-empty"><p>Your bag is empty.</p>${S.reelSlug ? '' : '<p>Open a reel’s store to add pieces.</p>'}</div>`;
-      foot.innerHTML = bag.items.length ? `${totalsHtml()}<a class="primary" href="/checkout">Checkout</a>` : '';
+        : `<div class="bag-empty"><p>Your bag is empty.</p><a class="btn btn-line" href="${S.reelSlug ? `/r/${esc(S.reelSlug)}` : '/shop'}">Start shopping</a></div>`;
+      foot.innerHTML = bag.items.length ? `${totalsHtml()}<a class="btn btn-gold btn-wide btn-lg" href="/checkout">Checkout</a>` : '';
     }
 
     const summary = $('[data-summary]');
     if (summary) {
       summary.innerHTML = bag.items.length
         ? `<h2>Your order</h2><ul class="lines">${bag.items.map((i, idx) => lineHtml(i, idx, true)).join('')}</ul>${totalsHtml()}`
-        : `<h2>Your order</h2><p>Your bag is empty.</p>${bag.reelSlug ? `<a href="/r/${esc(bag.reelSlug)}">Back to the reel</a>` : ''}`;
+        : `<h2>Your order</h2><p>Your bag is empty.</p><a class="link" href="${bag.reelSlug ? `/r/${esc(bag.reelSlug)}` : '/shop'}">${bag.reelSlug ? 'Back to the reel' : 'Go to the shop'}</a>`;
       const btn = $('[data-place-order]');
       if (btn) btn.disabled = bag.items.length === 0;
     }
@@ -133,6 +127,8 @@
     if (t.matches('[data-open-bag]')) return openBag();
     if (t.matches('[data-close-bag]')) return closeBag();
     if (t.matches('[data-scrim]')) return closeBag(), closeSheet();
+    if (t.matches('[data-open-filters]')) return openFilters();
+    if (t.matches('[data-close-sheet]')) return closeSheet();
     if (t.dataset.delta) {
       const line = bag.items[Number(t.dataset.line)];
       if (!line) return;
@@ -164,21 +160,18 @@
   function openSheet(product) {
     if (!sheet) return;
     sheet.innerHTML = `<form class="sheet-inner">
-      <div class="sheet-head">
+      <span class="grab"></span>
+      <div class="sheet-product">
         ${product.image ? `<img src="${esc(product.image)}" alt="">` : ''}
         <div><p class="sheet-name">${esc(product.name)}</p><p>${money(product.price)}</p></div>
         <button type="button" class="icon-btn" data-close-sheet aria-label="Close">✕</button>
       </div>
-      <fieldset class="chips"><legend>Choose ${esc(product.optionLabel.toLowerCase() || 'an option')}</legend>
+      <fieldset class="chips-opt"><legend>Choose ${esc(product.optionLabel.toLowerCase() || 'an option')}</legend>
         ${product.options.map((o) => `<label><input type="radio" name="option" value="${esc(o)}" required><span>${esc(o)}</span></label>`).join('')}
       </fieldset>
-      <button class="primary" type="submit">Add to bag</button>
+      <button class="btn btn-gold btn-wide btn-lg" type="submit">Add to bag</button>
     </form>`;
-    sheet.classList.add('open');
-    sheet.setAttribute('aria-hidden', 'false');
-    scrim.hidden = false;
-    $('input', sheet)?.focus();
-    $('[data-close-sheet]', sheet).onclick = closeSheet;
+    showSheet();
     $('form', sheet).onsubmit = (e) => {
       e.preventDefault();
       const option = new FormData(e.target).get('option');
@@ -187,6 +180,30 @@
       openBag();
     };
   }
+  function showSheet() {
+    sheet.classList.add('open');
+    sheet.setAttribute('aria-hidden', 'false');
+    scrim.hidden = false;
+    $('input:checked, input, button', sheet)?.focus();
+  }
+
+  // Shop "Filter & sort": the form lives in a <template> on the page and opens in the sheet.
+  function openFilters() {
+    const tpl = $('[data-filters-template]');
+    if (!tpl || !sheet) return;
+    closeBag();
+    sheet.innerHTML = '';
+    sheet.append(tpl.content.cloneNode(true));
+    const form = $('form', sheet);
+    // Empty choices shouldn't clutter the link (?price=&sort=popular).
+    form.addEventListener('submit', () => {
+      $$('input[type=radio]:checked', form).forEach((i) => {
+        if (!i.value || (i.name === 'sort' && i.value === 'popular')) i.disabled = true;
+      });
+    });
+    showSheet();
+  }
+
   function closeSheet() {
     if (!sheet) return;
     sheet.classList.remove('open');
@@ -195,6 +212,15 @@
   }
 
   // ---- product page --------------------------------------------------------
+  const gallery = $('[data-gallery]');
+  const dots = $$('[data-dots] i');
+  if (gallery && dots.length) {
+    gallery.addEventListener('scroll', () => {
+      const i = Math.round(gallery.scrollLeft / gallery.clientWidth);
+      dots.forEach((d, n) => d.classList.toggle('on', n === i));
+    }, { passive: true });
+  }
+
   const pdp = $('[data-pdp-form]');
   if (pdp) {
     pdp.addEventListener('submit', (e) => {
@@ -222,10 +248,11 @@
       try {
         const res = await fetch('/api/orders', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'application/json', 'x-csrf-token': form.dataset.csrf || '' },
           body: JSON.stringify({
             items: bag.items.map((i) => ({ productId: i.productId, option: i.option, qty: i.qty })),
-            customer: Object.fromEntries(new FormData(form)),
+            customer: Object.fromEntries([...new FormData(form)].filter(([k]) => k !== 'password')),
+            password: form.elements.password?.value || '',
             reelSlug: bag.reelSlug,
             source: bag.source,
           }),
@@ -258,7 +285,7 @@
   const fromB64url = (str) => new TextDecoder().decode(Uint8Array.from(atob(str.replace(/-/g, '+').replace(/_/g, '/')), (c) => c.charCodeAt(0)));
 
   function escapeUrl() {
-    const url = new URL('/', location.origin);
+    const url = new URL('/shop', location.origin);
     if (bag.items.length) {
       url.searchParams.set('bag', b64url(JSON.stringify({
         i: bag.items.map((i) => [i.productId, i.option, i.qty]), r: bag.reelSlug || '', s: bag.source || '',
@@ -300,7 +327,7 @@
         <button type="button" class="icon-btn escape-close" aria-label="Close">✕</button>
         <p class="escape-title" id="escape-card-title">Shop the full store in ${esc(browserName)}</p>
         <p class="escape-text">See every product, and your bag comes with you.</p>
-        <a class="escape-btn" href="/" data-escape-link></a>
+        <a class="escape-btn" href="/shop" data-escape-link></a>
         <p class="escape-tip" data-escape-tip hidden>If nothing happens, tap ⋯ at the top and choose “Open in external browser”.</p>
       </div>`;
       document.body.append(overlay);
@@ -360,6 +387,9 @@
     if (src) bag.source = src.slice(0, 20);
     save(bag);
   }
+
+  // /shop#search (the search icon in the header) puts the cursor in the search box.
+  if (location.hash === '#search') $('[data-autofocus-hash="search"]')?.focus();
 
   render();
 })();

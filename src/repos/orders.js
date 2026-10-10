@@ -1,5 +1,5 @@
 import crypto from 'node:crypto';
-import { ValidationError } from '../util.js';
+import { ValidationError, normalizePhone } from '../util.js';
 import { shippingFor } from './settings.js';
 
 export const ORDER_STATUSES = {
@@ -16,8 +16,8 @@ export function normalizeCustomer(input = {}) {
   const t = (v) => String(v ?? '').trim();
   const name = t(input.name);
   if (name.length < 2) throw new ValidationError('Enter your full name');
-  let phone = t(input.phone).replace(/[\s-]/g, '').replace(/^(\+91|91|0)(?=\d{10}$)/, '');
-  if (!/^[6-9]\d{9}$/.test(phone)) throw new ValidationError('Enter a 10-digit Indian mobile number');
+  const phone = normalizePhone(input.phone);
+  if (!phone) throw new ValidationError('Enter a 10-digit Indian mobile number');
   const email = t(input.email);
   if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) throw new ValidationError('Enter a valid email, or leave it empty');
   const address = t(input.address);
@@ -64,7 +64,7 @@ export function ordersRepo(db) {
      * Places an order. Prices, shipping and stock come from the database, never from the browser.
      * Stock is reserved (decremented) immediately and restored if the order is cancelled.
      */
-    async create({ items, customer, reelId = null, source = '' }, settings) {
+    async create({ items, customer, reelId = null, source = '', userId = null }, settings) {
       const lines = normalizeItems(items);
       const c = normalizeCustomer(customer);
 
@@ -95,11 +95,11 @@ export function ordersRepo(db) {
         const [{ n }] = await t.query("SELECT nextval('order_number_seq') AS n");
         const [order] = await t.query(
           `INSERT INTO orders (order_number, public_token, reel_id, source, customer_name, phone, email, address, city,
-             state, pincode, subtotal_paise, shipping_paise, total_paise)
-           VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING *`,
+             state, pincode, subtotal_paise, shipping_paise, total_paise, user_id)
+           VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING *`,
           [`${orderPrefix(settings.store_name)}-${n}`, crypto.randomBytes(16).toString('base64url'),
             validReel?.ig_media_id ?? null, String(source).slice(0, 20), c.name, c.phone, c.email, c.address, c.city,
-            c.state, c.pincode, subtotal, shipping, subtotal + shipping],
+            c.state, c.pincode, subtotal, shipping, subtotal + shipping, userId ? Number(userId) : null],
         );
         for (const { p, line } of priced) {
           await t.query(
@@ -114,6 +114,14 @@ export function ordersRepo(db) {
     async get(id) {
       const [o] = await db.query('SELECT * FROM orders WHERE id = $1', [Number(id) || 0]);
       return withItems(o);
+    },
+    async attachUser(orderId, userId) {
+      await db.query('UPDATE orders SET user_id = $2 WHERE id = $1', [Number(orderId), Number(userId)]);
+    },
+    async listForUser(userId) {
+      const orders = await db.query('SELECT * FROM orders WHERE user_id = $1 ORDER BY created_at DESC LIMIT 100', [Number(userId)]);
+      for (const o of orders) await withItems(o);
+      return orders;
     },
     async getByToken(token) {
       const [o] = await db.query('SELECT * FROM orders WHERE public_token = $1', [String(token)]);

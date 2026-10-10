@@ -37,14 +37,27 @@ export async function seedReel(repos, { n = 2, keywords = 'LINK', active = 'on',
   return { products, reel };
 }
 
+export const OWNER = { phone: '9000000001', password: 'owner-pass' };
+
 export async function startApp({ ig = fakeIg(), overrides = {} } = {}) {
   const { db, repos } = await setup();
+  await repos.users.ensureOwner(OWNER);
   const app = createApp({
     db,
     ig,
-    config: { ...config, adminPassword: 'pw', sessionSecret: 'test-secret', verifyToken: 'vt', appSecret: 'secret', publicBaseUrl: 'https://shop.test', dryRun: false, oneDmPerUser: false, ...overrides },
+    config: { ...config, adminPhone: OWNER.phone, adminPassword: OWNER.password, sessionSecret: 'test-secret', verifyToken: 'vt', appSecret: 'secret', publicBaseUrl: 'https://shop.test', dryRun: false, oneDmPerUser: false, ...overrides },
   });
   const server = app.listen(0);
   const base = `http://127.0.0.1:${server.address().port}`;
   return { db, repos, ig, base, close: () => server.close() };
+}
+
+/** Logs in through /login and returns the session cookie plus a CSRF token read from `csrfPage`. */
+export async function login(base, { phone = OWNER.phone, password = OWNER.password, csrfPage = '/account' } = {}) {
+  const res = await fetch(`${base}/login`, { method: 'POST', body: new URLSearchParams({ phone, password }), redirect: 'manual' });
+  if (res.status !== 303) throw new Error(`login failed with ${res.status}`);
+  const cookie = res.headers.get('set-cookie').split(';')[0];
+  const page = await (await fetch(`${base}${csrfPage}`, { headers: { cookie } })).text();
+  const csrf = /name="_csrf" value="([^"]+)"/.exec(page)?.[1] || /data-csrf="([^"]+)"/.exec(page)?.[1];
+  return { cookie, csrf, location: res.headers.get('location') };
 }

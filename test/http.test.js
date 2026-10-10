@@ -1,18 +1,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
-import { REEL_ID, seedReel, startApp } from './helpers.js';
+import { REEL_ID, login, seedReel, startApp } from './helpers.js';
 
 const sign = (body, secret = 'secret') => 'sha256=' + crypto.createHmac('sha256', secret).update(body).digest('hex');
-
-async function login(base) {
-  const res = await fetch(`${base}/admin/login`, { method: 'POST', body: new URLSearchParams({ password: 'pw' }), redirect: 'manual' });
-  assert.equal(res.status, 303);
-  const cookie = res.headers.get('set-cookie').split(';')[0];
-  const page = await (await fetch(`${base}/admin/products/new`, { headers: { cookie } })).text();
-  const csrf = /name="_csrf" value="([^"]+)"/.exec(page)[1];
-  return { cookie, csrf };
-}
 
 test('webhook verification and signature checks', async () => {
   const app = await startApp();
@@ -41,16 +32,17 @@ test('a signed comment webhook sends the store link', async () => {
   }
 });
 
-test('admin requires login and a CSRF token', async () => {
+test('admin requires the owner login and a CSRF token', async () => {
   const app = await startApp();
   try {
     const anon = await fetch(`${app.base}/admin`, { redirect: 'manual' });
     assert.equal(anon.status, 302);
-    assert.match(anon.headers.get('location'), /\/admin\/login/);
-    const wrong = await fetch(`${app.base}/admin/login`, { method: 'POST', body: new URLSearchParams({ password: 'nope' }) });
+    assert.equal(anon.headers.get('location'), '/login?next=%2Fadmin');
+    const wrong = await fetch(`${app.base}/login`, { method: 'POST', body: new URLSearchParams({ phone: '9000000001', password: 'nope' }) });
     assert.equal(wrong.status, 401);
 
-    const { cookie, csrf } = await login(app.base);
+    const { cookie, csrf, location } = await login(app.base, { csrfPage: '/admin/products/new' });
+    assert.equal(location, '/admin');
     const form = { name: 'Kurta', price: '999', active: 'on' };
     const noCsrf = await fetch(`${app.base}/admin/products`, { method: 'POST', headers: { cookie }, body: new URLSearchParams(form), redirect: 'manual' });
     assert.equal(noCsrf.status, 403);
@@ -107,16 +99,17 @@ test('paused reel stores are not shown', async () => {
   }
 });
 
-test('home lists all active products; /p/:slug and /api/products serve active products only', async () => {
+test('the shop lists active products only; /p/:slug and /api/products too', async () => {
   const app = await startApp();
   try {
     const { products } = await seedReel(app.repos, { n: 2 });
     const hidden = await app.repos.products.create({ name: 'Hidden thing', price: '50' }); // not active
-    const home = await (await fetch(`${app.base}/`)).text();
-    assert.match(home, /Product 1/);
-    assert.match(home, /Product 2/);
-    assert.doesNotMatch(home, /Hidden thing/);
-    assert.match(await (await fetch(`${app.base}/?q=product%202`)).text(), /1 result/);
+    const shop = await (await fetch(`${app.base}/shop`)).text();
+    assert.match(shop, /Product 1/);
+    assert.match(shop, /Product 2/);
+    assert.doesNotMatch(shop, /Hidden thing/);
+    assert.match(await (await fetch(`${app.base}/shop?q=product%202`)).text(), /1 product for/);
+    assert.equal((await fetch(`${app.base}/`)).status, 200);
 
     assert.equal((await fetch(`${app.base}/p/${products[0].slug}`)).status, 200);
     assert.equal((await fetch(`${app.base}/p/${hidden.slug}`)).status, 404);

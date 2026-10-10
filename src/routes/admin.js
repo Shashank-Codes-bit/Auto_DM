@@ -4,9 +4,11 @@ import { ValidationError, parseRupees } from '../util.js';
 import { ALLOWED_IMAGE_TYPES } from '../repos/media.js';
 import fs from 'node:fs';
 import { SEED_FILE, newestReels, seedDemo } from '../../scripts/seed.js';
+import crypto from 'node:crypto';
+import { SETTING_DEFAULTS } from '../repos/settings.js';
 import {
-  activityPage, adminLayout, dashboardPage, loginPage, orderDetailPage, ordersPage, productFormPage, productValues,
-  productsPage, reelFormPage, reelValues, reelsPage, settingsPage,
+  activityPage, adminLayout, categoriesPage, categoryFormPage, categoryValues, customersPage, dashboardPage,
+  orderDetailPage, ordersPage, productFormPage, productValues, productsPage, reelFormPage, reelValues, reelsPage, settingsPage,
 } from '../views/admin.js';
 
 const FLASH = {
@@ -16,7 +18,9 @@ const FLASH = {
   reel_saved: 'Reel store saved. Comments with its keyword now get a DM with the store link.',
   reel_removed: 'Reel store removed.',
   status: 'Order updated.',
-  demo: 'Demo data loaded: 3 reel stores with Mehta Mart products. Open “View store” to see them.',
+  demo: 'Demo data loaded: Mehta Mart categories and products, plus 3 reel stores. Open “View store” to see them.',
+  category_saved: 'Category saved.',
+  category_deleted: 'Category deleted. Its products are still in your catalog.',
 };
 
 export const baseUrlFor = (req, config) =>
@@ -32,27 +36,39 @@ export function adminRoutes({ db, repos, ig, auth, config }) {
     fileFilter: (_req, file, cb) => cb(null, ALLOWED_IMAGE_TYPES.includes(file.mimetype)),
   });
 
-  const safeNext = (n) => (typeof n === 'string' && /^\/admin(\/|$|\?)/.test(n) ? n : '/admin');
+  // Only the store owner (role "admin") gets past this; shoppers are sent to their account page.
+  r.use(auth.requireAdmin);
 
-  // ---- login (public) ----
-  r.get('/login', (req, res) => res.type('html').send(String(loginPage({ next: safeNext(req.query.next), enabled: auth.enabled }))));
-  r.post('/login', (req, res) => {
-    const result = auth.checkPassword(req, req.body?.password);
-    if (result === 'ok') {
-      auth.login(req, res);
-      return res.redirect(303, safeNext(req.body?.next));
+  // Whether the Instagram token works, cached so the dashboard stays fast.
+  let igCheck = { at: 0, ok: false };
+  async function instagramConnected() {
+    if (!config.accessToken) return false;
+    if (Date.now() - igCheck.at < 10 * 60_000) return igCheck.ok;
+    let ok = false;
+    try {
+      ok = Boolean((await ig.getAccount())?.username);
+    } catch {
+      ok = false;
     }
-    const error = result === 'locked' ? 'Too many attempts. Wait 15 minutes and try again.' : 'Wrong password.';
-    res.status(401).type('html').send(String(loginPage({ error, next: safeNext(req.body?.next), enabled: auth.enabled })));
-  });
+    igCheck = { at: Date.now(), ok };
+    return ok;
+  }
 
-  // ---- everything below needs a login ----
-  r.use((req, res, next) => auth.require(req, res, next));
-
-  r.post('/logout', (_req, res) => {
-    auth.logout(res);
-    res.redirect(303, '/admin/login');
-  });
+  async function setupChecklist(settings, stats, reels) {
+    const [[{ comments }]] = await Promise.all([db.query('SELECT count(*)::int AS comments FROM activity')]);
+    const storeChanged = settings.store_name !== SETTING_DEFAULTS.store_name || Boolean(settings.logo_url);
+    return {
+      dismissed: settings.checklist_dismissed === '1',
+      steps: [
+        { title: 'Connect Instagram', text: 'Add your Instagram token to .env so comments can be answered with a DM.', done: await instagramConnected(), href: '/admin/settings', action: 'Check connection' },
+        { title: 'Add your store details', text: 'Store name, logo, WhatsApp number and delivery fee.', done: storeChanged, href: '/admin/settings', action: 'Open settings' },
+        { title: 'Add products', text: 'Photos, price and MRP. Group them into categories for the shop.', done: stats.products > 0, href: '/admin/products/new', action: 'Add a product' },
+        { title: 'Set up your first reel store', text: 'Pick a reel, choose its products and the keyword people comment.', done: reels.length > 0, href: '/admin/reels', action: 'Choose a reel' },
+        { title: 'Receive a comment', text: 'Comment your keyword on the reel from another account. The DM shows up in DM activity.', done: comments > 0, href: '/admin/activity', action: 'See DM activity' },
+        { title: 'Get your first order', text: 'Share your store link. Orders land in Orders for you to confirm.', done: stats.orders > 0, href: '/', action: 'Open your store' },
+      ],
+    };
+  }
 
   const page = async (req, res, { title, active, body, error, status = 200 }) => {
     const stats = await repos.stats.dashboard();
@@ -65,29 +81,43 @@ export function adminRoutes({ db, repos, ig, auth, config }) {
 
   // ---- dashboard ----
   r.get('/', async (req, res) => {
-    const [stats, reels, orders, activity] = await Promise.all([
-      repos.stats.dashboard(), repos.reels.list(), repos.orders.list(), repos.activity.list({ limit: 8 }),
+    const [stats, reels, orders, activity, settings] = await Promise.all([
+      repos.stats.dashboard(), repos.reels.list(), repos.orders.list(), repos.activity.list({ limit: 8 }), repos.settings.getAll(),
     ]);
+    const checklist = await setupChecklist(settings, stats, reels);
     const warnings = [];
     if (!config.accessToken) warnings.push('IG_ACCESS_TOKEN is missing in .env, so DMs can’t be sent.');
     if (config.dryRun) warnings.push('Test mode is on (DRY_RUN=1): DMs are logged, not sent.');
     if (!config.publicBaseUrl) warnings.push(`PUBLIC_BASE_URL isn’t set. DM links will use ${baseUrlFor(req, config)} — set it in .env to be sure.`);
-    await page(req, res, { title: 'Dashboard', active: 'dashboard', body: dashboardPage({ stats, reels, orders: orders.slice(0, 6), activity, warnings }) });
+    await page(req, res, { title: 'Dashboard', active: 'dashboard', body: dashboardPage({ stats, reels, orders: orders.slice(0, 6), activity, warnings, checklist, csrf: req.csrf }) });
+  });
+
+  r.post('/checklist/dismiss', async (_req, res) => {
+    await repos.settings.update({ checklist_dismissed: '1' });
+    res.redirect(303, '/admin');
   });
 
   // ---- products ----
   r.get('/products', async (req, res) => {
     const search = String(req.query.search || '');
-    const status = ['active', 'archived'].includes(req.query.status) ? req.query.status : 'all';
-    const products = await repos.products.list({ search, status });
-    await page(req, res, { title: 'Products', active: 'products', body: productsPage({ products, search, status }) });
+    const status = ['active', 'archived', 'featured'].includes(req.query.status) ? req.query.status : 'all';
+    const category = Number(req.query.category) || 0;
+    const [products, categories] = await Promise.all([repos.products.list({ search, status, category }), repos.categories.list()]);
+    await page(req, res, { title: 'Products', active: 'products', body: productsPage({ products, search, status, categories, category }) });
   });
 
   r.get('/products/new', async (req, res) => {
-    await page(req, res, { title: 'Add product', active: 'products', body: productFormPage({ product: null, values: productValues(null), csrf: req.csrf }) });
+    const categories = await repos.categories.list();
+    await page(req, res, { title: 'Add product', active: 'products', body: productFormPage({ product: null, values: productValues(null), csrf: req.csrf, categories }) });
   });
 
-  const productInput = (body) => ({ ...body, images: list(body.images) });
+  const productInput = (body) => ({
+    ...body,
+    images: list(body.images),
+    // Only touch categories when the form had the category section (unticking all boxes sends nothing).
+    categoryIds: body.categories_sent ? list(body.categoryIds) : undefined,
+  });
+  const formValues = (body) => ({ ...productInput(body), active: Boolean(body.active), featured: Boolean(body.featured) });
 
   r.post('/products', async (req, res) => {
     try {
@@ -95,15 +125,16 @@ export function adminRoutes({ db, repos, ig, auth, config }) {
       res.redirect(303, `/admin/products/${p.id}?ok=created`);
     } catch (err) {
       if (!(err instanceof ValidationError)) throw err;
-      const values = { ...productInput(req.body), active: Boolean(req.body.active) };
-      await page(req, res, { title: 'Add product', active: 'products', status: 400, error: err.message, body: productFormPage({ product: null, values, csrf: req.csrf }) });
+      const categories = await repos.categories.list();
+      await page(req, res, { title: 'Add product', active: 'products', status: 400, error: err.message, body: productFormPage({ product: null, values: formValues(req.body), csrf: req.csrf, categories }) });
     }
   });
 
   r.get('/products/:id', async (req, res) => {
     const product = await repos.products.get(req.params.id);
     if (!product) return res.redirect('/admin/products');
-    await page(req, res, { title: product.name, active: 'products', body: productFormPage({ product, values: productValues(product), csrf: req.csrf }) });
+    const categories = await repos.categories.list();
+    await page(req, res, { title: product.name, active: 'products', body: productFormPage({ product, values: productValues(product), csrf: req.csrf, categories }) });
   });
 
   r.post('/products/:id', async (req, res) => {
@@ -114,8 +145,8 @@ export function adminRoutes({ db, repos, ig, auth, config }) {
       res.redirect(303, `/admin/products/${product.id}?ok=saved`);
     } catch (err) {
       if (!(err instanceof ValidationError)) throw err;
-      const values = { ...productInput(req.body), active: Boolean(req.body.active) };
-      await page(req, res, { title: product.name, active: 'products', status: 400, error: err.message, body: productFormPage({ product, values, csrf: req.csrf }) });
+      const categories = await repos.categories.list();
+      await page(req, res, { title: product.name, active: 'products', status: 400, error: err.message, body: productFormPage({ product, values: formValues(req.body), csrf: req.csrf, categories }) });
     }
   });
 
@@ -127,7 +158,8 @@ export function adminRoutes({ db, repos, ig, auth, config }) {
       res.redirect(303, '/admin/products?ok=deleted');
     } catch (err) {
       if (!(err instanceof ValidationError)) throw err;
-      await page(req, res, { title: product.name, active: 'products', status: 400, error: err.message, body: productFormPage({ product, values: productValues(product), csrf: req.csrf }) });
+      const categories = await repos.categories.list();
+      await page(req, res, { title: product.name, active: 'products', status: 400, error: err.message, body: productFormPage({ product, values: productValues(product), csrf: req.csrf, categories }) });
     }
   });
 
@@ -139,6 +171,69 @@ export function adminRoutes({ db, repos, ig, auth, config }) {
       const id = await repos.media.save(req.file.buffer, req.file.mimetype);
       res.status(201).json({ url: `/media/${id}` });
     });
+  });
+
+  // ---- categories ----
+  r.get('/categories', async (req, res) => {
+    await page(req, res, { title: 'Categories', active: 'categories', body: categoriesPage({ categories: await repos.categories.list() }) });
+  });
+
+  async function categoryView(req, res, { category, values, error, status } = {}) {
+    const products = category ? await repos.products.list({ category: category.id }) : [];
+    await page(req, res, {
+      title: category ? category.name : 'Add category', active: 'categories', error, status,
+      body: categoryFormPage({ category, values: values || categoryValues(category), csrf: req.csrf, products }),
+    });
+  }
+
+  r.get('/categories/new', async (req, res) => {
+    const all = await repos.categories.list();
+    const position = all.length ? Math.max(...all.map((c) => c.position)) + 1 : 1;
+    await categoryView(req, res, { values: { ...categoryValues(null), position } });
+  });
+
+  r.get('/categories/:id', async (req, res) => {
+    const category = await repos.categories.get(req.params.id);
+    if (!category) return res.redirect('/admin/categories');
+    await categoryView(req, res, { category });
+  });
+
+  for (const path of ['/categories', '/categories/:id']) {
+    r.post(path, async (req, res) => {
+      const category = req.params.id ? await repos.categories.get(req.params.id) : null;
+      if (req.params.id && !category) return res.redirect(303, '/admin/categories');
+      try {
+        const saved = await repos.categories.save(category?.id ?? null, req.body);
+        res.redirect(303, `/admin/categories/${saved.id}?ok=category_saved`);
+      } catch (err) {
+        if (!(err instanceof ValidationError)) throw err;
+        await categoryView(req, res, { category, values: { ...req.body, visible: Boolean(req.body.visible) }, error: err.message, status: 400 });
+      }
+    });
+  }
+
+  r.post('/categories/:id/delete', async (req, res) => {
+    await repos.categories.remove(req.params.id);
+    res.redirect(303, '/admin/categories?ok=category_deleted');
+  });
+
+  // ---- customers ----
+  async function customersView(req, res, resetFor = null) {
+    const search = String(req.query.search || '');
+    const customers = await repos.users.listCustomers({ search });
+    await page(req, res, { title: 'Customers', active: 'customers', body: customersPage({ customers, search, csrf: req.csrf, resetFor }) });
+  }
+
+  r.get('/customers', (req, res) => customersView(req, res));
+
+  // Forgot-password flow without SMS: the owner sets a fresh password and sends it on WhatsApp.
+  r.post('/customers/:id/reset', async (req, res) => {
+    const user = await repos.users.get(req.params.id);
+    if (!user || user.role === 'admin') return res.redirect(303, '/admin/customers');
+    const password = crypto.randomBytes(6).toString('base64url').replace(/[-_]/g, 'x').slice(0, 8);
+    await repos.users.setPassword(user.id, password);
+    res.set('Cache-Control', 'no-store');
+    await customersView(req, res, { name: user.name, phone: user.phone, password });
   });
 
   // ---- reels ----
@@ -260,6 +355,10 @@ export function adminRoutes({ db, repos, ig, auth, config }) {
         free_shipping_above_paise: parseRupees(b.free_shipping_above, 'Free delivery amount') ?? 0,
         upi_id: b.upi_id?.trim() || 'demo@upi', upi_payee: b.upi_payee?.trim(),
         support_whatsapp: String(b.support_whatsapp || '').replace(/[^\d]/g, ''), support_email: b.support_email?.trim(),
+        ...Object.fromEntries(
+          ['hero_kicker', 'hero_title', 'hero_subtitle', 'trust_points', 'bulk_title', 'bulk_text', 'about_text', 'gstin']
+            .filter((k) => k in b).map((k) => [k, String(b[k]).trim().slice(0, 4000)]),
+        ),
       });
       res.redirect(303, '/admin/settings?ok=saved');
     } catch (err) {

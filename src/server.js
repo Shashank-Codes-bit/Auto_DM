@@ -8,6 +8,7 @@ import { createRepos } from './repos/index.js';
 import { createAuth } from './auth.js';
 import { handleComment } from './handler.js';
 import * as instagram from './instagram.js';
+import { accountRoutes } from './routes/account.js';
 import { adminRoutes, baseUrlFor } from './routes/admin.js';
 import { apiRoutes, mediaRoutes, storeRoutes } from './routes/store.js';
 
@@ -21,10 +22,10 @@ export function verifySignature(rawBody, header, secret) {
 /** Builds the web app. `db` comes from openDb(); `ig` can be swapped for a fake in tests. */
 export function createApp({ db, ig = instagram, config = defaultConfig }) {
   const repos = createRepos(db);
-  const auth = createAuth({ password: config.adminPassword, secret: config.sessionSecret });
+  const auth = createAuth({ secret: config.sessionSecret, users: repos.users });
   const app = express();
 
-  app.set('trust proxy', true); // Codespaces / Render terminate HTTPS in front of the app
+  app.set('trust proxy', 1); // exactly one proxy (Caddy, Codespaces or Render) terminates HTTPS in front of the app
   app.disable('x-powered-by');
   app.use((_req, res, next) => {
     res.set({ 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'strict-origin-when-cross-origin', 'X-Frame-Options': 'SAMEORIGIN' });
@@ -34,7 +35,7 @@ export function createApp({ db, ig = instagram, config = defaultConfig }) {
   app.use(express.urlencoded({ extended: false, limit: '200kb' }));
   app.use('/static', express.static(path.join(config.rootDir, 'public'), { maxAge: '1h' }));
 
-  app.get('/healthz', (_req, res) => res.send('ok'));
+  app.get(['/health', '/healthz'], (_req, res) => res.send('ok'));
 
   // Meta webhook verification handshake
   app.get('/webhook', (req, res) => {
@@ -68,10 +69,13 @@ export function createApp({ db, ig = instagram, config = defaultConfig }) {
     }
   });
 
-  app.use('/admin', adminRoutes({ db, repos, ig, auth, config }));
-  app.use('/api', apiRoutes({ repos }));
   app.use('/media', mediaRoutes({ repos }));
-  app.use('/', storeRoutes({ repos, db, ig }));
+  // Everything below knows who is logged in, and logged-in POSTs need the session's CSRF token.
+  app.use(auth.load, auth.checkCsrf);
+  app.use('/', accountRoutes({ repos, auth }));
+  app.use('/admin', adminRoutes({ db, repos, ig, auth, config }));
+  app.use('/api', apiRoutes({ repos, auth }));
+  app.use('/', storeRoutes({ repos, ig }));
 
   app.use((err, req, res, _next) => {
     console.error(`${req.method} ${req.originalUrl} failed:`, err);
@@ -88,10 +92,12 @@ export function createApp({ db, ig = instagram, config = defaultConfig }) {
 if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   const config = defaultConfig;
   const db = await openDb({ url: config.databaseUrl, dataDir: config.dataDir });
+  const owner = await createRepos(db).users.ensureOwner({ phone: config.adminPhone, password: config.adminPassword });
   createApp({ db, config }).listen(config.port, () => {
     console.log(`auto-dm listening on :${config.port}${config.dryRun ? ' (DRY_RUN)' : ''}`);
     console.log(`Database: ${config.databaseUrl ? 'Postgres (DATABASE_URL)' : config.dataDir}`);
-    if (!config.adminPassword) console.log('Admin is off: set ADMIN_PASSWORD in .env to use /admin');
-    if (!process.env.SESSION_SECRET) console.log('Tip: set SESSION_SECRET in .env so admin logins survive restarts');
+    if (owner) console.log(`Store owner: log in on /login with ${owner.phone} and ADMIN_PASSWORD`);
+    else console.log('No store owner yet: set ADMIN_PHONE and ADMIN_PASSWORD in .env to use /admin');
+    if (!process.env.SESSION_SECRET) console.log('Tip: set SESSION_SECRET in .env so logins survive restarts');
   });
 }

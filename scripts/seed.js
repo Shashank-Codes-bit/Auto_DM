@@ -15,8 +15,13 @@ import * as instagram from '../src/instagram.js';
 export const SEED_FILE = path.join(config.rootDir, 'seed', 'mehtamart.json');
 
 /**
- * reels: [{ id, thumbnail_url?, permalink?, caption? }, ...] in the same order as data.reels.
- * Returns a summary of what was created or reused.
+ * Loads seed data into the store. `reels` is [{ id, thumbnail_url?, permalink?, caption?, video_url? }, ...]
+ * in the same order as data.reels. Safe to run again: categories and products are matched by name and reused,
+ * and settings the owner already changed are kept. Returns a summary of what was created or reused.
+ *
+ * Seed format: { store, categories?: [{ name, slug, image_url, description, position }],
+ *   products?: [{ name, price, mrp, description, images, categories: [names], featured }],
+ *   reels: [{ headline, slug, keywords, dm_message, products: [names, or product objects as above] }] }
  */
 export async function seedDemo({ db, repos }, data, reels) {
   if (reels.length < data.reels.length) throw new Error(`Need ${data.reels.length} reels, got ${reels.length}`);
@@ -29,16 +34,40 @@ export async function seedDemo({ db, repos }, data, reels) {
   }
   await repos.settings.update(updates);
 
-  const summary = { settings: Object.keys(updates), products: { created: 0, reused: 0 }, reels: [] };
-  for (const [i, def] of data.reels.entries()) {
-    const productIds = [];
-    for (const p of def.products) {
-      const [existing] = await db.query('SELECT id FROM products WHERE name = $1 LIMIT 1', [p.name]);
-      if (existing) {
-        productIds.push(existing.id);
-        summary.products.reused++;
-        continue;
+  const summary = {
+    settings: Object.keys(updates),
+    categories: { created: 0, reused: 0 },
+    products: { created: 0, reused: 0 },
+    reels: [],
+  };
+
+  const categoryIds = new Map();
+  for (const c of data.categories || []) {
+    const existing = await repos.categories.findByName(c.name);
+    if (existing) {
+      categoryIds.set(c.name, existing.id);
+      summary.categories.reused++;
+      continue;
+    }
+    const created = await repos.categories.save(null, { ...c, visible: true });
+    categoryIds.set(c.name, created.id);
+    summary.categories.created++;
+  }
+
+  const productIds = new Map();
+  async function ensureProduct(p) {
+    if (productIds.has(p.name)) return productIds.get(p.name);
+    const cats = (p.categories || []).map((n) => categoryIds.get(n)).filter(Boolean);
+    const [existing] = await db.query('SELECT id FROM products WHERE name = $1 LIMIT 1', [p.name]);
+    let id;
+    if (existing) {
+      id = existing.id;
+      // Add the demo categories without removing any the owner picked.
+      for (const cid of cats) {
+        await db.query('INSERT INTO product_categories (product_id, category_id) VALUES ($1, $2) ON CONFLICT DO NOTHING', [id, cid]);
       }
+      summary.products.reused++;
+    } else {
       const created = await repos.products.create({
         name: p.name,
         description: p.description,
@@ -48,9 +77,24 @@ export async function seedDemo({ db, repos }, data, reels) {
         option_values: '',
         stock: '',
         active: true,
+        featured: Boolean(p.featured),
+        categoryIds: cats,
       });
-      productIds.push(created.id);
+      id = created.id;
       summary.products.created++;
+    }
+    productIds.set(p.name, id);
+    return id;
+  }
+
+  const byName = new Map((data.products || []).map((p) => [p.name, p]));
+  for (const p of data.products || []) await ensureProduct(p);
+
+  for (const [i, def] of data.reels.entries()) {
+    const ids = [];
+    for (const item of def.products) {
+      const p = typeof item === 'string' ? byName.get(item) : item;
+      if (p) ids.push(await ensureProduct(p));
     }
     const reel = reels[i];
     await repos.reels.save(reel.id, {
@@ -63,13 +107,22 @@ export async function seedDemo({ db, repos }, data, reels) {
       active: true,
       permalink: reel.permalink || '',
       thumbnail_url: reel.thumbnail_url || '',
+      video_url: reel.video_url || '',
       caption: reel.caption || '',
-      productIds,
+      productIds: ids,
     });
-    summary.reels.push({ id: reel.id, slug: def.slug, products: productIds.length });
+    summary.reels.push({ id: reel.id, slug: def.slug, products: ids.length });
   }
   return summary;
 }
+
+const reelInfo = (m, id = m.id) => ({
+  id,
+  thumbnail_url: m.thumbnail_url || m.media_url,
+  permalink: m.permalink,
+  caption: m.caption,
+  video_url: m.media_type === 'VIDEO' ? m.media_url : '',
+});
 
 /** The newest `count` reels on the account, newest first. */
 export async function newestReels(ig, count) {
@@ -78,7 +131,7 @@ export async function newestReels(ig, count) {
     .filter((m) => m.media_product_type === 'REELS')
     .sort((a, b) => String(b.timestamp).localeCompare(String(a.timestamp)))
     .slice(0, count)
-    .map((m) => ({ id: m.id, thumbnail_url: m.thumbnail_url || m.media_url, permalink: m.permalink, caption: m.caption }));
+    .map((m) => reelInfo(m));
 }
 
 async function main() {
@@ -88,7 +141,7 @@ async function main() {
   if (ids.length) {
     reels = [];
     for (const id of ids) reels.push(await instagram.getMedia(id).catch(() => ({ id })));
-    reels = reels.map((m, i) => ({ id: ids[i], thumbnail_url: m.thumbnail_url || m.media_url, permalink: m.permalink, caption: m.caption }));
+    reels = reels.map((m, i) => reelInfo(m, ids[i]));
   } else {
     if (!config.accessToken) throw new Error('IG_ACCESS_TOKEN is missing in .env. Add it, or pass 3 reel IDs: npm run seed -- <id1> <id2> <id3>');
     reels = await newestReels(instagram, data.reels.length);
@@ -102,11 +155,12 @@ async function main() {
   await db.close();
 
   const base = config.publicBaseUrl || `http://localhost:${config.port}`;
+  console.log(`Categories: ${summary.categories.created} created, ${summary.categories.reused} already there`);
   console.log(`Products: ${summary.products.created} created, ${summary.products.reused} already there`);
   if (summary.settings.length) console.log(`Settings filled in: ${summary.settings.join(', ')}`);
   console.log('Reel stores:');
   for (const r of summary.reels) console.log(`  ${base}/r/${r.slug}  (reel ${r.id}, ${r.products} products)`);
-  console.log(`\nAll products: ${base}/   Admin: ${base}/admin`);
+  console.log(`\nStore: ${base}/   Shop: ${base}/shop   Admin: ${base}/admin`);
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1]).href) {

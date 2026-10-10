@@ -113,3 +113,39 @@ ALTER TABLE reels ADD COLUMN IF NOT EXISTS media_checked_at timestamptz NOT NULL
 CREATE INDEX IF NOT EXISTS visits_reel_idx ON visits (reel_id);
 CREATE INDEX IF NOT EXISTS activity_reel_idx ON activity (reel_id);
 CREATE INDEX IF NOT EXISTS orders_status_idx ON orders (status);
+
+-- ---- v2: categories, featured products, reel videos, customer accounts ----
+CREATE TABLE IF NOT EXISTS categories (
+  id          serial PRIMARY KEY,
+  name        text NOT NULL,
+  slug        text NOT NULL UNIQUE,
+  image_url   text NOT NULL DEFAULT '',
+  description text NOT NULL DEFAULT '',
+  position    integer NOT NULL DEFAULT 0,
+  visible     boolean NOT NULL DEFAULT true,
+  created_at  timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS product_categories (
+  product_id  integer NOT NULL REFERENCES products(id) ON DELETE CASCADE,
+  category_id integer NOT NULL REFERENCES categories(id) ON DELETE CASCADE,
+  PRIMARY KEY (product_id, category_id)
+);
+
+ALTER TABLE products ADD COLUMN IF NOT EXISTS featured boolean NOT NULL DEFAULT false;
+ALTER TABLE reels ADD COLUMN IF NOT EXISTS video_url text NOT NULL DEFAULT '';
+
+CREATE TABLE IF NOT EXISTS users (
+  id            serial PRIMARY KEY,
+  name          text NOT NULL,
+  phone         text NOT NULL UNIQUE,
+  email         text NOT NULL DEFAULT '',
+  password_hash text NOT NULL,
+  role          text NOT NULL DEFAULT 'customer',
+  address       jsonb,
+  created_at    timestamptz NOT NULL DEFAULT now()
+);
+
+ALTER TABLE orders ADD COLUMN IF NOT EXISTS user_id integer REFERENCES users(id) ON DELETE SET NULL;
+CREATE INDEX IF NOT EXISTS orders_user_idx ON orders (user_id);
+CREATE INDEX IF NOT EXISTS product_categories_cat_idx ON product_categories (category_id);

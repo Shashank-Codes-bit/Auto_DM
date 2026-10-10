@@ -11,7 +11,9 @@ const NAV = [
   ['dashboard', '/admin', 'Dashboard'],
   ['orders', '/admin/orders', 'Orders'],
   ['products', '/admin/products', 'Products'],
+  ['categories', '/admin/categories', 'Categories'],
   ['reels', '/admin/reels', 'Reels'],
+  ['customers', '/admin/customers', 'Customers'],
   ['activity', '/admin/activity', 'DM activity'],
   ['settings', '/admin/settings', 'Settings'],
 ];
@@ -48,8 +50,8 @@ export function adminLayout({ title, active, body, csrf, flash, badges = {} }) {
       ${NAV.map(([key, href, label]) => html`<li><a href="${href}" ${key === active ? raw('aria-current="page"') : ''}>${label}${badges[key] ? html`<span class="badge">${badges[key]}</span>` : ''}</a></li>`)}
     </ul>
     <div class="side-foot">
-      <a href="/" target="_blank" rel="noopener">View store</a>
-      <form method="post" action="/admin/logout">${csrfField(csrf)}<button type="submit" class="linkish">Log out</button></form>
+      <a href="/">View store</a>
+      <form method="post" action="/logout">${csrfField(csrf)}<button type="submit" class="linkish">Log out</button></form>
     </div>
   </nav>
   <main class="content">
@@ -63,27 +65,28 @@ export function adminLayout({ title, active, body, csrf, flash, badges = {} }) {
 </html>`;
 }
 
-export function loginPage({ error = '', next = '/admin', enabled = true }) {
-  return html`<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><link rel="icon" href="data:,">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex"><title>Log in | Admin</title>
-<link rel="stylesheet" href="${FONT_URL}"><link rel="stylesheet" href="/static/admin.css"></head>
-<body class="login-body">
-<form class="login" method="post" action="/admin/login">
-  <h1>Store admin</h1>
-  ${enabled
-    ? html`<input type="hidden" name="next" value="${next}">
-      <label>Password<input type="password" name="password" autocomplete="current-password" required autofocus></label>
-      ${error ? html`<p class="flash err" role="alert">${error}</p>` : ''}
-      <button class="btn primary" type="submit">Log in</button>`
-    : html`<p>Admin is turned off. Add <code>ADMIN_PASSWORD=your-password</code> to <code>.env</code> and restart the server.</p>`}
-</form>
-</body></html>`;
+// ---------------------------------------------------------------- dashboard
+function setupChecklist(checklist, csrf) {
+  if (!checklist || checklist.dismissed) return '';
+  const done = checklist.steps.filter((x) => x.done).length;
+  if (done === checklist.steps.length) return '';
+  return html`<section class="panel checklist" aria-labelledby="setup-title">
+  <div class="panel-head">
+    <div><h2 id="setup-title">Set up your store</h2><p class="hint" style="margin:4px 0 0">${done} of ${checklist.steps.length} done. Steps tick themselves off as you go.</p></div>
+    <form method="post" action="/admin/checklist/dismiss">${csrfField(csrf)}<button class="linkish dark" type="submit">Hide this</button></form>
+  </div>
+  <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="${checklist.steps.length}" aria-valuenow="${done}"><span style="width:${Math.round((done / checklist.steps.length) * 100)}%"></span></div>
+  <ol class="steps-list">
+    ${checklist.steps.map((x) => html`<li class="${x.done ? 'done' : ''}">
+      <span class="tick" aria-hidden="true">${x.done ? '✓' : ''}</span>
+      <div><strong>${x.title}</strong><p>${x.text}</p></div>
+      ${x.done ? html`<span class="chip chip-live">Done</span>` : html`<a class="btn ${x === checklist.steps.find((y) => !y.done) ? 'primary' : ''}" href="${x.href}">${x.action}</a>`}
+    </li>`)}
+  </ol>
+</section>`;
 }
 
-// ---------------------------------------------------------------- dashboard
-export function dashboardPage({ stats, reels, orders, activity, warnings }) {
+export function dashboardPage({ stats, reels, orders, activity, warnings, checklist, csrf }) {
   const tiles = [
     ['DMs sent', stats.dms, `${stats.dms_today} today`],
     ['Store visits', stats.visits, `${stats.visits_today} today`],
@@ -91,8 +94,9 @@ export function dashboardPage({ stats, reels, orders, activity, warnings }) {
     ['Revenue (confirmed)', formatMoney(stats.revenue), 'Paid, shipped and delivered'],
   ];
   return html`
-<header class="page-head"><h1>Dashboard</h1></header>
+<header class="page-head"><h1>Dashboard</h1><a class="btn" href="/">View your store</a></header>
 ${warnings.map((w) => html`<p class="flash warn">${w}</p>`)}
+${setupChecklist(checklist, csrf)}
 <section class="tiles">
   ${tiles.map(([label, value, sub]) => html`<div class="tile"><p class="tile-label">${label}</p><p class="tile-value">${value}</p><p class="tile-sub">${sub}</p></div>`)}
 </section>
@@ -132,20 +136,24 @@ ${stats.to_confirm || stats.to_ship ? html`
 }
 
 // ---------------------------------------------------------------- products
-export function productsPage({ products, search, status }) {
-  const tabs = [['all', 'All'], ['active', 'Active'], ['archived', 'Archived']];
+export function productsPage({ products, search, status, categories = [], category = 0 }) {
+  const tabs = [['all', 'All'], ['active', 'Active'], ['featured', 'Featured'], ['archived', 'Archived']];
   return html`
 <header class="page-head"><h1>Products</h1><a class="btn primary" href="/admin/products/new">Add product</a></header>
 <form class="filters" method="get">
-  <div class="tabs">${tabs.map(([k, label]) => html`<a href="?status=${k}&search=${encodeURIComponent(search)}" ${status === k ? raw('aria-current="true"') : ''}>${label}</a>`)}</div>
+  <div class="tabs">${tabs.map(([k, label]) => html`<a href="?status=${k}&search=${encodeURIComponent(search)}&category=${category || ''}" ${status === k ? raw('aria-current="true"') : ''}>${label}</a>`)}</div>
   <input type="hidden" name="status" value="${status}">
+  ${categories.length ? html`<select name="category" aria-label="Category" data-autosubmit>
+    <option value="">All categories</option>
+    ${categories.map((c) => html`<option value="${c.id}" ${Number(category) === c.id ? raw('selected') : ''}>${c.name}</option>`)}
+  </select>` : ''}
   <input type="search" name="search" value="${search}" placeholder="Search products" aria-label="Search products">
 </form>
 ${products.length ? html`
 <div class="table-wrap"><table>
   <thead><tr><th>Product</th><th class="num">Price</th><th class="num">Stock</th><th class="num">In reels</th><th>Status</th></tr></thead>
   <tbody>${products.map((p) => html`<tr>
-    <td><a class="row-link" href="/admin/products/${p.id}">${thumb(p.images[0], p.name)}<span>${p.name}${p.option_values.length ? html`<small>${p.option_label}: ${p.option_values.join(', ')}</small>` : ''}</span></a></td>
+    <td><a class="row-link" href="/admin/products/${p.id}">${thumb(p.images[0], p.name)}<span>${p.name}${p.featured ? html` <span class="chip chip-new">Featured</span>` : ''}${p.category_names?.length ? html`<small>${p.category_names.join(', ')}</small>` : ''}${p.option_values.length ? html`<small>${p.option_label}: ${p.option_values.join(', ')}</small>` : ''}</span></a></td>
     <td class="num">${formatMoney(p.price_paise)}${p.mrp_paise > p.price_paise ? html`<small><s>${formatMoney(p.mrp_paise)}</s></small>` : ''}</td>
     <td class="num">${p.stock == null ? 'Unlimited' : p.stock === 0 ? html`<span class="warn-text">Sold out</span>` : p.stock}</td>
     <td class="num">${p.reel_count}</td>
@@ -159,17 +167,19 @@ export function productValues(p) {
     ? {
         name: p.name, description: p.description, price: paiseToInput(p.price_paise), mrp: paiseToInput(p.mrp_paise),
         option_label: p.option_label, option_values: p.option_values.join(', '), stock: p.stock ?? '', active: p.active,
-        images: p.images,
+        images: p.images, featured: p.featured, categoryIds: p.category_ids || [],
       }
-    : { name: '', description: '', price: '', mrp: '', option_label: 'Size', option_values: '', stock: '', active: true, images: [] };
+    : { name: '', description: '', price: '', mrp: '', option_label: 'Size', option_values: '', stock: '', active: true, images: [], featured: false, categoryIds: [] };
 }
 
-export function productFormPage({ product, values, csrf }) {
+export function productFormPage({ product, values, csrf, categories = [] }) {
   const v = values;
   const images = [].concat(v.images || []);
+  const inCats = new Set([].concat(v.categoryIds || []).map(Number));
   return html`
 <header class="page-head">
   <div><a class="back" href="/admin/products">Products</a><h1>${product ? product.name : 'Add product'}</h1></div>
+  ${product?.active ? html`<a class="btn" href="/p/${product.slug}">View in store</a>` : ''}
 </header>
 <form class="form-grid" method="post" action="${product ? `/admin/products/${product.id}` : '/admin/products'}">
   ${csrfField(csrf)}
@@ -205,6 +215,15 @@ export function productFormPage({ product, values, csrf }) {
     </div>
     <label class="narrow">Stock <span class="hint">Leave empty for unlimited</span><input name="stock" value="${v.stock}" inputmode="numeric"></label>
     <label class="check"><input type="checkbox" name="active" ${v.active ? raw('checked') : ''}> Show in stores (uncheck to archive)</label>
+  </section>
+
+  <section class="panel">
+    <h2>Where it shows</h2>
+    <input type="hidden" name="categories_sent" value="1">
+    ${categories.length ? html`<p class="hint">Pick the categories shoppers can find it in.</p>
+    <div class="check-grid">${categories.map((c) => html`<label class="check"><input type="checkbox" name="categoryIds" value="${c.id}" ${inCats.has(c.id) ? raw('checked') : ''}> ${c.name}${c.visible ? '' : html` <small>(hidden)</small>`}</label>`)}</div>`
+      : html`<p class="hint">No categories yet. <a href="/admin/categories/new">Add a category</a> to group products in the shop.</p>`}
+    <label class="check"><input type="checkbox" name="featured" ${v.featured ? raw('checked') : ''}> Featured: show in “Today’s best deals” on the home page</label>
   </section>
 
   <div class="form-actions">
@@ -309,6 +328,7 @@ export function reelFormPage({ mediaId, post, reel, products, values, baseUrl, c
     ${csrfField(csrf)}
     <input type="hidden" name="permalink" value="${permalink}">
     <input type="hidden" name="thumbnail_url" value="${post?.thumbnail_url || post?.media_url || ''}">
+    <input type="hidden" name="video_url" value="${post?.media_type === 'VIDEO' ? post.media_url || '' : ''}">
     <input type="hidden" name="caption" value="${caption.slice(0, 500)}">
 
     <section class="panel">
@@ -486,6 +506,20 @@ export function settingsPage({ settings: s, connection, csrf }) {
     <label>Instagram handle<input name="instagram_handle" value="${s.instagram_handle}" placeholder="_shoppingforher_"></label>
   </section>
   <section class="panel">
+    <h2>Home and About pages</h2>
+    <p class="hint">The words shoppers see first. Open your store to see the result.</p>
+    <label>Small line above the title<input name="hero_kicker" value="${s.hero_kicker}" maxlength="60"></label>
+    <label>Home page title<input name="hero_title" value="${s.hero_title}" maxlength="80"></label>
+    <label>Home page subtitle<textarea name="hero_subtitle" rows="2" maxlength="240">${s.hero_subtitle}</textarea></label>
+    <label>Why shop with us <span class="hint">One point per line, up to 5</span><textarea name="trust_points" rows="5">${s.trust_points}</textarea></label>
+    <div class="row2">
+      <label>Bulk order title<input name="bulk_title" value="${s.bulk_title}" maxlength="80"></label>
+      <label>Bulk order text<input name="bulk_text" value="${s.bulk_text}" maxlength="200"></label>
+    </div>
+    <label>About page <span class="hint">Leave a blank line between paragraphs</span><textarea name="about_text" rows="6">${s.about_text}</textarea></label>
+    <label class="narrow">GSTIN <span class="hint">Optional, shown in the footer</span><input name="gstin" value="${s.gstin}" maxlength="20"></label>
+  </section>
+  <section class="panel">
     <h2>Delivery</h2>
     <div class="row2">
       <label>Delivery fee (₹)<input name="shipping_fee" value="${money('shipping_fee_paise')}" inputmode="decimal"></label>
@@ -523,11 +557,98 @@ export function settingsPage({ settings: s, connection, csrf }) {
 </section>
 
 <section class="panel">
+  <h2>Your login</h2>
+  <p class="hint" style="margin:0">You log in on <a href="/login">/login</a> with the mobile number in <code>ADMIN_PHONE</code> and the password in <code>ADMIN_PASSWORD</code>. To change the password, edit <code>.env</code> and restart the app. Shoppers' passwords can be reset in <a href="/admin/customers">Customers</a>.</p>
+</section>
+
+<section class="panel">
   <h2>Demo data</h2>
-  <p class="hint">Fills the store with 36 Mehta Mart products and sets up a store for each of your 3 newest reels: Kitchen Creations, Fresh Start Cleaning and Trending Toys. Safe to run again: existing products are reused and your settings are kept.</p>
+  <p class="hint">Fills the store with Mehta Mart's collections and products, and sets up a store for each of your 3 newest reels: Kitchen Creations, Fresh Start Cleaning and Trending Toys. Safe to run again: existing products are reused and your settings are kept.</p>
   <form method="post" action="/admin/demo-data" data-confirm="Load demo data into your 3 newest reels? Their current store setup will be replaced.">
     ${csrfField(csrf)}
     <button class="btn" type="submit">Load demo data</button>
   </form>
 </section>`;
+}
+
+// ---------------------------------------------------------------- categories
+export function categoriesPage({ categories }) {
+  return html`
+<header class="page-head"><h1>Categories</h1><a class="btn primary" href="/admin/categories/new">Add category</a></header>
+<p class="lead">Categories show as circles on the home page and as chips in the shop. Lower numbers come first.</p>
+${categories.length ? html`
+<div class="table-wrap"><table>
+  <thead><tr><th>Category</th><th class="num">Order</th><th class="num">Products</th><th>Status</th><th></th></tr></thead>
+  <tbody>${categories.map((c) => html`<tr>
+    <td><a class="row-link" href="/admin/categories/${c.id}">${thumb(c.image_url, c.name)}<span>${c.name}<small>/c/${c.slug}</small></span></a></td>
+    <td class="num">${c.position}</td>
+    <td class="num">${c.product_count}</td>
+    <td>${c.visible ? html`<span class="chip chip-live">Visible</span>` : html`<span class="chip chip-off">Hidden</span>`}</td>
+    <td>${c.visible ? html`<a href="/c/${c.slug}">View</a>` : ''}</td>
+  </tr>`)}</tbody>
+</table></div>` : html`<div class="empty-block"><p>No categories yet.</p><a class="btn primary" href="/admin/categories/new">Add your first category</a></div>`}`;
+}
+
+export function categoryFormPage({ category, values: v, csrf, products = [] }) {
+  return html`
+<header class="page-head">
+  <div><a class="back" href="/admin/categories">Categories</a><h1>${category ? category.name : 'Add category'}</h1></div>
+  ${category?.visible ? html`<a class="btn" href="/c/${category.slug}">View in store</a>` : ''}
+</header>
+<form class="form-grid" method="post" action="${category ? `/admin/categories/${category.id}` : '/admin/categories'}">
+  ${csrfField(csrf)}
+  <section class="panel">
+    <h2>Details</h2>
+    <label>Name<input name="name" value="${v.name}" required maxlength="60"></label>
+    <label>Short description <span class="hint">Optional, shown at the top of the category page</span><textarea name="description" rows="2" maxlength="400">${v.description}</textarea></label>
+    <div class="row2">
+      <label>Link name <span class="hint">/c/…, made from the name if empty</span><input name="slug" value="${v.slug}" maxlength="60"></label>
+      <label>Order <span class="hint">Lower numbers show first</span><input name="position" value="${v.position}" inputmode="numeric"></label>
+    </div>
+    <label>Image link <span class="hint">Square photo, or upload one below</span><input name="image_url" value="${v.image_url}" data-single-image></label>
+    <div class="image-add"><label class="btn">Upload image<input type="file" accept="image/jpeg,image/png,image/webp,image/gif" data-upload-single hidden></label>
+      ${v.image_url ? html`<img class="thumb" src="${v.image_url}" alt="" data-single-preview>` : html`<img class="thumb" alt="" data-single-preview hidden>`}</div>
+    <p class="hint" data-image-status role="status"></p>
+    <label class="check"><input type="checkbox" name="visible" ${v.visible ? raw('checked') : ''}> Show in the store</label>
+  </section>
+  <div class="form-actions">
+    <button class="btn primary" type="submit">${category ? 'Save category' : 'Add category'}</button>
+    <a class="btn" href="/admin/categories">Cancel</a>
+  </div>
+</form>
+${category ? html`
+<section class="panel">
+  <div class="panel-head"><h2>Products in this category (${products.length})</h2><a href="/admin/products?category=${category.id}">Manage</a></div>
+  ${products.length ? html`<ul class="mini-list">${products.slice(0, 30).map((p) => html`<li><a class="row-link" href="/admin/products/${p.id}">${thumb(p.images[0], p.name)}<span>${p.name}</span></a></li>`)}</ul>`
+    : html`<p class="empty">No products yet. Tick this category on a product's page to add it.</p>`}
+</section>
+<form class="danger-zone" method="post" action="/admin/categories/${category.id}/delete" data-confirm="Delete ${category.name}? Its products stay in your catalog.">
+  ${csrfField(csrf)}
+  <button class="btn danger" type="submit">Delete category</button>
+</form>` : ''}`;
+}
+
+export const categoryValues = (c) =>
+  c ? { name: c.name, slug: c.slug, description: c.description, image_url: c.image_url, position: c.position, visible: c.visible }
+    : { name: '', slug: '', description: '', image_url: '', position: 0, visible: true };
+
+// ---------------------------------------------------------------- customers
+export function customersPage({ customers, search, csrf, resetFor = null }) {
+  return html`
+<header class="page-head"><h1>Customers</h1></header>
+<p class="lead">Shoppers who created an account. Guest orders still show in Orders. If someone forgets their password, set a new one here and send it to them.</p>
+${resetFor ? html`<p class="flash ok" role="status">New password for ${resetFor.name} (${resetFor.phone}): <code>${resetFor.password}</code>. Send it to them on WhatsApp; they can change it in My account.</p>` : ''}
+<form class="filters" method="get"><input type="search" name="search" value="${search}" placeholder="Search by name or number" aria-label="Search customers"></form>
+${customers.length ? html`
+<div class="table-wrap"><table>
+  <thead><tr><th>Customer</th><th>Mobile</th><th class="num">Orders</th><th class="num">Spent</th><th>Joined</th><th></th></tr></thead>
+  <tbody>${customers.map((u) => html`<tr>
+    <td>${u.name}${u.role === 'admin' ? html` <span class="chip chip-new">Owner</span>` : ''}${u.email ? html`<small>${u.email}</small>` : ''}</td>
+    <td><a href="https://wa.me/91${u.phone}">${u.phone}</a></td>
+    <td class="num">${u.order_count ? html`<a href="/admin/orders?search=${u.phone}">${u.order_count}</a>` : 0}</td>
+    <td class="num">${formatMoney(Number(u.spent))}</td>
+    <td>${new Date(u.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</td>
+    <td>${u.role === 'admin' ? '' : html`<form method="post" action="/admin/customers/${u.id}/reset" data-confirm="Set a new password for ${u.name}?">${csrfField(csrf)}<button class="btn" type="submit">Reset password</button></form>`}</td>
+  </tr>`)}</tbody>
+</table></div>` : html`<p class="empty">${search ? 'No customers match.' : 'No customer accounts yet. Shoppers can sign up, or add a password when they check out.'}</p>`}`;
 }

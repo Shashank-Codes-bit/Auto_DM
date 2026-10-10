@@ -91,6 +91,39 @@
     });
   }
 
+  // ---- single image (categories) ----
+  const single = $('[data-upload-single]');
+  if (single) {
+    const field = $('[data-single-image]');
+    const preview = $('[data-single-preview]');
+    const status = $('[data-image-status]');
+    const show = () => {
+      preview.hidden = !field.value;
+      if (field.value) preview.src = field.value;
+    };
+    field.addEventListener('change', show);
+    single.addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      e.target.value = '';
+      if (!file) return;
+      status.textContent = 'Uploading…';
+      const body = new FormData();
+      body.append('file', file);
+      try {
+        const res = await fetch('/admin/media', { method: 'POST', body, headers: { 'x-csrf-token': csrf } });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data.error || 'Upload failed');
+        field.value = data.url;
+        show();
+        status.textContent = 'Uploaded. Save to keep it.';
+      } catch (err) {
+        status.textContent = err.message;
+      }
+    });
+  }
+
+  $$('[data-autosubmit]').forEach((el) => el.addEventListener('change', () => el.form.submit()));
+
   // ---- reel product picker ----
   const picked = $('[data-picked]');
   if (picked) {

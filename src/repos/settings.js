@@ -10,6 +10,15 @@ export const SETTING_DEFAULTS = {
   upi_payee: 'Shopping For Her',
   support_whatsapp: '',
   support_email: '',
+  hero_kicker: '',
+  hero_title: 'Shop the reels you love',
+  hero_subtitle: 'Everything from our Instagram reels, in one place.',
+  trust_points: 'Ships across India\nSecure UPI payment\nQuick help on WhatsApp',
+  bulk_title: 'Buying in bulk?',
+  bulk_text: 'Message us on WhatsApp for bulk-order offers.',
+  about_text: '',
+  gstin: '',
+  checklist_dismissed: '',
 };
 
 export function settingsRepo(db) {
