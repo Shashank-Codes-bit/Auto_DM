@@ -24,6 +24,7 @@
       localStorage.setItem(KEY, JSON.stringify(b));
     } catch {}
     render();
+    if (typeof escapeUrl === 'function' && inApp) $$('[data-escape-link]').forEach((a) => (a.href = escapeUrl()));
   }
   let bag = load();
 
@@ -242,6 +243,115 @@
       }
     });
   }
+
+  // ---- leaving Instagram's in-app browser for Chrome/Safari -----------------
+  // Instagram opens DM links in its own in-app browser. We offer a way out to the real browser,
+  // carrying the bag along in the link (?bag=...). Shown only inside Instagram/Facebook.
+  const params = new URLSearchParams(location.search);
+  const ua = navigator.userAgent || '';
+  const inApp = /Instagram|FBAN|FBAV/i.test(ua) || params.get('preview_inapp') === '1';
+  const isAndroid = /Android/i.test(ua);
+  const isIOS = /iPhone|iPad|iPod/i.test(ua);
+  const browserName = isAndroid ? 'Chrome' : isIOS ? 'Safari' : 'your browser';
+
+  const b64url = (str) => btoa(String.fromCharCode(...new TextEncoder().encode(str))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  const fromB64url = (str) => new TextDecoder().decode(Uint8Array.from(atob(str.replace(/-/g, '+').replace(/_/g, '/')), (c) => c.charCodeAt(0)));
+
+  function escapeUrl() {
+    const url = new URL('/', location.origin);
+    if (bag.items.length) {
+      url.searchParams.set('bag', b64url(JSON.stringify({
+        i: bag.items.map((i) => [i.productId, i.option, i.qty]), r: bag.reelSlug || '', s: bag.source || '',
+      })));
+    }
+    const https = url.toString();
+    if (isAndroid) {
+      return `intent://${url.host}${url.pathname}${url.search}#Intent;scheme=${url.protocol.replace(":", "")};package=com.android.chrome;S.browser_fallback_url=${encodeURIComponent(https)};end`;
+    }
+    if (isIOS) return `x-safari-${https}`;
+    return https;
+  }
+
+  function wireEscapeLink(a) {
+    a.textContent = `Open full store in ${browserName}`;
+    a.addEventListener('click', () => {
+      a.href = escapeUrl();
+      try { sessionStorage.setItem('escapeCardClosed', '1'); } catch {}
+      setTimeout(() => $$('[data-escape-tip]').forEach((t) => (t.hidden = false)), 1500);
+    });
+    a.href = escapeUrl();
+  }
+
+  const escapeBlock = $('[data-escape]');
+  if (inApp && escapeBlock) {
+    escapeBlock.hidden = false;
+    $('.escape-title', escapeBlock).textContent = `Shop the full store in ${browserName}`;
+    wireEscapeLink($('[data-escape-link]', escapeBlock));
+
+    // Floating card: appears once the shopper reaches the end of the page; stays until they act.
+    let cardShown = false;
+    const closed = () => { try { return sessionStorage.getItem('escapeCardClosed') === '1'; } catch { return false; } };
+    const showCard = () => {
+      if (cardShown || closed()) return;
+      cardShown = true;
+      const overlay = document.createElement('div');
+      overlay.className = 'escape-overlay';
+      overlay.innerHTML = `<div class="escape-card" role="dialog" aria-modal="true" aria-labelledby="escape-card-title">
+        <button type="button" class="icon-btn escape-close" aria-label="Close">✕</button>
+        <p class="escape-title" id="escape-card-title">Shop the full store in ${esc(browserName)}</p>
+        <p class="escape-text">See every product, and your bag comes with you.</p>
+        <a class="escape-btn" href="/" data-escape-link></a>
+        <p class="escape-tip" data-escape-tip hidden>If nothing happens, tap ⋯ at the top and choose “Open in external browser”.</p>
+      </div>`;
+      document.body.append(overlay);
+      wireEscapeLink($('[data-escape-link]', overlay));
+      const close = () => {
+        try { sessionStorage.setItem('escapeCardClosed', '1'); } catch {}
+        overlay.remove();
+      };
+      $('.escape-close', overlay).addEventListener('click', close);
+      $('.escape-close', overlay).focus();
+    };
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((entries, obs) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          obs.disconnect();
+          showCard();
+        }
+      }, { threshold: 0.4 }).observe(escapeBlock);
+    }
+  }
+
+  // Arrived from the in-app browser with a bag in the link: restore it here.
+  async function restoreBagFromLink() {
+    const packed = params.get('bag');
+    if (!packed) return;
+    params.delete('bag');
+    history.replaceState(null, '', `${location.pathname}${params.toString() ? `?${params}` : ''}${location.hash}`);
+    try {
+      const data = JSON.parse(fromB64url(packed));
+      const lines = (data.i || []).slice(0, 50);
+      const res = await fetch(`/api/products?ids=${lines.map((l) => Number(l[0])).join(',')}`);
+      const { products = [] } = await res.json();
+      const byId = new Map(products.map((p) => [p.id, p]));
+      let added = 0;
+      for (const [id, option, qty] of lines) {
+        const p = byId.get(Number(id));
+        if (!p || p.soldOut || (p.options.length && !p.options.includes(option))) continue;
+        const line = bag.items.find((i) => i.productId === p.id && i.option === (option || ''));
+        if (line) line.qty = Math.max(line.qty, Math.min(10, Number(qty) || 1));
+        else bag.items.push({ productId: p.id, slug: p.slug, name: p.name, price: p.price, image: p.image, option: option || '', qty: Math.min(10, Number(qty) || 1), reelSlug: data.r || '' });
+        added++;
+      }
+      if (data.r) bag.reelSlug = String(data.r).slice(0, 60);
+      if (data.s) bag.source = String(data.s).slice(0, 20);
+      save(bag);
+      if (added) openBag();
+    } catch {
+      // A broken or old link just means an empty bag.
+    }
+  }
+  restoreBagFromLink();
 
   // Remember which reel (and whether it came from the DM) for order attribution.
   if (S.reelSlug) {

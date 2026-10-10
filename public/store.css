@@ -85,9 +85,10 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 16px 96px; }
 }
 .card { display: flex; flex-direction: column; min-width: 0; }
 .card-media {
-  position: relative; display: block; aspect-ratio: 4 / 5; border-radius: var(--radius-sm); overflow: hidden; background: var(--petal);
+  position: relative; display: block; aspect-ratio: 1 / 1; border-radius: var(--radius-sm); overflow: hidden; background: #fff;
 }
 .card-media img { width: 100%; height: 100%; object-fit: cover; }
+.card-media { border: 1px solid var(--line); }
 .noimg {
   display: grid; place-items: center; width: 100%; height: 100%;
   background: var(--petal); color: var(--accent); font-size: 42px; font-weight: 700;
@@ -98,7 +99,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 16px 96px; }
   font-weight: 700; font-size: 14px; line-height: 28px; text-align: center;
 }
 .card-body { display: flex; flex-direction: column; gap: 4px; padding-top: 10px; flex: 1; }
-.card-name { text-decoration: none; font-weight: 560; line-height: 1.3; }
+.card-name { text-decoration: none; font-weight: 560; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .price-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; }
 .price { font-weight: 700; }
 .mrp { color: var(--ink-soft); font-size: 14px; }
@@ -130,7 +131,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 16px 96px; }
   overflow-x: auto; scroll-snap-type: x mandatory; border-radius: var(--radius-sm); scrollbar-width: none;
 }
 .gallery::-webkit-scrollbar { display: none; }
-.gallery img, .pdp-noimg { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; scroll-snap-align: start; border-radius: var(--radius-sm); background: var(--petal); }
+.gallery img, .pdp-noimg { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; scroll-snap-align: start; border-radius: var(--radius-sm); background: var(--petal); }
 .gallery-hint { margin: -10px 0 0; font-size: 14px; color: var(--ink-soft); }
 .pdp-info h1 { font-size: clamp(28px, 7vw, 44px); font-weight: 720; }
 .price-row.big { margin-top: 10px; font-size: 20px; }
@@ -284,3 +285,56 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 16px 96px; }
 @media (prefers-reduced-motion: reduce) {
   .bag, .sheet { transition: none; }
 }
+
+/* ---- home: full store ---- */
+.home-hero { display: flex; align-items: center; gap: 16px; padding: 26px 0 8px; }
+.home-logo { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; background: #fff; border: 1px solid var(--line); flex: none; }
+.home-hero h1 { font-size: clamp(30px, 8vw, 56px); font-weight: 760; }
+.home-hero .tagline { margin: 6px 0 0; }
+.home-section { padding-top: 26px; }
+.home-section h2 { font-size: 24px; font-weight: 720; margin-bottom: 14px; }
+.section-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.section-head h2 { margin: 0; }
+.search input { width: min(320px, 100%); min-height: 44px; padding: 10px 16px; border: 1.5px solid var(--line); border-radius: 999px; background: #fff; }
+.search input:focus { border-color: var(--ink); outline: none; }
+.search { flex: 1; display: flex; justify-content: flex-end; min-width: 200px; }
+.result-note { margin: -4px 0 14px; color: var(--ink-soft); }
+.reel-row { list-style: none; margin: 0 -16px; padding: 0 16px 6px; display: grid; grid-auto-flow: column; grid-auto-columns: 132px; gap: 12px; overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; }
+.reel-row::-webkit-scrollbar { display: none; }
+.reel-row a { display: grid; gap: 6px; text-decoration: none; scroll-snap-align: start; }
+.reel-row img, .reel-row .reel-frame-empty { position: static; display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover; border-radius: var(--radius-sm); background: var(--petal); }
+.reel-row-title { font-weight: 650; line-height: 1.25; }
+.reel-row-meta { font-size: 14px; color: var(--ink-soft); }
+.more-btn { display: flex; align-items: center; justify-content: center; min-height: 48px; margin: 26px auto 0; max-width: 360px; border: 1.5px solid var(--ink); border-radius: 999px; text-decoration: none; font-weight: 650; }
+@media (min-width: 720px) { .reel-row { grid-auto-columns: 168px; margin: 0; padding: 0 0 6px; } }
+
+/* ---- leave Instagram's in-app browser ---- */
+.escape {
+  margin: 40px 0 0; padding: 22px 20px; border-radius: var(--radius-lg); text-align: center;
+  background: var(--ink); color: var(--paper);
+}
+.escape-title { margin: 0; font-size: 20px; font-weight: 720; line-height: 1.2; }
+.escape-text { margin: 6px 0 16px; opacity: 0.85; }
+.escape-btn {
+  display: flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 20px;
+  border-radius: 999px; background: var(--accent); color: var(--on-accent); font-weight: 700; font-size: 17px; text-decoration: none;
+}
+.escape-tip { margin: 12px 0 0; font-size: 14px; opacity: 0.85; }
+.escape-overlay { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 20px; background: rgb(32 16 36 / 0.55); }
+.escape-card {
+  position: relative; width: min(380px, 100%); padding: 30px 22px 22px; border-radius: var(--radius-lg);
+  background: var(--paper); color: var(--ink); text-align: center; box-shadow: 0 20px 60px rgb(20 10 22 / 0.35);
+  animation: pop 0.22s ease-out;
+}
+.escape-card .escape-text, .escape-card .escape-tip { opacity: 1; color: var(--ink-soft); }
+.escape-close { position: absolute; top: 10px; right: 10px; }
+.escape-card .escape-title { padding: 0 34px; }
+@keyframes pop { from { transform: scale(0.94); opacity: 0; } to { transform: none; opacity: 1; } }
+
+/* ---- payment page ---- */
+.secondary {
+  display: inline-flex; align-items: center; justify-content: center; width: 100%; min-height: 50px; padding: 0 22px;
+  border: 1.5px solid var(--ink); border-radius: 999px; background: transparent; font-weight: 650; font-size: 16px; cursor: pointer;
+}
+.pay-or { margin: 4px 0 -6px; text-align: center; color: var(--ink-soft); font-size: 14px; }
+@media (prefers-reduced-motion: reduce) { .escape-card { animation: none; } }

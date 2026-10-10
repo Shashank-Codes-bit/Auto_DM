@@ -51,7 +51,13 @@ export function storeLayout({ settings, title, body, pageData = {}, bare = false
     ${bagIcon}<span class="bag-count" data-bag-count hidden>0</span>
   </button>`}
 </header>
-<main>${body}</main>
+<main>${body}
+${pageData.escape ? html`<section class="escape" data-escape hidden>
+  <p class="escape-title">Shop the full store in your browser</p>
+  <p class="escape-text">See every product, and your bag comes with you.</p>
+  <a class="escape-btn" href="/" data-escape-link>Open full store in Chrome</a>
+  <p class="escape-tip" data-escape-tip hidden>If nothing happens, tap ⋯ at the top and choose “Open in external browser”.</p>
+</section>` : ''}</main>
 ${bare ? '' : bagDrawer()}
 <footer class="site-foot">
   <p>${settings.store_name}${settings.instagram_handle ? html` on <a href="https://instagram.com/${settings.instagram_handle.replace(/^@/, '')}">Instagram</a>` : ''}</p>
@@ -95,13 +101,30 @@ export const productForClient = (p, reelSlug) => ({
 function priceLine(p) {
   const off = discountPercent(p.price_paise, p.mrp_paise);
   return html`<span class="price">${formatMoney(p.price_paise)}</span>
-    ${off ? html`<s class="mrp">${formatMoney(p.mrp_paise)}</s><span class="off">${off}% off</span>` : ''}`;
+    ${off ? html`<s class="mrp">${formatMoney(p.mrp_paise)}</s>${off >= 5 ? html`<span class="off">${off}% off</span>` : ''}` : ''}`;
 }
 
 const productImage = (p, cls = '') =>
   p.images[0]
     ? html`<img src="${p.images[0]}" alt="${p.name}" loading="lazy" class="${cls}">`
     : html`<span class="noimg ${cls}" aria-hidden="true">${p.name.slice(0, 1)}</span>`;
+
+function productCard(p, href, seq = null) {
+  return html`
+  <li class="card ${p.stock === 0 ? 'is-soldout' : ''}">
+    <a class="card-media" href="${href}">
+      ${productImage(p)}
+      ${seq ? html`<span class="seq" title="Appears ${seq}${['st', 'nd', 'rd'][seq - 1] || 'th'} in the reel">${seq}</span>` : ''}
+    </a>
+    <div class="card-body">
+      <a class="card-name" href="${href}">${p.name}</a>
+      <div class="price-row">${priceLine(p)}</div>
+      ${p.stock === 0
+        ? html`<span class="soldout">Sold out</span>`
+        : html`<button type="button" class="add-btn" data-add="${p.id}">Add to bag</button>`}
+    </div>
+  </li>`;
+}
 
 export function reelStorePage({ settings, reel }) {
   const products = reel.products;
@@ -121,33 +144,20 @@ export function reelStorePage({ settings, reel }) {
 </section>
 
 <ol class="grid" aria-label="Products in this reel">
-  ${products.map((p, i) => html`
-  <li class="card ${p.stock === 0 ? 'is-soldout' : ''}">
-    <a class="card-media" href="/r/${reel.slug}/p/${p.slug}">
-      ${productImage(p)}
-      <span class="seq" title="Appears ${i + 1}${['st', 'nd', 'rd'][i] || 'th'} in the reel">${i + 1}</span>
-    </a>
-    <div class="card-body">
-      <a class="card-name" href="/r/${reel.slug}/p/${p.slug}">${p.name}</a>
-      <div class="price-row">${priceLine(p)}</div>
-      ${p.stock === 0
-        ? html`<span class="soldout">Sold out</span>`
-        : html`<button type="button" class="add-btn" data-add="${p.id}">Add to bag</button>`}
-    </div>
-  </li>`)}
+  ${products.map((p, i) => productCard(p, `/r/${reel.slug}/p/${p.slug}`, i + 1))}
 </ol>
 ${products.length ? '' : html`<p class="empty">Nothing here right now. Check back soon.</p>`}`;
   return storeLayout({
     settings,
     title: reel.headline || 'Shop the reel',
     body,
-    pageData: { reelSlug: reel.slug, products: products.map((p) => productForClient(p, reel.slug)) },
+    pageData: { reelSlug: reel.slug, products: products.map((p) => productForClient(p, reel.slug)), escape: true },
   });
 }
 
 export function productPage({ settings, reel, product: p }) {
   const body = html`
-<nav class="crumb"><a href="/r/${reel.slug}">Back to ${reel.headline || 'the reel'}</a></nav>
+<nav class="crumb">${reel ? html`<a href="/r/${reel.slug}">Back to ${reel.headline || 'the reel'}</a>` : html`<a href="/">Back to all products</a>`}</nav>
 <article class="pdp">
   <div class="gallery" ${p.images.length > 1 ? raw('data-gallery') : ''}>
     ${p.images.length ? p.images.map((src, i) => html`<img src="${src}" alt="${p.name}${i ? ` (${i + 1})` : ''}" ${i ? raw('loading="lazy"') : ''}>`) : productImage(p, 'pdp-noimg')}
@@ -182,7 +192,7 @@ export function productPage({ settings, reel, product: p }) {
     settings,
     title: p.name,
     body,
-    pageData: { reelSlug: reel.slug, products: [productForClient(p, reel.slug)] },
+    pageData: { reelSlug: reel?.slug || '', products: [productForClient(p, reel?.slug || '')], escape: true },
   });
 }
 
@@ -221,13 +231,13 @@ const STEP_TEXT = {
   delivered: 'Delivered',
 };
 
-export function orderPage({ settings, order, qrSvg }) {
+export function orderPage({ settings, order, qrSvg, upiLink }) {
   const current = STEPS.indexOf(order.status);
   const cancelled = order.status === 'cancelled';
   const body = html`
 <section class="order">
   <p class="order-no">Order ${order.order_number}</p>
-  <h1>${cancelled ? 'This order was cancelled' : order.status === 'awaiting_payment' ? 'Scan to pay' : `Thanks, ${order.customer_name.split(' ')[0]}!`}</h1>
+  <h1>${cancelled ? 'This order was cancelled' : order.status === 'awaiting_payment' ? 'Complete your payment' : `Thanks, ${order.customer_name.split(' ')[0]}!`}</h1>
 
   ${cancelled ? '' : html`
   <ol class="steps" aria-label="Order progress">
@@ -236,17 +246,18 @@ export function orderPage({ settings, order, qrSvg }) {
 
   ${order.status === 'awaiting_payment' ? html`
   <div class="pay">
-    <div class="demo-note" role="note"><strong>Demo payment.</strong> This QR isn't connected to a real account yet, so no money will move. Tap “I've paid” to continue.</div>
+    <div class="demo-note" role="note"><strong>Demo payment.</strong> Payments aren't connected to a real account yet, so no money will move. Tap “I've paid” to continue.</div>
+    <a class="primary" href="${upiLink}">Pay ${formatMoney(order.total_paise)} with UPI app</a>
+    <p class="pay-or">Paying from another phone? Scan this code with any UPI app.</p>
     <div class="pay-card">
       <div class="qr">${raw(qrSvg)}</div>
       <div class="pay-meta">
         <p class="pay-amount">${formatMoney(order.total_paise)}</p>
-        <p>Scan with any UPI app</p>
         <p class="upi">UPI ID: <span>${settings.upi_id}</span></p>
       </div>
     </div>
     <form method="post" action="/order/${order.public_token}/paid">
-      <button class="primary" type="submit">I've paid ${formatMoney(order.total_paise)}</button>
+      <button class="secondary" type="submit">I've paid ${formatMoney(order.total_paise)}</button>
     </form>
   </div>` : ''}
 
@@ -274,20 +285,47 @@ export function orderPage({ settings, order, qrSvg }) {
   return storeLayout({ settings, title: `Order ${order.order_number}`, body, pageData: { page: 'order' } });
 }
 
-export function homePage({ settings, reels }) {
+export const HOME_PAGE_SIZE = 24;
+
+export function homePage({ settings, reels, products, total, search, shown }) {
+  const more = shown < total;
   const body = html`
-<section class="home">
-  <h1>${settings.store_name}</h1>
-  ${settings.tagline ? html`<p class="tagline">${settings.tagline}</p>` : ''}
-  ${reels.length ? html`
-  <ul class="reel-list">
+<section class="home-hero">
+  ${settings.logo_url ? html`<img class="home-logo" src="${settings.logo_url}" alt="">` : ''}
+  <div>
+    <h1>${settings.store_name}</h1>
+    ${settings.tagline ? html`<p class="tagline">${settings.tagline}</p>` : ''}
+  </div>
+</section>
+
+${reels.length ? html`
+<section class="home-section">
+  <h2>Shop by reel</h2>
+  <ul class="reel-row">
     ${reels.map((r) => html`<li><a href="/r/${r.slug}">
       ${r.thumbnail_url ? html`<img src="${r.thumbnail_url}" alt="" loading="lazy">` : html`<span class="reel-frame-empty"></span>`}
-      <span>${r.headline || 'Shop the reel'}</span>
+      <span class="reel-row-title">${r.headline || 'Shop the reel'}</span>
+      <span class="reel-row-meta">${r.product_count === 1 ? '1 piece' : `${r.product_count} pieces`}</span>
     </a></li>`)}
-  </ul>` : html`<p class="empty">New pieces are on the way.</p>`}
+  </ul>
+</section>` : ''}
+
+<section class="home-section" id="all">
+  <div class="section-head">
+    <h2>All products</h2>
+    <form class="search" method="get" action="/#all" role="search">
+      <input type="search" name="q" value="${search}" placeholder="Search products" aria-label="Search products">
+    </form>
+  </div>
+  ${search ? html`<p class="result-note">${total === 1 ? '1 result' : `${total} results`} for “${search}”. <a href="/#all">Clear search</a></p>` : ''}
+  ${products.length ? html`
+  <ul class="grid" aria-label="All products">
+    ${products.map((p) => productCard(p, `/p/${p.slug}`))}
+  </ul>
+  ${more ? html`<a class="more-btn" href="/?${new URLSearchParams({ ...(search ? { q: search } : {}), show: String(shown + HOME_PAGE_SIZE) })}#all">Show more (${total - shown} left)</a>` : ''}`
+  : html`<p class="empty">${search ? 'No products match your search.' : 'New pieces are on the way.'}</p>`}
 </section>`;
-  return storeLayout({ settings, body });
+  return storeLayout({ settings, body, pageData: { products: products.map((p) => productForClient(p, '')), escape: true } });
 }
 
 export function notFoundPage({ settings, message = 'This page doesn’t exist.' }) {

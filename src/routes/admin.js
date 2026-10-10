@@ -2,6 +2,8 @@ import express from 'express';
 import multer from 'multer';
 import { ValidationError, parseRupees } from '../util.js';
 import { ALLOWED_IMAGE_TYPES } from '../repos/media.js';
+import fs from 'node:fs';
+import { SEED_FILE, newestReels, seedDemo } from '../../scripts/seed.js';
 import {
   activityPage, adminLayout, dashboardPage, loginPage, orderDetailPage, ordersPage, productFormPage, productValues,
   productsPage, reelFormPage, reelValues, reelsPage, settingsPage,
@@ -14,6 +16,7 @@ const FLASH = {
   reel_saved: 'Reel store saved. Comments with its keyword now get a DM with the store link.',
   reel_removed: 'Reel store removed.',
   status: 'Order updated.',
+  demo: 'Demo data loaded: 3 reel stores with Mehta Mart products. Open “View store” to see them.',
 };
 
 export const baseUrlFor = (req, config) =>
@@ -21,7 +24,7 @@ export const baseUrlFor = (req, config) =>
 
 const list = (v) => [].concat(v ?? []).filter((x) => x !== '');
 
-export function adminRoutes({ repos, ig, auth, config }) {
+export function adminRoutes({ db, repos, ig, auth, config }) {
   const r = express.Router();
   const upload = multer({
     storage: multer.memoryStorage(),
@@ -262,6 +265,22 @@ export function adminRoutes({ repos, ig, auth, config }) {
     } catch (err) {
       if (!(err instanceof ValidationError)) throw err;
       await settingsView(req, res, { error: err.message, status: 400 });
+    }
+  });
+
+  // Loads seed/mehtamart.json into the 3 newest reels (same as `npm run seed`, but inside the running server).
+  r.post('/demo-data', async (req, res) => {
+    try {
+      const data = JSON.parse(fs.readFileSync(SEED_FILE, 'utf8'));
+      const reels = await newestReels(ig, data.reels.length);
+      if (reels.length < data.reels.length) {
+        throw new ValidationError(`Found only ${reels.length} reel(s) on your Instagram account. Demo data needs ${data.reels.length}.`);
+      }
+      await seedDemo({ db, repos }, data, reels);
+      res.redirect(303, '/admin/reels?ok=demo');
+    } catch (err) {
+      const message = err instanceof ValidationError ? err.message : `Couldn’t load demo data: ${err.message}`;
+      await settingsView(req, res, { error: message, status: 400 });
     }
   });
 

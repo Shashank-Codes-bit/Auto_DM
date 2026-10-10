@@ -106,3 +106,40 @@ test('paused reel stores are not shown', async () => {
     app.close();
   }
 });
+
+test('home lists all active products; /p/:slug and /api/products serve active products only', async () => {
+  const app = await startApp();
+  try {
+    const { products } = await seedReel(app.repos, { n: 2 });
+    const hidden = await app.repos.products.create({ name: 'Hidden thing', price: '50' }); // not active
+    const home = await (await fetch(`${app.base}/`)).text();
+    assert.match(home, /Product 1/);
+    assert.match(home, /Product 2/);
+    assert.doesNotMatch(home, /Hidden thing/);
+    assert.match(await (await fetch(`${app.base}/?q=product%202`)).text(), /1 result/);
+
+    assert.equal((await fetch(`${app.base}/p/${products[0].slug}`)).status, 200);
+    assert.equal((await fetch(`${app.base}/p/${hidden.slug}`)).status, 404);
+
+    const api = await (await fetch(`${app.base}/api/products?ids=${products[0].id},${hidden.id},abc`)).json();
+    assert.deepEqual(api.products.map((p) => p.id), [products[0].id]);
+    assert.equal(api.products[0].price, 10000);
+  } finally {
+    app.close();
+  }
+});
+
+test('payment page offers a UPI app link with the order amount', async () => {
+  const app = await startApp();
+  try {
+    const { products } = await seedReel(app.repos, { n: 1 });
+    const order = await app.repos.orders.create(
+      { items: [{ productId: products[0].id, qty: 1 }], customer: { name: 'Asha K', phone: '9876543210', address: '12 MG Road', city: 'Pune', state: 'MH', pincode: '411001' } },
+      await app.repos.settings.getAll(),
+    );
+    const pay = await (await fetch(`${app.base}/order/${order.public_token}`)).text();
+    assert.match(pay, /href="upi:\/\/pay\?pa=demo%40upi&amp;pn=[^"]*&amp;am=149\.00/);
+  } finally {
+    app.close();
+  }
+});

@@ -68,7 +68,7 @@ export function createApp({ db, ig = instagram, config = defaultConfig }) {
     }
   });
 
-  app.use('/admin', adminRoutes({ repos, ig, auth, config }));
+  app.use('/admin', adminRoutes({ db, repos, ig, auth, config }));
   app.use('/api', apiRoutes({ repos }));
   app.use('/media', mediaRoutes({ repos }));
   app.use('/', storeRoutes({ repos, db, ig }));

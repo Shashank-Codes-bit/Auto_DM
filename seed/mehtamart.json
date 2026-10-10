@@ -1,0 +1,497 @@
+{
+  "source": "https://www.mehtamartmhm.com (product names, prices, descriptions and photos)",
+  "store": {
+    "store_name": "Mehta Mart MHM",
+    "tagline": "Think Shopping. Think Us! The World of Offers since 2015.",
+    "accent_color": "#D4A72C",
+    "logo_url": "https://cdn.dotpe.in/longtail/store-logo/5656117/nS4TE9MK.webp",
+    "instagram_handle": "mehtamart_mhm_official",
+    "support_whatsapp": "919320001717",
+    "support_email": "CustomerSupportMHM@gmail.com",
+    "upi_payee": "Mehta Mart MHM"
+  },
+  "reels": [
+    {
+      "collection": "Kitchen Creations",
+      "headline": "Kitchen Creations",
+      "slug": "kitchen-creations",
+      "keywords": "KITCHEN, LINK",
+      "dm_message": "Hey @{username}! All the kitchen finds from the reel are here 👇",
+      "products": [
+        {
+          "name": "Silicone Oil Brush for Cooking Heat Resistant BBQ & Baking Pastry Brush",
+          "price": 99,
+          "mrp": 100,
+          "description": "Make cooking and baking easier with the Silicone Oil Brush for Cooking | Heat Resistant BBQ & Baking Pastry Brush (Pack of 4). Designed for multipurpose kitchen use, these silicone basting brushes help you evenly spread oil, butter, sauces, and marinades on a variety of foods. Made from high-quality food-grade silicone, these brushes are BPA-free, odorless, and safe for cooking. The durable silicone bristles can withstand high temperatures up to 230°C, making them perfect for BBQ grilling, tandoor cooking, baking, and frying.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/PHRFfB0U.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/FTprTW7C.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/d2U3r6dQ.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/zAxxTaBA.webp"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/silicone-flat-pastry-oil-brush"
+        },
+        {
+          "name": "Silicone Spatula for Non-Stick Cookware Heat Resistant Baking & Cooking Spoon",
+          "price": 99,
+          "mrp": 160,
+          "description": "Make your cooking and baking easier with the Silicone Spatula for Non-Stick Cookware | Heat Resistant Baking & Cooking Spoon. Designed for everyday kitchen use, this multipurpose silicone spatula is perfect for mixing, stirring, flipping, and scraping ingredients without damaging your cookware. Made from 100% food-grade silicone, the spatula is safe, durable, and heat resistant, making it ideal for use with non-stick cookware. Its flexible and smooth edges allow you to scrape bowls, mix cake batter, fold egg whites, scramble eggs, and stir-fry foods with ease.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/TwlB0I6c.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/sWK1C3nK.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/oSJtdDmz.jpeg"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/silicone-spatula-non-stick-heat-resistant-baking-cooking-spoon"
+        },
+        {
+          "name": "Stainless Steel Nutmeg & Cheese Grater | Citrus Zester Kitchen Grater Tool",
+          "price": 99,
+          "mrp": 300,
+          "description": "Make your kitchen preparation easier with the Stainless Steel Nutmeg & Cheese Grater | Citrus Zester Kitchen Grater Tool. Crafted from high-quality stainless steel, this durable kitchen tool is designed for efficient grating and long-lasting performance. The fine grating surface is securely laser-welded to a strong and sturdy frame, ensuring stability and durability during use. It is perfect for grating cheese, nutmeg, ginger, garlic, chocolate, and citrus peels, helping you add fresh flavors and texture to your favorite dishes.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/2R2LtErk.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/uqsFEcAt.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/kuZwWKFP.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/1bnzsdAE.webp"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/stainless-steel-nutmeg-cheese-grater-citrus-zester-kitchen-tool"
+        },
+        {
+          "name": "Plastic Butter Box with Cutting Guide – Butter Dish with Lid & Built-In Cutter",
+          "price": 150,
+          "mrp": 500,
+          "description": "Keep your butter fresh, neatly stored, and easy to serve with the Plastic Butter Box with Cutting Guide. Made from durable, food-grade plastic, this lightweight butter dish is designed for long-lasting use while being safer and more practical than glass containers. Its built-in slicer makes cutting butter effortless and precise, eliminating the need for additional tools. The dish comfortably stores one 8-ounce block or two 4-ounce blocks of butter, making it versatile for most butter brands. After slicing, simply cover with the lid and store it in the fridge to maintain freshness.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/xoxhh7Bg.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/mGgbWfDB.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/2HkyLbrP.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/rhXo2k4g.webp"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/plastic-butter-box-cutting-guide-butter-dish-lid-built-in-cutter"
+        },
+        {
+          "name": "900ml Kitchen Storage Container Set – Airtight Food Storage Boxes for Pantry & Refrigerator",
+          "price": 199,
+          "mrp": 600,
+          "description": "Keep your kitchen organized and your food fresh with the 900ml Kitchen Storage Container Set. Designed for airtight sealing, these containers are perfect for storing grains, pulses, snacks, spices, or leftovers in your pantry or refrigerator. Made from high-quality, food-grade materials, the containers are durable, lightweight, and safe for everyday use. The transparent design allows you to easily identify contents at a glance, while the airtight lids help maintain freshness and prevent spills.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/m6UMxgVj.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/8y5YZQho.webp"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/900ml-kitchen-storage-container-set-airtight-food-storage-boxes-pantry-refrigerator"
+        },
+        {
+          "name": "Ultra Sharp Stainless Steel Kitchen Knife – Wooden Grip Chef Knife for Meat, Vegetables & Fruit Cutting Tool",
+          "price": 159,
+          "mrp": 300,
+          "description": "Upgrade your cooking experience with this Premium Stainless Steel Kitchen Knife Set with Scissors, designed for durability, precision, and everyday kitchen convenience. Crafted from high-hardness stainless steel, these knives are built to resist bending or breaking even after prolonged use, ensuring long-lasting performance and safety in your kitchen. The blades feature advanced edge-grinding technology, delivering extreme sharpness for effortless cutting.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/7TYK1nwe.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/R6j3YYdG.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/tzDtEozH.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/cu8o5DgU.jpeg"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/ultra-sharp-stainless-steel-kitchen-knife-wooden-grip-chef-knife-meat-vegetable-fruit-cutting"
+        },
+        {
+          "name": "Electric Milk Frother Hand Blender – Coffee Foam Maker, Egg Beater & Whisk Mixer",
+          "price": 149,
+          "mrp": 200,
+          "description": "Electric Milk Frother Hand Blender – Portable Coffee Foam Maker, Egg Beater & Mini Whisk Mixer Enjoy café-style beverages at home with this mini handheld electric milk frother. Designed with a stainless steel whisk and ergonomic handle, it quickly creates rich, creamy foam for your favorite drinks like cappuccino, latte, and milkshakes. Compact, lightweight, and easy to use, this versatile tool is perfect for whisking, mixing, and frothing a variety of beverages and ingredients.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/Dg8ZRSBV.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/nzbO9Yiv.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/VnZjkzmZ.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/GEAOpgi7.jpeg"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/electric-milk-frother-hand-blender-coffee-foam-maker-egg-beater-whisk"
+        },
+        {
+          "name": "Stainless Steel Apple Cutter – Plastic Handle Fruit Slicer & Corer for Easy Cutting",
+          "price": 120,
+          "mrp": 199,
+          "description": "Make fruit cutting quick, easy, and mess-free with this high-quality apple cutter and corer. Designed with sharp stainless steel blades and a sturdy plastic body, it slices apples evenly while removing the core in one simple motion. Perfect for daily kitchen use, this tool saves time and effort while ensuring clean and precise cuts every time. Key Features & Benefits: Sharp Stainless Steel Blades: Effortlessly cuts apples into even slices while removing the core instantly. Durable Plastic Body: Strong, lightweight, and easy to handle for everyday use.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/quccpSh7.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/f9IkSpwD.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/1iGRbYyv.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/yJ1C73Td.jpeg"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/stainless-steel-apple-cutter-plastic-handle-fruit-slicer-corer"
+        },
+        {
+          "name": "Silicone Hand Gloves – Multi-Purpose Dishwashing, Pet Grooming, Car Wash & Bathroom Cleaning",
+          "price": 179,
+          "mrp": 429,
+          "description": "Silicone Multi-Purpose Hand Gloves – Heat Resistant, Food-Grade Gloves for Dishwashing, Pet Grooming & Cleaning Make household chores easier and safer with these premium silicone hand gloves, designed for versatility, durability, and convenience. Crafted from food-grade, heat-resistant silicone, they are perfect for dishwashing, pet bathing, car cleaning, and bathroom scrubbing. Comfortable, reusable, and eco-friendly, these gloves combine functionality with safety. Key Features & Benefits: Food-Grade & Eco-Friendly: Made from safe, non-toxic silicone, ideal for kitchen and household use.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/EYWhdnCc.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/s2BvUkGm.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/hBy3HG82.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/T9DzmWKv.webp"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/silicone-hand-gloves-multi-purpose-dishwashing-pet-grooming-car-bathroom-cleaning"
+        },
+        {
+          "name": "2-in-1 Kitchen Soap & Dishwash Dispenser – Liquid Soap Pump for Sink, Large Capacity",
+          "price": 179,
+          "mrp": 299,
+          "description": "2-in-1 Kitchen Soap & Dishwash Dispenser – Large Capacity, Transparent Body, Non-Slip Base Upgrade your kitchen with this 2-in-1 soap and dishwashing liquid dispenser, designed for convenience, durability, and style. Its unbreakable transparent body lets you monitor liquid levels easily, while the well-organized tray and non-slip base ensure stability and functionality during use. Perfect for keeping your sink area tidy and efficient. Key Features & Benefits: Unbreakable Transparent Body: Durable and safe, allowing you to see liquid levels at a glance.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/2MkEhCmV.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/cnzpRxpV.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/4fsFP9M9.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/SGmDLCYx.jpeg"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/2-in-1-kitchen-soap-dishwash-dispenser-liquid-pump-sink-large-capacity"
+        },
+        {
+          "name": "2-in-1 Jumbo Vegetable Chopper & Whisking Set with Storage Lid – Kitchen Cutter & Food Prep Tool",
+          "price": 199,
+          "mrp": 699,
+          "description": "2-in-1 Jumbo Vegetable Chopper & Whisking Set – Stainless Steel Blade, BPA-Free, Easy to Use Make food preparation fast, easy, and mess-free with this premium 2-in-1 jumbo vegetable chopper and whisking set. Designed with sturdy stainless steel blades and a transparent BPA-free bowl, it efficiently chops, dices, and whisks all types of fruits and vegetables. Perfect for home kitchens, meal prep, and healthy cooking. Key Features & Benefits: Robust Stainless Steel Blades: Sharp and durable blades provide fine and effective chopping for vegetables, fruits, and herbs.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/w3bLlVYz.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/BxL1mYCi.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/FerGr2mp.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/ELYkgoxK.jpeg"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/2-in-1-jumbo-vegetable-chopper-whisking-set-storage-lid-kitchen-cutter-food-prep"
+        },
+        {
+          "name": "6PCS Silicone Stretch Lids – Food Grade, BPA-Free, Flexible & Reusable Bowl Covers",
+          "price": 149,
+          "mrp": 799,
+          "description": "6PCS Food Grade Silicone Stretch Lids – Reusable, Flexible & Leakproof Bowl Covers Keep your food fresh, safe, and mess-free with this 6-piece set of silicone stretch lids. Made from non-toxic, food-grade silicone, these lids are durable, flexible, and designed for everyday convenience in your kitchen, fridge, or on-the-go. Key Features & Benefits: Food Grade & Safe: Crafted from soft, durable, non-toxic silicone, BPA-free and safe for all types of food. Easy to Remove: Handy tabs around each lid allow effortless removal while maintaining a tight seal to prevent leaks.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/bQMOSxiX.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/Fo6LX7fn.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/F1cUHybp.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/ACbxVFoY.jpeg"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/6pcs-silicone-stretch-lids-food-grade-bpa-free-flexible-reusable-bowl-covers"
+        }
+      ]
+    },
+    {
+      "collection": "Fresh Start Cleaning",
+      "headline": "Fresh Start Cleaning",
+      "slug": "fresh-start-cleaning",
+      "keywords": "CLEAN, LINK",
+      "dm_message": "Hey @{username}! Every cleaning hack from the reel is right here 👇",
+      "products": [
+        {
+          "name": "Mini Wire Brush Cleaning Tool Kit – Brass, Nylon & Stainless Steel Bristles for Multi-Purpose Cleaning",
+          "price": 119,
+          "mrp": 200,
+          "description": "Tackle tough dirt, rust, and grime with this multi-purpose mini wire brush cleaning kit. Featuring three different bristle types – brass, stainless steel, and nylon, this set is designed to handle a wide range of cleaning tasks from delicate surfaces to heavy-duty scrubbing. Its compact design and angled head make it perfect for reaching tight spaces and corners that regular brushes can’t clean. Key Features & Benefits: 3-in-1 Cleaning Brushes: Includes brass, stainless steel, and nylon bristles for versatile cleaning on different surfaces.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/p5ejyWX1.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/OFdn66gP.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/0vXxsd9U.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/p9LMLCur.jpeg"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/mini-wire-brush-cleaning-tool-kit-brass-nylon-stainless-steel"
+        },
+        {
+          "name": "Magic Drying Towel – Reusable, Super Absorbent Multipurpose Cleaning Cloth for Home, Kitchen & Car",
+          "price": 129,
+          "mrp": 199,
+          "description": "Make cleaning and drying effortless with the Magic Drying Towel, designed for fast water absorption and versatile use. This reusable towel is ideal for household chores, car care, and professional cleaning, offering convenience, durability, and eco-friendliness in one package. Key Features: Super Absorbent Material: Made from high-quality, heavy-duty fabric, this towel absorbs water instantly, making it perfect for drying dishes, wiping spills, and cleaning surfaces quickly.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/0t86RfxF.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/WmwVvpA6.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/Uc7FE6DW.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/uZIwYNKq.jpeg"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/magic-drying-towel-reusable-super-absorbent-multipurpose-cleaning-cloth-home-kitchen-car"
+        },
+        {
+          "name": "Cotton Floor Cleaning Pocha 3-Piece Combo – Durable, Absorbent Mop Set for Home, Kitchen & Office Floors",
+          "price": 129,
+          "mrp": 300,
+          "description": "Cotton Floor Cleaning Pocha 3-Piece Combo – 100% Pure Cotton, Highly Absorbent & Durable Handloom Mop Cloths Keep your floors sparkling clean with this premium 3-piece Cotton Floor Cleaning Pocha set, made from 100% pure cotton handloom fabric. Densely woven for superior durability, these cloths are designed for efficient wet and dry cleaning, absorbing water quickly and trapping dust, dirt, and spills effortlessly. Key Features: Premium Quality Cotton: Made from 100% pure cotton, soft yet durable, suitable for daily floor cleaning.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/eV4Lf1bq.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/DEFKONz6.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/Tz0NWW0I.jpeg"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/cotton-floor-cleaning-pocha-3-piece-combo-durable-absorbent-mop-home-kitchen-office"
+        },
+        {
+          "name": "Microfiber Cleaning Cloth 3-Piece Combo – Lint-Free, Soft Wipes for Desktop, Computer, Electronics & Furniture",
+          "price": 179,
+          "mrp": 200,
+          "description": "SOBBY Microfiber Cleaning Cloth 3-Piece Combo – Lint-Free, Scratch-Free, Highly Absorbent Cloths for Home, Kitchen, Electronics & Car Upgrade your cleaning routine with the SOBBY Microfiber Cleaning Cloth 3-Piece Combo, crafted to deliver efficient, streak-free cleaning for every surface in your home, office, or car. Made from 80% polyester and 20% polyamide, these microfiber cloths absorb up to 8 times their weight in water, last hundreds of washes, and are machine washable for repeated use.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/1WgLDksB.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/QkH0vAV4.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/N2kHEEew.jpeg"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/microfiber-cleaning-cloth-3-piece-combo-lint-free-soft-desktop-computer-electronics-furniture"
+        },
+        {
+          "name": "Super Bold Double-Sided Toilet Cleaning Brush – Heavy-Duty Bathroom Scrubber for Deep Cleaning",
+          "price": 130,
+          "mrp": 399,
+          "description": "Super Bold Double-Sided Toilet Cleaning Brush – Heavy-Duty Bathroom Scrubber for Western & Indian Toilets Keep your bathroom spotless and hygienic with the Super Bold Double-Sided Toilet Cleaning Brush, designed for deep cleaning and tough stain removal. Perfect for Western and Indian style toilets, this premium toilet brush combines durability, convenience, and efficiency for a superior cleaning experience. Key Features: Versatile Cleaning: Ideal for cleaning Western toilets, Indian commodes, and potty units, making it a must-have bathroom accessory.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/Ka5yR6JE.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/OYv1WJb2.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/GY2dCJ1A.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/PkwNmtJQ.webp"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/super-bold-double-sided-toilet-cleaning-brush-heavy-duty"
+        },
+        {
+          "name": "Cotton Dusting & Cleaning Cloth – 3PCS Combo for Home, Kitchen & Furniture Cleaning",
+          "price": 130,
+          "mrp": 150,
+          "description": "Cotton Dusting & Cleaning Cloth – 3PCS Washable & Reusable Cloths for Home, Office & Vehicles Keep your surfaces spotless with this cotton cleaning cloth combo, designed for dusting, wiping, and general cleaning. Made from soft, high-quality flannel cotton, these cloths are washable, reusable, and gentle on surfaces, making them perfect for home, office, kitchen, or vehicle cleaning. Key Features: Soft & Durable Cotton: Gentle on surfaces, effective for dusting, wiping, and polishing without scratches.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/tqG98SfS.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/bRrVRyrI.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/7rwycyke.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/kyOwhCdv.jpeg"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/cotton-dusting-cleaning-cloth-3pcs-home-kitchen-furniture"
+        },
+        {
+          "name": "Multifunctional Liquid Shoe Brush with Built-In Dispenser – Easy Cleaning & Polishing for Shoes",
+          "price": 130,
+          "mrp": 150,
+          "description": "Multifunctional Liquid-Filled Cleaning Brush – Durable Scrub Brush for Shoes, Clothes, Dishes & Household Surfaces Make cleaning effortless with this multifunctional liquid-filled brush, designed for shoes, clothes, dishes, and general household cleaning. Featuring a built-in liquid dispenser, durable bristles, and an ergonomic handle, this brush delivers efficient, convenient, and thorough cleaning for every task. Key Features: Liquid-Filling Function: Press-type liquid discharge allows one fill to be used multiple times, making it easy to clean without repeatedly adding soap or detergent.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/kFVHgYJL.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/jUs8anby.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/o1vRr1Pv.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/n3brrPkR.jpeg"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/multifunctional-liquid-shoe-brush-built-in-dispenser-clean-polish"
+        },
+        {
+          "name": "Instant White Shoe Cleaner Cream with Sponge – Quick Whitener & Stain Remover (Big Size)",
+          "price": 149,
+          "mrp": 300,
+          "description": "Instant White Shoe Cleaner Cream with Sponge – Quick Shoe Whitener & Stain Remover (Big Size) Keep your shoes looking brand new with this instant white shoe cleaner cream, specially designed to remove dirt, stains, and marks without damaging the surface. Perfect for sneakers, sports shoes, and casual footwear, it delivers fast and effective cleaning without water. Key Features: Instant Cleaning with Sponge – Built-in sponge applicator allows easy and quick cleaning with simple back-and-forth motion.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/Ggg4elkf.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/Wna2P7sw.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/O7zoZV7X.webp"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/instant-white-shoe-cleaner-cream-sponge-quick-whitener-stain-remover-big"
+        },
+        {
+          "name": "Superior 5-Piece Kitchen Cleaning Towels – Multipurpose Dish Napkins & Wiping Cloths",
+          "price": 130,
+          "mrp": 200,
+          "description": "Upgrade your kitchen cleaning routine with these 100% cotton dish towels, designed for maximum absorbency and durability. Featuring a multi-colored weave style, these towels are perfect for drying dishes, wiping countertops, cleaning tables, mirrors, windows, and even cars. Machine washable and long-lasting, they make everyday cleaning easy, efficient, and hygienic. 100% Cotton Quality: Soft, durable, and gentle on surfaces while highly absorbent. Multi-Purpose Use: Ideal for washing and drying dishes, wiping counters, dusting, cleaning kitchenware, tables, windows, and more.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/khZmzwxt.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/dj33uQro.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/BY2gKKkS.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/a5S8F715.webp"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/superior-5-piece-kitchen-cleaning-towels-multipurpose-absorbent-dish-cloths"
+        },
+        {
+          "name": "2-in-1 Bathroom Cleaning Brush & Wiper – Long Handle Floor & Tile Scrub Brush",
+          "price": 179,
+          "mrp": 500,
+          "description": "2-in-1 Bathroom Cleaning Brush & Wiper – Long Handle Floor & Tile Scrub Brush Make home cleaning effortless with this 2-in-1 Bathroom Cleaning Brush & Wiper. Designed with a long handle and strong bristles, it easily reaches corners, tiles, floors, and other hard-to-clean areas, ensuring every surface is spotless. Ideal for bathrooms, kitchens, and general floor cleaning, this versatile brush is your ultimate home cleaning companion. Dual Function 2-in-1 Design: Combines a scrub brush and wiper for efficient cleaning of floors, tiles, and bathroom surfaces.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/WahcYSCa.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/NL38truw.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/L7gNbGKM.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/bbu7HyRU.webp"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/2-in-1-bathroom-cleaning-brush-wiper-long-handle-floor-tile"
+        },
+        {
+          "name": "Microfiber Cleaning Cloth – 2-Piece Washable & Quick-Dry Cloth Set for Home & Car",
+          "price": 120,
+          "mrp": 300,
+          "description": "Keep your home, car, and gadgets spotless and streak-free with the SOBBY Microfiber Cleaning Cloth – 2-Piece Combo. Designed for maximum absorbency and durability, these thick, plush, and soft microfiber cloths make cleaning effortless. Ideal for dusting, polishing, drying, and detailing, they are a must-have for every household and auto enthusiast. Key Features: Super Absorbent & Lint-Free: Absorbs up to 8x its weight in water while leaving surfaces streak-free. Versatile Use: Perfect for home cleaning, car detailing, kitchen counters, glass, electronics, and smart gadgets.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/qGsWeuJy.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/Odjz6QbJ.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/UdqUwIYC.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/DKgAIyA9.webp"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/microfiber-cleaning-cloth-2-piece-washable-quick-dry-home-car"
+        },
+        {
+          "name": "Car Cleaning Wet Wipes – 80 Pcs Auto Interior & Glass Cleaning Anti-Fog Wipes",
+          "price": 150,
+          "mrp": 300,
+          "description": "Keep your car spotless and protected with Winkelen Car Cleaning Wipes – 80 Pcs Wet Wipes for Car Cleaning & Auto Glass Anti-Fog. These premium lemon-scented wipes are designed to clean, shine, and protect your car interior with ease, making them a must-have for every vehicle owner. The strong cleaning formula effortlessly removes dirt, dust, grime, and stubborn stains from your car’s dashboard, seats, upholstery, and interior surfaces without leaving any greasy residue. These wipes are ready-to-use, non-pilling, and gentle on your hands, ensuring convenient and safe cleaning every time.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/H6i2gQmk.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/5uldERQT.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/i3tyKK0l.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/9jmFszkw.webp"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/car-cleaning-wet-wipes-80pcs-auto-interior--glass-anti-fog-wipes"
+        }
+      ]
+    },
+    {
+      "collection": "Trending Toys",
+      "headline": "Trending Toys",
+      "slug": "trending-toys",
+      "keywords": "TOYS, LINK",
+      "dm_message": "Hey @{username}! Here are the toys from the reel 👇",
+      "products": [
+        {
+          "name": "Magnetic Kluster Board Game Magnet Game Fun Table Top Strategy Game Magnetic STEM, Magnetic Board Game for Kids & Adults",
+          "price": 190,
+          "mrp": 300,
+          "description": "Bring excitement and brain-boosting fun to your table with the Magnetic Kluster Board Game – a unique and engaging strategy game for kids and adults alike! Designed to test your focus, patience, and tactical skills, this fast-paced magnetic game keeps everyone entertained for hours. The game is simple yet highly addictive—players take turns placing magnetic pieces inside the playing area without letting them snap together. Sounds easy? Think again! As the board fills up, the challenge increases, making every move more thrilling and strategic.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/ofNMSAcc.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/LDWPS8W4.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/feD5hk45.webp"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/magnetic-kluster-board-game"
+        },
+        {
+          "name": "Doraemon Air Blast Rocket Toy – Fun Launching Gadget for Kids’ Playtime",
+          "price": 220,
+          "mrp": 900,
+          "description": "Bring hours of fun and excitement to your child’s playtime with the Doraemon Air Blast Rocket Toy. Inspired by the beloved Doraemon character, this interactive toy rocket uses air pressure to launch into the air, providing thrilling action and engaging play for kids of all ages. Designed for safe and easy play, the lightweight rocket is durable and kid-friendly, making it perfect for outdoor games, parties, or backyard fun. Its colorful Doraemon-themed design captures children’s attention, encouraging active movement, hand-eye coordination, and imaginative play.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/x0Y4J7VH.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/OkPmjg3U.webp"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/doraemon-air-blast-rocket-toy-fun-launching-gadget-kids-playtime"
+        },
+        {
+          "name": "Super High Bouncing Balls – Moon & Space Balls for Kids and Adults, Fun Outdoor & Indoor Toy",
+          "price": 159,
+          "mrp": 300,
+          "description": "Take your playtime to the next level with the Super High Bouncing Moon Ball – Fun, Durable Toy for Kids & Adults. Designed for indoor and outdoor use, this high-quality, non-toxic Moon Ball delivers endless bouncing fun while improving hand-eye coordination. Its patented design produces a satisfying pop sound effect on impact, making every bounce exciting and addictive. Perfect for sports training, sensory play, or just pure fun, this Moon Ball is loved by babies, kids, and adults alike.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/GYf5Z8zl.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/0OzsivVr.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/Iq8vfKBr.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/RH6dxLkI.webp"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/super-high-bouncing-balls-moon-space-toy-kids-adults-indoor-outdoor"
+        },
+        {
+          "name": "Infant Rattle Toy Set – Musical Toys for Newborns & Babies",
+          "price": 120,
+          "mrp": 200,
+          "description": "Boost your baby’s development with the Infant Rattle Toy Set – Musical Toys for Newborns & Babies. This colorful and engaging rattle set is specially designed to stimulate your baby’s senses, improve fine motor skills, and provide hours of safe, interactive play. Each rattle features different grips, shapes, and textures, helping little hands develop coordination, dexterity, and hand-eye skills. The bright colors and unique designs encourage visual recognition and cognitive development, making it a perfect educational toy for newborns and infants.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/abhMSgyE.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/NupiXkvM.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/6yZ5wZK1.webp"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/infant-rattle-toy-set-musical-toys-for-newborns-babies"
+        },
+        {
+          "name": "Magic Candy Flower Toy – Rotating Spinning Lollipop Toy for Kids & Adults",
+          "price": 130,
+          "mrp": 600,
+          "description": "Experience endless fun and relaxation with the Magic Candy Flower Toy – Rotating Spinning Lollipop Toy for Kids & Adults. Designed with a mesmerizing spiral lollipop design, this vibrant toy spins effortlessly, creating a calming visual effect that helps reduce stress and anxiety for both children and adults. The bright, multicolor spiral pattern captures attention instantly, offering sensory stimulation and making it a perfect fidget toy for playtime, study breaks, or desk use.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/8hALzvYM.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/XZt7Ej5F.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/MQvsTooA.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/KI7IPYLd.webp"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/magic-candy-flower-rotating-spinning-lollipop-toy-for-kids-adults-"
+        },
+        {
+          "name": "Uno Card Game – 112 Multicolor Cards for Kids 7+ & Adults, Family Fun Game",
+          "price": 130,
+          "mrp": 300,
+          "description": "Enjoy endless fun and family bonding with the Uno Playing Card Game – 112 Multicolor Cards, designed for kids aged 7 years and above and adults alike. This classic card game comes with 2 sets of high-quality paper cards featuring vibrant multicolor designs and a sports-themed twist, making every round exciting and engaging. Perfect for 2 to 10 players, Uno is an ideal game for family gatherings, parties, or casual play at home, encouraging strategy, quick thinking, and friendly competition.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/ZVjB8ST5.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/PnPQEVnP.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/cBiAG2XN.webp"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/uno-card-game-112-multicolor-cards-kids-7-plus-adults-family-fun-game"
+        },
+        {
+          "name": "Talking Dancing Cactus Plush Toy – Rechargeable Singing & Interactive Kids Toy",
+          "price": 300,
+          "mrp": 1499,
+          "description": "Talking Dancing Cactus Plush Toy – Rechargeable Singing & Interactive Kids Toy Bring fun, laughter, and learning to your child’s playtime with the Talking Dancing Cactus Plush Toy. This interactive, rechargeable plush toy sings, dances, and moves, making it the perfect companion for kids and even adults looking for a cheerful stress-relief toy. Key Features: Interactive & Entertaining: Sings, dances, and moves to catch children’s attention, providing joy and entertainment for playtime or parties.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/uIDGxv4m.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/e0rv03iO.jpeg",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/jQda3ab0.jpeg"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/talking-dancing-cactus-plush-toy-rechargeable-singing-interactive-kids"
+        },
+        {
+          "name": "Chair Tower Game – 36-Piece Stackable Blocks Set with 6 Colors for Kids & Family",
+          "price": 220,
+          "mrp": 1000,
+          "description": "Turn playtime into a fun and educational experience with the Chair Tower Game, a 36-piece stackable blocks set designed to challenge and engage children while developing key skills. Featuring 6 bright, colorful chairs, this interactive game encourages problem-solving, hand-eye coordination, motor development, and strategic thinking. Players take turns stacking chairs without toppling the tower, making it a thrilling balance and precision challenge suitable for kids aged 3 and up. Interactive STEM Learning Toy: Combines fun and education to boost critical thinking and motor skills.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/ZzF77qda.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/RUj8vgQQ.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/G9nvWvgw.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/cpqz8TCM.webp"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/chair-tower-game-36-piece-stackable-blocks-kids-family"
+        },
+        {
+          "name": "Kids Water Dispenser Toy – Cartoon Character Drinking Fountain Pump",
+          "price": 230,
+          "mrp": 900,
+          "description": "Make drinking water fun and engaging for your little ones with this cute cartoon water dispenser toy. Made from durable, shatterproof, and eco-friendly plastic, it is safe for daily use and perfect for indoor and outdoor play. This mini water dispenser encourages pretend play, helping children learn practical skills while having fun. Its colorful, cartoon-inspired design captures attention and motivates kids to drink water regularly, making hydration enjoyable. Durable & Safe Material: Made from strong, shatterproof plastic, safe and environmentally friendly.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/sr0ib3j4.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/kjFcDDXx.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/SDQf8Nqz.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/q7VDNmAT.webp"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/kids-water-dispenser-toy-cartoon-drinking-fountain"
+        },
+        {
+          "name": "Small Magnetic Sketch Board for Kids – Portable Drawing & Writing Toy",
+          "price": 350,
+          "mrp": 1499,
+          "description": "Small Magnetic Board Sketch Pad for Kids – Educational & Creative Magnetic Drawing Toy Unleash your child’s creativity with the Small Magnetic Board Sketch Pad for Kids, a safe and fun STEM learning toy designed for boys and girls aged 3 to 12 years. This magnetic pad lets children draw, write, and erase repeatedly using the included magnetic stylus, helping them develop fine motor skills, creativity, and early educational learning. Key Features: Draw Freely: Magnetic stylus attracts beads to the surface, creating colorful designs, letters, numbers, and shapes.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/btsmLDeR.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/U7e8AKLs.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/FCp4DVn6.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/1LTRpYZ8.webp"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/small-magnetic-sketch-board-kids-portable-drawing-writing-toy"
+        },
+        {
+          "name": "Air Dry Clay – Colorful Soft Modeling Clay for Kids, Creative Art & Craft Gift Set",
+          "price": 120,
+          "mrp": 200,
+          "description": "Unleash your child’s creativity with this Air Dry Clay set, designed for fun, learning, and hands-on artistic exploration. Made from non-toxic, soft, and elastic clay, it’s perfect for kids to mold, shape, and play safely, while parents can join in to encourage bonding and creative learning. Excellent Quality & Easy to Shape: Strong elasticity and plasticity allow children to easily create models. Non-sticky and smooth texture makes handling simple and fun. Vibrant Color Variety: Includes 12 bright and vivid colors to develop color awareness.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/Fb4OnLlJ.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/UxSQpXdq.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/ZIWJAlTm.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/wSlAQDav.webp"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/air-dry-clay-colorful-soft-modeling-clay-kids-art-craft-gift-set"
+        },
+        {
+          "name": "8.5 Inch LCD Writing Tablet – Multicolor E-Note Pad for Kids, Best Birthday Gift for Boys & Girls",
+          "price": 179,
+          "mrp": 300,
+          "description": "Unleash creativity and learning with the 8.5 Inch LCD Writing Tablet – Portable E-Writer. Perfect for kids, students, and home use, this lightweight digital writing pad lets children draw, doodle, and take notes anywhere, anytime. The one-touch erase button instantly clears the screen, making it convenient for repeated use while the pressure-sensitive LCD display allows for thick and thin lines, simulating a real writing experience. Key Features: Portable & Lightweight: Easy to carry for school, travel, or home activities.",
+          "images": [
+            "https://cdn.dotpe.in/longtail/store-items/5656117/f7uIcq2Y.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/2JQaQv2m.webp",
+            "https://cdn.dotpe.in/longtail/store-items/5656117/8x0gjTu4.webp"
+          ],
+          "source": "https://www.mehtamartmhm.com/product/8-5-inch-lcd-writing-tablet-multicolor-e-note-pad-kids-birthday-gift"
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 import express from 'express';
 import QRCode from 'qrcode';
 import { ValidationError } from '../util.js';
-import { checkoutPage, homePage, notFoundPage, orderPage, productPage, reelStorePage } from '../views/store.js';
+import { HOME_PAGE_SIZE, checkoutPage, homePage, notFoundPage, orderPage, productForClient, productPage, reelStorePage } from '../views/store.js';
 
 const MEDIA_REFRESH_MS = 6 * 60 * 60 * 1000;
 
@@ -22,14 +22,25 @@ export function storeRoutes({ repos, db, ig }) {
   const page = (res, view, status = 200) => res.status(status).type('html').send(String(view));
   const notFound = async (res, message) => page(res, notFoundPage({ settings: await repos.settings.getAll(), message }), 404);
 
-  r.get('/', async (_req, res) => {
+  r.get('/', async (req, res) => {
     const settings = await repos.settings.getAll();
+    // Newest reel first: Instagram media IDs grow over time.
     const reels = await db.query(
-      `SELECT r.slug, r.headline, r.thumbnail_url FROM reels r WHERE r.active
-         AND EXISTS (SELECT 1 FROM reel_products rp JOIN products p ON p.id = rp.product_id WHERE rp.reel_id = r.ig_media_id AND p.active)
-       ORDER BY r.updated_at DESC`,
+      `SELECT r.slug, r.headline, r.thumbnail_url,
+         (SELECT count(*)::int FROM reel_products rp JOIN products p ON p.id = rp.product_id WHERE rp.reel_id = r.ig_media_id AND p.active) AS product_count
+       FROM reels r WHERE r.active
+       ORDER BY length(r.ig_media_id) DESC, r.ig_media_id DESC`,
     );
-    page(res, homePage({ settings, reels }));
+    const search = String(req.query.q || '').slice(0, 80);
+    const shown = Math.min(Math.max(Number(req.query.show) || HOME_PAGE_SIZE, HOME_PAGE_SIZE), 480);
+    const { products, total } = await repos.products.listActive({ search, limit: shown });
+    page(res, homePage({ settings, reels: reels.filter((r) => r.product_count > 0), products, total, search, shown: products.length }));
+  });
+
+  r.get('/p/:productSlug', async (req, res) => {
+    const product = await repos.products.getActiveBySlug(req.params.productSlug);
+    if (!product) return notFound(res, 'This product isn’t available.');
+    page(res, productPage({ settings: await repos.settings.getAll(), reel: null, product }));
   });
 
   r.get('/r/:slug', async (req, res) => {
@@ -55,6 +66,7 @@ export function storeRoutes({ repos, db, ig }) {
     if (!order) return notFound(res, 'We couldn’t find that order.');
     const settings = await repos.settings.getAll();
     let qrSvg = '';
+    let upiLink = '';
     if (order.status === 'awaiting_payment') {
       const upi = new URLSearchParams({
         pa: settings.upi_id,
@@ -63,10 +75,11 @@ export function storeRoutes({ repos, db, ig }) {
         cu: 'INR',
         tn: `Order ${order.order_number}`,
       });
-      qrSvg = await QRCode.toString(`upi://pay?${upi}`, { type: 'svg', margin: 0, color: { dark: '#2a1b2e', light: '#ffffff' } });
+      upiLink = `upi://pay?${upi}`;
+      qrSvg = await QRCode.toString(upiLink, { type: 'svg', margin: 0, color: { dark: '#2a1b2e', light: '#ffffff' } });
     }
     res.set('Cache-Control', 'no-store');
-    page(res, orderPage({ settings, order, qrSvg }));
+    page(res, orderPage({ settings, order, qrSvg, upiLink }));
   });
 
   r.post('/order/:token/paid', async (req, res) => {
@@ -91,6 +104,13 @@ export function apiRoutes({ repos }) {
     if (h.n > 20) return res.status(429).json({ error: 'Too many attempts. Please wait a few minutes and try again.' });
     next();
   };
+
+  // Used when the bag moves to another browser (e.g. Instagram → Chrome): fills in names, prices and photos.
+  r.get('/products', async (req, res) => {
+    const ids = String(req.query.ids || '').split(',');
+    const products = await repos.products.getActiveByIds(ids);
+    res.json({ products: products.map((p) => productForClient(p, '')) });
+  });
 
   r.post('/orders', limit, async (req, res, next) => {
     try {

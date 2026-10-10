@@ -520,5 +520,14 @@ export function settingsPage({ settings: s, connection, csrf }) {
     <div><dt>One DM per person per reel</dt><dd>${connection.oneDmPerUser ? 'On' : 'Off'}</dd></div>
     <div><dt>Database</dt><dd>${connection.database}</dd></div>
   </dl>
+</section>
+
+<section class="panel">
+  <h2>Demo data</h2>
+  <p class="hint">Fills the store with 36 Mehta Mart products and sets up a store for each of your 3 newest reels: Kitchen Creations, Fresh Start Cleaning and Trending Toys. Safe to run again: existing products are reused and your settings are kept.</p>
+  <form method="post" action="/admin/demo-data" data-confirm="Load demo data into your 3 newest reels? Their current store setup will be replaced.">
+    ${csrfField(csrf)}
+    <button class="btn" type="submit">Load demo data</button>
+  </form>
 </section>`;
 }

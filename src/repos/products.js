@@ -72,6 +72,25 @@ export function productsRepo(db) {
         [search.trim(), status],
       );
     },
+    /** Storefront listing: active products, newest first, with optional name search. */
+    async listActive({ search = '', limit = 24, offset = 0 } = {}) {
+      const where = `active AND ($1 = '' OR name ILIKE '%' || $1 || '%')`;
+      const [{ total }] = await db.query(`SELECT count(*)::int AS total FROM products WHERE ${where}`, [search.trim()]);
+      const products = await db.query(
+        `SELECT ${COLS} FROM products WHERE ${where} ORDER BY created_at DESC, id DESC LIMIT $2 OFFSET $3`,
+        [search.trim(), Math.min(Math.max(limit, 1), 500), Math.max(offset, 0)],
+      );
+      return { products, total };
+    },
+    async getActiveBySlug(slug) {
+      const [row] = await db.query(`SELECT ${COLS} FROM products WHERE slug = $1 AND active`, [String(slug)]);
+      return row || null;
+    },
+    async getActiveByIds(ids) {
+      const clean = [...new Set([].concat(ids).map(Number).filter((n) => Number.isInteger(n) && n > 0))].slice(0, 50);
+      if (!clean.length) return [];
+      return db.query(`SELECT ${COLS} FROM products WHERE id = ANY($1::int[]) AND active`, [clean]);
+    },
     async get(id) {
       const [row] = await db.query(`SELECT ${COLS} FROM products WHERE id = $1`, [Number(id) || 0]);
       return row || null;

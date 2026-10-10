@@ -20,8 +20,9 @@ It uses Instagram's official APIs: comment **webhooks**, plus **Private Replies*
 
 | Part | Where | What it does |
 |---|---|---|
+| Full store | `/` | Every product with search and "Show more", plus a "Shop by reel" row |
 | Reel store | `/r/<slug>` | Mobile-first page with the reel's products in the order they appear, a product page, a bag, and checkout |
-| Payment page | `/order/<token>` | Order summary, UPI QR with the amount, order progress |
+| Payment page | `/order/<token>` | Order summary, a "Pay with UPI app" button and a UPI QR with the amount, order progress |
 | Admin panel | `/admin` | Dashboard, Orders, Products, Reels, DM activity, Settings, behind a password |
 | Webhook | `/webhook` | Receives Instagram comments and sends the DM |
 
@@ -66,6 +67,30 @@ Steps:
 6. From a tester account, comment the keyword on that reel. You'll get the DM, the button opens the store, and an order placed there shows up in **Orders**.
 
 While the Meta app hasn't passed App Review, only accounts with a role on the app trigger webhooks and receive DMs. Add your test account under **App roles → Roles → Instagram tester**.
+
+## Demo data (Mehta Mart)
+
+`seed/mehtamart.json` holds 36 real products from mehtamartmhm.com: names, prices, MRPs, descriptions and photo links. They're split into 3 collections. Load them into your **3 newest reels** in either of two ways:
+- **Admin → Settings → Load demo data** (no restart needed), or
+- `npm run seed` while the server is **stopped**. To choose the reels yourself, run `npm run seed -- <newest> <second> <third>`.
+
+| Reel | Store | Keywords |
+|---|---|---|
+| Newest | Kitchen Creations, `/r/kitchen-creations` | `KITCHEN`, `LINK` |
+| 2nd | Fresh Start Cleaning, `/r/fresh-start-cleaning` | `CLEAN`, `LINK` |
+| 3rd | Trending Toys, `/r/trending-toys` | `TOYS`, `LINK` |
+
+It's safe to run again: products are matched by name and reused. Store settings you've already changed are kept.
+
+## Instagram's in-app browser
+
+The DM button opens the store inside Instagram's own browser, and shoppers can finish everything there. Store pages also offer a way out to the phone's real browser:
+- **End-of-page button:** an "Open full store in Chrome" button (Safari on iPhone) at the bottom of every store page. It's always there.
+- **Floating card:** the same offer appears in a card once the shopper scrolls to the bottom. It stays until they tap ✕ or the button, and shows once per session.
+- **Bag carried over:** the bag travels in the link (`/?bag=…`) and is restored in the other browser.
+- **Only inside Instagram or Facebook:** none of this shows in a normal browser. To preview it anyway, add `?preview_inapp=1` to a store URL.
+
+On Android this uses a Chrome intent link. On iPhone it uses `x-safari-https://` (iOS 17+). If that does nothing, the card tells the shopper to use ⋯ → "Open in external browser".
 
 ## Behaviour notes
 
