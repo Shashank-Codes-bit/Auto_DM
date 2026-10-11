@@ -1,5 +1,7 @@
 # Auto DM: shoppable reels for Instagram
 
+> Picking up this project in a new chat? Start with [HANDOFF.md](HANDOFF.md): full context, decisions, deployment and next steps.
+
 Someone comments a keyword on one of your reels. They get a DM with a **Shop now** button. The button opens a store page that shows only the 1–20 products from **that reel**. They add items to their bag and check out, and the order lands in your admin panel.
 
 ```
