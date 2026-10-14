@@ -28,6 +28,7 @@ It's live on the Oracle VM.
 | Server | Oracle VM `svc-agent`, 140.238.251.141, Arm64, 1 OCPU, 6 GB RAM, Ubuntu 24.04, shared with other sites |
 | App on the VM | `~/mehtamart`, Docker Compose project `mehtamart`, service `web`, `127.0.0.1:8100`, volume `mehtamart_data` mounted at `/data`, secrets in `~/mehtamart/deploy/.env` |
 | Front door | Caddy, site file `/etc/caddy/sites/mehtamart.caddy` (added with `add-site.sh`) |
+| Shared with the Auto DM plugin | Since 2026-10-15 the same Instagram account also runs the Plant Store demo (repo `Shashank-Codes-bit/Auto_DM_Plugin`, `~/plantstore-dm`, port 8110, https://plantstore.140-238-251-141.sslip.io). Comments on reels this store doesn't use are passed on there (`FORWARD_WEBHOOK_URL`), and `/l/<slug>` redirects there (`PLUGIN_URL`). Map each reel in one app only. See that repo's HANDOFF.md |
 | Old dev setup | GitHub Codespace on port 3000. It's no longer needed now that Meta points to the VM. |
 
 ## 3. How it works
@@ -215,6 +216,7 @@ docker compose stop web && docker compose run --rm web npm run role -- 98XXXXXXX
 - **Admin role changes without downtime:** add an admin-only UI, or move to a hosted Postgres so the CLI can run alongside the app.
 - **Owner notification for new orders** (WhatsApp or email).
 - **Deep links:** `/reels#<slug>` only finds reels in the first batch of 8.
+- **Plant Store plugin:** keep the 4 Mehta Mart reels (toys, kitchen, cleaning, bedsheets) here and the plant reels in the plugin. When the Instagram token is renewed, update it in both `~/mehtamart/deploy/.env` and `~/plantstore-dm/deploy/.env`.
 - **Port register:** record 8100 → `mehtamart` in DEPLOYMENT-GUIDE.md and `infra/oracle-vm/README.md` (still to do).
 - **Demo data:** some Mehta Mart prices show very large discounts (e.g. 94% off). That's their data; edit it in Admin if needed.
 
