@@ -55,6 +55,7 @@ export function createApp({ db, ig = instagram, config = defaultConfig }) {
 
     const base = baseUrlFor(req, config);
     const storeUrl = (slug) => `${base}/r/${encodeURIComponent(slug)}?src=dm`;
+    let unmapped = false;
     for (const entry of req.body?.entry || []) {
       const ownIds = new Set([entry.id, config.igUserId].filter(Boolean).map(String));
       for (const change of entry.changes || []) {
@@ -62,12 +63,33 @@ export function createApp({ db, ig = instagram, config = defaultConfig }) {
         try {
           const result = await handleComment(change.value, { repos, ig, ownIds, storeUrl, oneDmPerUser: config.oneDmPerUser });
           console.log(`comment ${change.value?.id} on ${change.value?.media?.id}: ${result}`);
+          if (result === 'skip:unmapped-reel') unmapped = true;
         } catch (err) {
           console.error(`Failed to handle comment ${change.value?.id}: ${err.message}`);
         }
       }
     }
+    // Reels this store doesn't use may belong to another app on the same Instagram account. It gets the
+    // delivery byte for byte, with Meta's signature, and checks it with the same app secret.
+    if (unmapped && config.forwardWebhookUrl) {
+      fetch(config.forwardWebhookUrl, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', 'x-hub-signature-256': req.get('x-hub-signature-256') },
+        body: req.rawBody,
+        signal: AbortSignal.timeout(5000),
+      })
+        .then((r) => console.log(`Passed comment on to ${config.forwardWebhookUrl}: ${r.status}`))
+        .catch((err) => console.error(`Couldn't pass comment on to ${config.forwardWebhookUrl}: ${err.message}`));
+    }
   });
+
+  // DM links from the app that shares this Instagram account (see FORWARD_WEBHOOK_URL) point here.
+  if (config.pluginUrl) {
+    app.get('/l/:slug', (req, res) => {
+      const qs = new URLSearchParams(req.query).toString();
+      res.redirect(302, `${config.pluginUrl}/r/${encodeURIComponent(req.params.slug)}${qs ? `?${qs}` : ''}`);
+    });
+  }
 
   app.use('/media', mediaRoutes({ repos }));
   // Everything below knows who is logged in, and logged-in POSTs need the session's CSRF token.

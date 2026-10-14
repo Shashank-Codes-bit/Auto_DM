@@ -23,6 +23,11 @@ export const config = {
   adminPassword: process.env.ADMIN_PASSWORD || '',
   // Without SESSION_SECRET, everyone is logged out when the server restarts.
   sessionSecret: process.env.SESSION_SECRET || crypto.randomBytes(32).toString('hex'),
+  // Sharing the Instagram account with another app (e.g. the Auto DM plugin for another brand):
+  // comments on reels this store doesn't use are passed on, unchanged, to FORWARD_WEBHOOK_URL,
+  // and /l/<slug> links in that app's DMs are redirected to PLUGIN_URL/r/<slug>.
+  forwardWebhookUrl: process.env.FORWARD_WEBHOOK_URL || '',
+  pluginUrl: (process.env.PLUGIN_URL || '').replace(/\/+$/, ''),
   // Database: Postgres connection string, or empty for the built-in database in data/pgdata
   databaseUrl: process.env.DATABASE_URL || '',
   dataDir: process.env.DATA_DIR || path.join(rootDir, 'data', 'pgdata'),

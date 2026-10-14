@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
+import http from 'node:http';
 import { REEL_ID, login, seedReel, startApp } from './helpers.js';
 
 const sign = (body, secret = 'secret') => 'sha256=' + crypto.createHmac('sha256', secret).update(body).digest('hex');
@@ -29,6 +30,39 @@ test('a signed comment webhook sends the store link', async () => {
     assert.equal(app.ig.calls[0][3], 'https://shop.test/r/brunch-edit?src=dm');
   } finally {
     app.close();
+  }
+});
+
+test('comments on reels this store doesn’t use are passed on unchanged; /l/<slug> redirects to the plugin', async () => {
+  const received = [];
+  const receiver = http.createServer((req, res) => {
+    let body = '';
+    req.on('data', (c) => (body += c));
+    req.on('end', () => {
+      received.push({ body, sig: req.headers['x-hub-signature-256'] });
+      res.end('ok');
+    });
+  }).listen(0);
+  const forwardWebhookUrl = `http://127.0.0.1:${receiver.address().port}/webhook`;
+  const app = await startApp({ overrides: { forwardWebhookUrl, pluginUrl: 'https://plugin.test' } });
+  try {
+    await seedReel(app.repos);
+    const comment = (id, media) => JSON.stringify({ entry: [{ id: 'ME', changes: [{ field: 'comments', value: { id, text: 'LINK', media: { id: media }, from: { id: 'u1', username: 'bob' } } }] }] });
+    const send = (body) => fetch(`${app.base}/webhook`, { method: 'POST', headers: { 'content-type': 'application/json', 'x-hub-signature-256': sign(body) }, body });
+
+    await send(comment('c1', REEL_ID)); // our reel: DM here, nothing passed on
+    const other = comment('c2', '999');
+    await send(other); // not our reel: passed on byte for byte with Meta's signature
+    await new Promise((r) => setTimeout(r, 200));
+    assert.equal(app.ig.calls.filter((c) => c[0] === 'button').length, 1);
+    assert.deepEqual(received, [{ body: other, sig: sign(other) }]);
+
+    const res = await fetch(`${app.base}/l/winter-bulbs?src=dm`, { redirect: 'manual' });
+    assert.equal(res.status, 302);
+    assert.equal(res.headers.get('location'), 'https://plugin.test/r/winter-bulbs?src=dm');
+  } finally {
+    app.close();
+    receiver.close();
   }
 });
 

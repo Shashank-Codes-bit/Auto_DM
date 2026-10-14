@@ -142,6 +142,8 @@ Stack: Node 22 (ESM), Express 5, `pg`, `@electric-sql/pglite`, `multer`, `qrcode
 | `ADMIN_PHONE`, `ADMIN_PASSWORD` | Owner login. The account is made admin on every start. |
 | `SESSION_SECRET` | Long random string (`openssl rand -hex 32`) |
 | `DATABASE_URL` | Empty = built-in database. `DATA_DIR=/data/pgdata` is set in `compose.yaml`. |
+| `FORWARD_WEBHOOK_URL` | Optional. Comments on reels this store doesn't use are passed on, unchanged (same body and Meta signature), to this URL. Used to share the Instagram account with the Auto DM plugin (repo `Auto_DM_Plugin`). |
+| `PLUGIN_URL` | Optional. `/l/<slug>` (the links in the plugin's DMs) redirects to `PLUGIN_URL/r/<slug>`. |
 
 ## 8. Operations runbook (Oracle VM)
 
